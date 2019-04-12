@@ -2,11 +2,11 @@
 -- ------------------------- 80-character-line marker  ------------------------
 
 CREATE TABLE Category (
-	id				INTEGER			NOT NULL	AUTO_INCREMENT,
-	name			VARCHAR(320)	NOT NULL,
+	id						INTEGER				NOT NULL		AUTO_INCREMENT,
+	name					VARCHAR(320)	NOT NULL 		UNIQUE,
 	description 	VARCHAR(320) 	NOT NULL,
-	budgetLimit 	DECIMAL(19,4) 	NOT NULL,
-	isActive 		BOOLEAN			NOT NULL 	DEFAULT FALSE,
+	budgetLimit 	DECIMAL(19,4) NOT NULL,
+	isActive 			BOOLEAN				NOT NULL 		DEFAULT FALSE,
 
 	CONSTRAINT PK_Category PRIMARY KEY (id)
 ) ENGINE=InnoDB;
