@@ -1,3 +1,5 @@
+# Accept the invitation, but don't look yet, DO NOT CLONE YET! Thank you!
+
 ## Idea Case 2019K Backend, Express Version
 This version uses Express instead of Hapi.
 
