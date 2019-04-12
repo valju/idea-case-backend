@@ -45,7 +45,7 @@ const DB_SETTINGS = {
   host: "localhost",
   port: "3308",
   user: "valju",
-  password: "ArkhaMusor",  
+  password: "PUT_HERE_DB_PW",  
   database: "valju",
   multipleStatements: true,
   debug: true
