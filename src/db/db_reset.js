@@ -1,9 +1,7 @@
 import '@babel/polyfill';
 import mysql from 'mysql';
 import * as fs from 'fs';
-import {
-  db_settings
-} from './db_settings';
+import DB_CONFIG from './DB_SETTINGS';
 
 // define the SQL scripts location and file names
 const scriptFolder = './Database/SQL_Scripts/';
@@ -28,13 +26,13 @@ function getQueryFromFile() {
 // create mysql connection
 async function getConnection() {
   return mysql.createConnection({
-    host: db_settings.host,
-    port: db_settings.port,
-    user: db_settings.user,
-    password: db_settings.password,
-    database: db_settings.database,
-    multipleStatements: db_settings.multipleStatements,
-    debug: db_settings.debug,
+    host: DB_CONFIG.host,
+    port: DB_CONFIG.port,
+    user: DB_CONFIG.user,
+    password: DB_CONFIG.password,
+    database: DB_CONFIG.database,
+    multipleStatements: DB_CONFIG.multipleStatements,
+    debug: DB_CONFIG.debug,
   })
 };
 
@@ -49,7 +47,6 @@ getConnection()
         client.end();
       }
     )
-  })
-  .catch(err => {
-    console.log(err)
+  }).catch(err => {
+    console.log(err);
   });

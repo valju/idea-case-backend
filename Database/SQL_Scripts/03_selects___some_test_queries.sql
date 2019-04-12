@@ -2,8 +2,10 @@
 -- ------------------------- 80-character-line marker  ------------------------
 
 -- CATEGORY QUERIES
+DESCRIBE Category;
+SELECT * FROM Category;
 
--- Some random query examples
+-- OTHER random query examples
 
 SELECT 
     a.x, 

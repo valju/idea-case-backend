@@ -1,16 +1,16 @@
 import knex from 'knex';
-import { db_settings } from './db_settings';
+import DB_CONFIG from './DB_SETTINGS';
 
 // initiate knex with config
 export default knex({
   client: "mysql",
   connection: {
-    host: db_settings.host,
-    port: db_settings.port,
-    user: db_settings.user,
-    password: db_settings.password,
-    database: db_settings.database,
-    debug: db_settings.debug
+    host: DB_CONFIG.host,
+    port: DB_CONFIG.port,
+    user: DB_CONFIG.user,
+    password: DB_CONFIG.password,
+    database: DB_CONFIG.database,
+    debug: DB_CONFIG.debug
   },
   pool: {
     min: 0,
