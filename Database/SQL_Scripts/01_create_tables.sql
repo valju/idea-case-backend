@@ -3,8 +3,8 @@
 
 CREATE TABLE Category (
 	id						INTEGER				NOT NULL		AUTO_INCREMENT,
-	name					VARCHAR(320)	NOT NULL 		UNIQUE,
-	description 	VARCHAR(320) 	NOT NULL,
+	name					VARCHAR(255)	NOT NULL 		UNIQUE,
+	description 	VARCHAR(255) 	NOT NULL,
 	budgetLimit 	DECIMAL(19,4) NOT NULL,
 	isActive 			BOOLEAN				NOT NULL 		DEFAULT FALSE,
 

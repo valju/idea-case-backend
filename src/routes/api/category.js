@@ -14,9 +14,19 @@ category.get('/all', function (req, res) {
 });
 
 /** http://localhost:8787/api/category/    with method=GET **/
+/*
 // http://localhost:8787/api/category?id=1 
 category.get('/', function (req, res) {
   knex.select().from('Category').where('id',req.query.id).then((data) => {
+    res.status(200);
+    res.send(data);
+  });
+});
+*/
+
+// http://localhost:8787/api/category/1 
+category.get('/:id', function (req, res) {
+  knex.select().from('Category').where('id',req.params.id).then((data) => {
     res.status(200);
     res.send(data);
   });
@@ -26,12 +36,13 @@ category.get('/', function (req, res) {
 category.post('/', function (req, res) {
   // Just a start of err handling for model for you 
   if (req.body.name && req.body.description) {
-    knex.insert(req.body).returning('*').into('Category').then(
+    knex.insert(req.body).returning('*').into('Category')
+    .then(
       (data) => {
         res.status(200);
         res.send(data);
       }
-    ).catch ((error)=> {
+    ).catch ((error) => {
         if(error.errno == 1062) {  // https://mariadb.com/kb/en/library/mariadb-error-codes/
           res.status(409);
           res.send("Conflict: Category with that name already exists!");

@@ -1,5 +1,5 @@
 ## Idea Case 2019K Backend, Express Version
-This version uses Express instead of Hapi.
+This version uses Express (instead of Hapi). Now ready for studying!
 
 ## Table of Contents
 

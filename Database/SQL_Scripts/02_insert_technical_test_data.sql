@@ -11,7 +11,7 @@ VALUES
   ('Recreation', 'Recreational activities like movies, swimming, touring etc.', 
    2000,   FALSE),
   ('Training', 'Training for new technologies',                          
-   2500,   TRUE)
+   2500,   NULL)
 ;
 
 /*
