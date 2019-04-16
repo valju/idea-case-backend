@@ -1374,7 +1374,7 @@
           <dia:attribute name="string">
             <dia:string>#Database Diagram - Idea case
 
-created 2019-04-08 KP, modified 2019-04-09 JV
+created 2019-04-08 KP, modified 2019-04-09, 2019-04-16 JV
 
 AK = UNIQUE NOT NULL
 * = column that might contain NULL in final version
@@ -1812,7 +1812,7 @@ been available)#</dia:string>
         <dia:point val="38.8742,-14.0845"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="38.8242,-14.1345;55.9942,-6.7345"/>
+        <dia:rectangle val="38.8242,-14.1345;55.9942,-7.5345"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -1824,7 +1824,7 @@ been available)#</dia:string>
         <dia:real val="17.07"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="7.2999999999999998"/>
+        <dia:real val="6.5"/>
       </dia:attribute>
       <dia:attribute name="line_width">
         <dia:real val="0.10000000149011612"/>
@@ -1842,10 +1842,9 @@ been available)#</dia:string>
 max height 2160 (4K UHD)
 
 File &gt; Export &gt; PNG (anti-aliased), Save,
-put 3840 to width and press
-tabulator. If height went above
-2160, put height to 2160 and
-press tabulator.))#</dia:string>
+put 3840 to width and press tabulator. 
+If height went above 2160, set height 2160
+and press tabulator.)) then press Export#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="monospace" style="0" name="Courier"/>
