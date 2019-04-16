@@ -398,7 +398,7 @@
             <dia:string>#name#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#VARCHAR(320) {AK}#</dia:string>
+            <dia:string>#VARCHAR(255) {AK}#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -559,7 +559,7 @@
             <dia:string>#categoryId#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#INTEGER {FK}#</dia:string>
+            <dia:string>#INTEGER {FK} *#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -762,7 +762,7 @@
             <dia:string>#email#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#VARCHAR(320) {AK}#</dia:string>
+            <dia:string>#VARCHAR(255) {AK}#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -919,7 +919,7 @@
             <dia:string>#name#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#VARCHAR(320) {AK}#</dia:string>
+            <dia:string>#VARCHAR(255) {AK}#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -942,7 +942,7 @@
             <dia:string>#description#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#VARCHAR(320) *#</dia:string>
+            <dia:string>#VARCHAR(255) *#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -1289,7 +1289,7 @@
         <dia:string>##</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_a">
-        <dia:string>#1#</dia:string>
+        <dia:string>#0..1#</dia:string>
       </dia:attribute>
       <dia:attribute name="visibility_a">
         <dia:enum val="3"/>
@@ -1346,7 +1346,7 @@
         <dia:point val="2.58956,-14.6804"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="2.53956,-14.7304;31.6446,-6.53037"/>
+        <dia:rectangle val="2.53956,-14.7304;31.6446,-6.5304"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -1867,13 +1867,13 @@ press tabulator.))#</dia:string>
     </dia:object>
     <dia:object type="Standard - Line" version="0" id="O18">
       <dia:attribute name="obj_pos">
-        <dia:point val="24.0395,0.125277"/>
+        <dia:point val="24.0394,0.125278"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="23.9689,-2.9226;27.4534,0.195869"/>
+        <dia:rectangle val="23.9688,-2.9226;27.4534,0.19587"/>
       </dia:attribute>
       <dia:attribute name="conn_endpoints">
-        <dia:point val="24.0395,0.125277"/>
+        <dia:point val="24.0394,0.125278"/>
         <dia:point val="27.3828,-2.85201"/>
       </dia:attribute>
       <dia:attribute name="numcp">
@@ -1885,6 +1885,64 @@ press tabulator.))#</dia:string>
       <dia:connections>
         <dia:connection handle="0" to="O16" connection="8"/>
       </dia:connections>
+    </dia:object>
+    <dia:object type="UML - Note" version="0" id="O19">
+      <dia:attribute name="obj_pos">
+        <dia:point val="34.8192,10.5428"/>
+      </dia:attribute>
+      <dia:attribute name="obj_bb">
+        <dia:rectangle val="34.7692,10.4928;56.5592,17.8928"/>
+      </dia:attribute>
+      <dia:attribute name="meta">
+        <dia:composite type="dict"/>
+      </dia:attribute>
+      <dia:attribute name="elem_corner">
+        <dia:point val="34.8192,10.5428"/>
+      </dia:attribute>
+      <dia:attribute name="elem_width">
+        <dia:real val="21.690000000000001"/>
+      </dia:attribute>
+      <dia:attribute name="elem_height">
+        <dia:real val="7.2999999999999998"/>
+      </dia:attribute>
+      <dia:attribute name="line_width">
+        <dia:real val="0.10000000149011612"/>
+      </dia:attribute>
+      <dia:attribute name="line_colour">
+        <dia:color val="#000000"/>
+      </dia:attribute>
+      <dia:attribute name="fill_colour">
+        <dia:color val="#bfbfbf"/>
+      </dia:attribute>
+      <dia:attribute name="text">
+        <dia:composite type="text">
+          <dia:attribute name="string">
+            <dia:string>#Business rule decisions:
+* Members cannot be deleted, if they are participating
+ in an Idea or have any comments.
+* Comments can be deleted individually.
+* Ideas can be deleted and then all related Commnents 
+and participation markings should go.
+** Categories can be deleted, even if Ideas exist 
+=&gt; Idea's Category will become NULL#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="font">
+            <dia:font family="monospace" style="0" name="Courier"/>
+          </dia:attribute>
+          <dia:attribute name="height">
+            <dia:real val="0.80000000000000004"/>
+          </dia:attribute>
+          <dia:attribute name="pos">
+            <dia:point val="35.1692,11.7253"/>
+          </dia:attribute>
+          <dia:attribute name="color">
+            <dia:color val="#000000"/>
+          </dia:attribute>
+          <dia:attribute name="alignment">
+            <dia:enum val="0"/>
+          </dia:attribute>
+        </dia:composite>
+      </dia:attribute>
     </dia:object>
   </dia:layer>
 </dia:diagram>
