@@ -1,19 +1,19 @@
 import knex from 'knex';
-import DB_CONFIG from './DB_SETTINGS';
+import {DB_SETTINGS} from '../CONSTANTS';
 
 // initiate knex with config
 export default knex({
-  client: "mysql",
+  client: DB_SETTINGS.driverModule,
   connection: {
-    host: DB_CONFIG.host,
-    port: DB_CONFIG.port,
-    user: DB_CONFIG.user,
-    password: DB_CONFIG.password,
-    database: DB_CONFIG.database,
-    debug: DB_CONFIG.debug
+    host: DB_SETTINGS.host,
+    port: DB_SETTINGS.port,
+    user: DB_SETTINGS.user,
+    password: DB_SETTINGS.password,
+    database: DB_SETTINGS.database,
+    debug: DB_SETTINGS.debug
   },
   pool: {
-    min: 0,
-    max: 7
+    min: DB_SETTINGS.connPoolMin,
+    max: DB_SETTINGS.connPoolMax,
   }
 });

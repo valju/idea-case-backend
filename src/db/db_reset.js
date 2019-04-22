@@ -1,7 +1,7 @@
 import '@babel/polyfill';
 import mysql from 'mysql';
 import * as fs from 'fs';
-import DB_CONFIG from './DB_SETTINGS';
+import {DB_SETTINGS} from '../CONSTANTS';
 
 // define the SQL scripts location and file names
 const scriptFolder = './Database/SQL_Scripts/';
@@ -12,7 +12,7 @@ const scriptFiles = [
 ];
 
 // read the SQL scripts from filepath
-function getQueryFromFile() {
+export function getQueryFromFile() {
   let query = '';
   for (let i = 0; i < scriptFiles.length; i++) {
     query += fs.readFileSync((scriptFolder + scriptFiles[i]), "utf8", function (err, data) {
@@ -26,13 +26,13 @@ function getQueryFromFile() {
 // create mysql connection
 async function getConnection() {
   return mysql.createConnection({
-    host: DB_CONFIG.host,
-    port: DB_CONFIG.port,
-    user: DB_CONFIG.user,
-    password: DB_CONFIG.password,
-    database: DB_CONFIG.database,
-    multipleStatements: DB_CONFIG.multipleStatements,
-    debug: DB_CONFIG.debug,
+    host: DB_SETTINGS.host,
+    port: DB_SETTINGS.port,
+    user: DB_SETTINGS.user,
+    password: DB_SETTINGS.password,
+    database: DB_SETTINGS.database,
+    multipleStatements: DB_SETTINGS.multipleStatements,
+    debug: DB_SETTINGS.debug,
   })
 };
 

@@ -11,10 +11,11 @@
   "author": "Katja, Khem, Tudor",
   "license": "ISC",
   "dependencies": {
+    "@babel/polyfill": "^7.4.3",
+    "cors": "^2.8.5",
     "express": "^4.16.4",
     "knex": "^0.16.3",
-    "mysql": "^2.16.0",
-    "@babel/polyfill": "^7.4.3"
+    "mysql": "^2.16.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.4.3",

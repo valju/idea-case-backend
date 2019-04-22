@@ -1,3 +1,12 @@
+2019-04-22 Temporary notes:
+- remove the DATABASE_SETTINGS or so file
+- add the /src/CONSTANTS.js file and CHANGE YOUR DB password there
+- run> npm install   (to get cors module installed)
+- setup the SSH tunnel
+- run> npm start              it now seems to create the database too.
+- works? If not try deleting the dist folder and run> npm run build
+- then run> npm start             again
+
 ## Idea Case 2019K Backend, Express Version
 This version uses Express (instead of Hapi). Now ready for studying!
 
@@ -37,21 +46,52 @@ This version uses Express (instead of Hapi). Now ready for studying!
      or even the POST services if using PostMan
   10. now ready to setup and run Frontend project
 
-// ------ Sample DB_SETTINGS.js file -------
-// *** DB_SETTINGS.js ***
-// *** The only place for common database settings ***
+// ------ Sample /src/CONSTANTS.js file -------
+// /src/CONSTANTS.js
 
-const DB_SETTINGS = {
-  host: "localhost",
-  port: "3308",
-  user: "valju",
-  password: "PUT_HERE_DB_PW",  
-  database: "valju",
-  multipleStatements: true,
-  debug: true
+// The only place for back-end server and database settings 
+
+// SERVER_SETTINGS
+
+// The only place for common server settings, including for CORS later
+
+const SERVER_SETTINGS = {
+
+    port: 8787,
+
+    api_url_prefix: "/api",
+
 };
 
-export default DB_SETTINGS;
+// DB_SETTINGS
+
+// The only place for common database settings
+
+const DB_SETTINGS = {
+
+    driverModule: "mysql",
+
+    host: "localhost",
+
+    port: "3308",
+
+    user: "valju",
+
+    password: "YOUR_DB_PASSWD_HERE",  
+
+    database: "valju",
+
+    multipleStatements: true,
+
+    debug: true,
+
+    connPoolMin: 0,
+
+    connPoolMax: 7,
+
+};
+
+export {SERVER_SETTINGS, DB_SETTINGS};
 // ------------------------------------------
 
 ### PostMan link for the common PostMan tests:  (Not yet created)

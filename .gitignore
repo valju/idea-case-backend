@@ -17,8 +17,11 @@
 # 3.   remove it also from remote repo.    e.g. manually at Github.com repo and commit there
 
 # Each developer's database settings: NOT tracked
-src/db/DB_SETTINGS.js
+# And these files are actually also now 2019-04-22 obsolete...
+src/db/DB_SETTINGS.js   
 src/db/db_settings.js
+# Use this instead
+src/CONSTANTS.js
 
 # Babel Build directory
 dist
