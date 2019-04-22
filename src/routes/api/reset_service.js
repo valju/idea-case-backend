@@ -1,11 +1,13 @@
+
 import express from 'express';
-import knex from '../../db/index';
-import {getQueryFromFile} from '../../db/db_reset';
+//import knex from '../../db/index';
+//import {getQueryFromFile} from '../../db/db_reset';
 
 const reset_service = express.Router();
 
+/*
 // reset_service
-/** http://localhost:8787/api/reset_service/reset_all    with method=GET **/
+// http://localhost:8787/api/reset_service/reset_all    with method=GET 
 
 reset_service.get('/reset_all', function (req, res) {
 
@@ -46,7 +48,7 @@ function sqlCleaner(sqlOriginal) {
     // sqlFinal = sqlFinal.replace('   ',' ');
     
 
-    //let reqexp= /\s*/;
+    //let reqexp= /\s/;
     //sqlFinal = sqlFinal.replace(reqexp,' ');
     
     sqlFinal = sqlFinal.replace('          ',' ');
@@ -57,26 +59,27 @@ function sqlCleaner(sqlOriginal) {
     sqlFinal = sqlFinal.replace('     ',' ');
     sqlFinal = sqlFinal.replace('    ',' ');
     sqlFinal = sqlFinal.replace('   ',' ');
-/*
-    let wasWhiteSpace=false;
-    let sqlFinal2 = ""
-    let commentOn;
-    for(var i=0; i<sqlFinal.length; i++) {
-        if(sqlFinal[i]=='/') {
-            i++;
-            commentOn = true;
-            for(; commentOn && i<sqlFinal.length; i++) {
-                if(sqlFinal[i]=='/') {
-                    commentOn = false;
-                }
-            }
-        }
-        sqlFinal2 += sqlFinal[i];
-    }
 
-    return sqlFinal2;
-*/
+    // let wasWhiteSpace=false;
+    // let sqlFinal2 = ""
+    // let commentOn;
+    // for(var i=0; i<sqlFinal.length; i++) {
+    //     if(sqlFinal[i]=='/') {
+    //         i++;
+    //         commentOn = true;
+    //         for(; commentOn && i<sqlFinal.length; i++) {
+    //             if(sqlFinal[i]=='/') {
+    //                 commentOn = false;
+    //             }
+    //         }
+    //     }
+    //     sqlFinal2 += sqlFinal[i];
+    // }
+
+    // return sqlFinal2;
+
     return sqlFinal;
 }
 
+*/
 export default reset_service;
