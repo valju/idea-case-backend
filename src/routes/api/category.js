@@ -85,10 +85,10 @@ category.get('/:id', function (req, res) {
 });
 
 // DELETE ONE
-/** http://localhost:8787/api/category/delete    with method=DELETE **/
-// example: http://localhost:8787/api/category/delete/1
+/** http://localhost:8787/api/category/1    with method=DELETE **/
+// example: http://localhost:8787/api/category/1
 
-category.delete('/delete/:id', function (req, res) {
+category.delete('/:id', function (req, res) {
   knex('Category').where('id', req.params.id).del()
     .then((data) => {
       if (data == 0) {
