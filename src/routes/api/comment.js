@@ -141,10 +141,10 @@ comment.put('/', function (req, res) {
 
 /* Post e.g. the JSON from below in the PUT body
 {
-	"memberId": 103,
-	"ideaId": 1002,
-	"commentTimeStamp": "2019-04-25 21:33:11.6131",
-	"commentText": "Why not again??! *edited*"
+	"memberId": 101,
+	"ideaId": 1001,
+	"commentTimeStamp": "2019-04-24 20:46:25.6406",
+	"commentText": "What a terrible idea! *edited*"
 }
 */
 
