@@ -1,5 +1,5 @@
-import express from 'express';
-import knex from '../../db/index';
+import express from "express";
+import knex from "../../db/index";
 
 const category = express.Router();
 
