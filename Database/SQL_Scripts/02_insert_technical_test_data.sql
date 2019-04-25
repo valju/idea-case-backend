@@ -63,14 +63,12 @@ VALUES
 ;
 
 INSERT INTO Comment
-  (memberId, ideaId, commentText)
+  (memberId, ideaId, commentTimeStamp, commentText)
 VALUES
-  (101, 1001, 'What a great idea!'),
-  (101, 1002, 'Dont think we can do this...'),
-  (103, 1002, 'Why not??!'),
-  (102, 1002, 'TEST'),
-  (104, 1002, 'TEST2'),
-  (105, 1002, 'TEST3')
+  (101, 1001, '2019-04-24 20:46:25.6406', 'What a great idea!'),
+  (101, 1002, '2019-04-24 21:46:25.6406', 'Dont think we can do this...'),
+  (103, 1002, '2019-04-24 22:46:25.6406', 'Why not??!'),
+  (102, 1002, '2019-04-24 23:46:25.6406', 'Because it is difficult!!')
 ;
 
 INSERT INTO Comment
