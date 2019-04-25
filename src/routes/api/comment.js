@@ -118,10 +118,10 @@ comment.put('/', function (req, res) {
   } else {
     knex('Comment').where( function() {
       this
-        .where('memberId', req.params.memberId)
-        .andWhere('IdeaId', req.params.ideaId)
-        .andWhere('commentTimeStamp', req.params.commentTimeStamp)
-      }).update(req.body.commentText)
+        .where('memberId', req.body.memberId)
+        .andWhere('ideaId', req.body.ideaId)
+        .andWhere('commentTimeStamp', req.body.commentTimeStamp)
+      }).update(req.body)
       .then((data) => {
         if (data == 0) {
           res.status(404).send("No matching comment was found!").end();
@@ -138,6 +138,15 @@ comment.put('/', function (req, res) {
       });
   }
 });
+
+/* Post e.g. the JSON from below in the PUT body
+{
+	"memberId": 103,
+	"ideaId": 1002,
+	"commentTimeStamp": "2019-04-25 21:33:11.6131",
+	"commentText": "Why not again??! *edited*"
+}
+*/
 
 /* Post e.g. the JSON from below in the POST body
 {
