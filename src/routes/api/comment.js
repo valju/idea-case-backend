@@ -51,4 +51,33 @@ comment.get('/idea', function (req, res) {
   res.status(400).send("Invalid request!").end();
 });
 
+// DELETE ONE
+/** http://localhost:8787/api/comment/1    with method=DELETE **/
+// example: http://localhost:8787/api/comment/101/1001/2019-04-25 17:45:18.5202
+
+comment.delete('/:memberId/:ideaId/:commentTimeStamp', function (req, res) {
+  if (!isNaN(req.params.memberId) && !isNaN(req.params.ideaId)) {
+    knex('Comment')
+  .where( function() {
+    this
+      .where('memberId', req.params.memberId)
+      .andWhere('IdeaId', req.params.ideaId)
+      .andWhere('commentTimeStamp', req.params.commentTimeStamp)
+    }).del()
+    .then((data) => {
+      if (data == 0) {
+        res.status(404).send("No matching rows found!").end();
+      } else {
+        res.status(200).send("Delete successful! Count of deleted rows: " + data).end();
+      }
+    })
+    .catch((error) => {
+      res.status(500).send("Database error: " + error.message).end();
+    });
+  } else {
+      res.status(400).send("Invalid request!").end();
+    }
+});
+
+
 export default comment;
