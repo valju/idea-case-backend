@@ -79,5 +79,38 @@ comment.delete('/:memberId/:ideaId/:commentTimeStamp', function (req, res) {
     }
 });
 
+// CREATE ONE
+/** http://localhost:8787/api/comment/    with method=POST **/
+
+comment.post('/', function (req, res) {
+  if (!req.body.memberId || !req.body.ideaId) {
+    res.status(400).send("Member ID or Idea ID are missing!").end();
+  } else {
+    knex.insert(req.body).into('Comment')
+      .then((data) => {
+        res.status(200);
+        res.send(data);
+      })
+      .catch((error) => {
+        if (error.errno == 1452) {
+          res.status(409).send("Member ID or Idea ID FK violation!").end();
+        } else {
+          res.status(500).send("Database error: " + error.errno).end();
+        }
+      });
+  }
+});
+
+export default comment;
+
+/* Post e.g. the JSON from below in the POST body
+{
+	"memberId": 101,
+  "ideaId": 1001,
+  "commentText": "Hello! I am a fancy new comment."
+}
+*/
+
+
 
 export default comment;
