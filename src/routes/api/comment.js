@@ -25,4 +25,30 @@ comment.get('/member/:id', function (req, res) {
   }
 });
 
+comment.get('/member', function (req, res) {
+  res.status(400).send("Invalid request!").end();
+});
+
+// GET ALL BY IDEAID
+/** http://localhost:8787/api/comment/idea/1001    with method=GET **/
+
+comment.get('/idea/:ideaid', function (req, res) {
+  console.log(req.params.ideaid);
+  if (!isNaN(req.params.ideaid) && req.params.ideaid) {
+    knex.select().from('Comment').where('ideaId', req.params.ideaid)
+      .then((data) => {
+        res.status(200).send(data).end();
+      })
+      .catch((error) => {
+        res.status(500).send("Database error: " + error.errno).end();
+      });
+  } else {
+    res.status(400).send("Invalid request!").end();
+  }
+});
+
+comment.get('/idea', function (req, res) {
+  res.status(400).send("Invalid request!").end();
+});
+
 export default comment;
