@@ -71,7 +71,7 @@ CREATE TABLE Idea_Member (
 CREATE TABLE Comment (
 	memberId INTEGER NOT NULL,
 	ideaId INTEGER NOT NULL,
-	commentTimeStamp DATETIME NOT NULL,
+	commentTimeStamp TIMESTAMP(4) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	commentText VARCHAR(20000) NOT NULL,
 
 	CONSTRAINT PK_Comment PRIMARY KEY (memberId, ideaId, commentTimeStamp),
