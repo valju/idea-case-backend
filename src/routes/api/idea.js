@@ -1,6 +1,6 @@
 import express from "express";
 import knex from "../../db/index";
-import { IDEA_CODE } from "../../CONSTANTS";
+import { IDEA_CODE } from "../../ERROR_CODES";
 const idea = express.Router();
 // GET ALL
 // http://localhost:8787/api/idea/all METHOD = GET
