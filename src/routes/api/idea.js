@@ -224,7 +224,7 @@ idea.put("/", (req, res) => {
       case IDEA_CODE.IDEA_BUDGET_INVALID:
         error = "Idea budget is invalid";
         break;
-      case IDEA_CODE.DEA_PEOPLE_INVALID:
+      case IDEA_CODE.IDEA_PEOPLE_INVALID:
         error = "Idea peopleNeeded is invalid";
         break;
     }
@@ -237,7 +237,7 @@ idea.put("/", (req, res) => {
 
 //DELETE ONE
 // http://localhost:8787/api/idea/:id   METHOD = DELETE
-// example: http://localhost:8787/api/category/1007
+// example: http://localhost:8787/api/idea/1007
 
 idea.delete("/:id", function(req, res) {
   knex("Idea")

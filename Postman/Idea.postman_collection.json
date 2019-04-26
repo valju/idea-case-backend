@@ -1,0 +1,1259 @@
+{
+	"info": {
+		"_postman_id": "3379ab35-6cb9-4b9f-9437-067f87f76ade",
+		"name": "Idea",
+		"description": "Before running collection,run - npm run db:init - first to initialize database",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All Ideas",
+			"item": [
+				{
+					"name": "Get All OK (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Category Id OK (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "71d6aca5-b516-400c-8103-8bf06b7116ec",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/byCategory/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								"byCategory",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get By Category Id Invalid Id (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b8ee426a-22dd-469f-b1b0-201ddfdd5e98",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/byCategory/100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								"byCategory",
+								"100"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get One Idea",
+			"item": [
+				{
+					"name": "Get One OK (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "325d41ff-3586-409d-a406-b3095a54e349",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/1004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								"1004"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Invalid Idea Id (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0caa5fcd-331c-4931-ac9e-98cc6c3a2699",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/2000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								"2000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Add Idea",
+			"item": [
+				{
+					"name": "Add Idea OK (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1ff6eeda-6fc1-49b7-a1a0-db713e78ca1f",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"name\": \"Test Idea POST\",\n        \"description\": \"Test Idea\",\n        \"readyForComments\": false\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Idea Name Missing (400) ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "00e3899c-6b43-45a9-8e08-521c66c36f25",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea name missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n        \"description\": \"Test name missing\",\n        \"readyForComments\": false\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Idea Desc Missing (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a14ccb76-cd6e-4c1e-b9f3-ce63f440f360",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea description missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \t\"name\": \"Test description missing\",\n        \"readyForComments\": false\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Idea Comment  Status Missing (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7b907374-d6be-44ce-92b1-74ea871cc77a",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea comment status is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \t\"name\": \"Test comment status missing\",\n    \t\"description\": \"Test comment status missing\"\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Idea Budget isNaN (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2f812630-3cd5-49f3-9850-d88e9073568b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea budget is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \t\"name\": \"Test budget\",\n    \t\"description\": \"Test budget\",\n    \t\"readyForComment\": false,\n    \t\"budget\" : \"a string\"\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Idea Budget < 0  (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0acd154-c93b-4cd4-8b88-8e40c1026355",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea budget is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \t\"name\": \"Test budget\",\n    \t\"description\": \"Test budget\",\n    \t\"readyForComment\": false,\n    \t\"budget\" : \"a string\"\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Idea PeopleNeeded isNaN (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3a9209c5-65b7-470b-98ce-6ae497313c67",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea peopleNeeded is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \t\"name\": \"Test budget\",\n    \t\"description\": \"Test budget\",\n    \t\"readyForComment\": false,\n    \t\"peopleNeeded\" : \"a string\"\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Idea PeopleNeeded < 0 (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1f0f472c-8234-484b-92a5-17d51de28f5b",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea peopleNeeded is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\n    \t\"name\": \"Test budget\",\n    \t\"description\": \"Test budget\",\n    \t\"readyForComment\": false,\n    \t\"peopleNeeded\" : -2\n    }"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Edit Idea",
+			"item": [
+				{
+					"name": "Edit Idea OK (200)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n\t\"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyForComments\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea Id Missing (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea id is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyForComments\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea Id Invalid  (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1000000,\n\t\"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyForComments\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea Name Missing (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea name missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n\t\"description\": \"test edit\",\n\t\"readyForComments\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea Budget Missing (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea description missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n    \"name\": \"Le Test\",\n\t\"readyForComments\": true\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea Comment Status Missing (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea comment status is missing\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n    \"name\": \"Le Test\",\n\t\"description\": \"test edit\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea Budget isNaN (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea budget is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n    \"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyforComment\": true,\n\t\"budget\": \"a string\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea Budget < 0 (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea budget is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n    \"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyforComment\": true,\n\t\"budget\": -2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea peopleNeeded isNaN (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea peopleNeeded is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n    \"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyforComment\": true,\n\t\"peopleNeeded\": \"a string\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea peopleNeeded < 0 (400)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {",
+									"    pm.response.to.have.status(400);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Idea peopleNeeded is invalid\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n    \"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyforComment\": true,\n\t\"peopleNeeded\": -2\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Idea categoryId Invalid (500)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "440b9743-d362-4e92-8a7b-d0abf449f2a2",
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {",
+									"    pm.response.to.have.status(500);",
+									"});",
+									"",
+									"pm.test(\"Body is correct\", function () {",
+									"    pm.response.to.have.body(\"Database error: 1452\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 1005,\n\t\"name\": \"Le Test\",\n\t\"description\": \"test edit\",\n\t\"readyForComments\": true,\n\t\"categoryId\": 6666\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete Idea",
+			"item": [
+				{
+					"name": "Delete Idea OK",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56cdcd86-01bc-4c03-946e-e58fb047c49e",
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/1003",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								"1003"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Idea Id Not Found/Invalid (404)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "56cdcd86-01bc-4c03-946e-e58fb047c49e",
+								"exec": [
+									"pm.test(\"Status code is 404\", function () {",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/idea/9999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"idea",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "7b07c292-359e-4d13-ae8b-ae24cf47b64a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "8be10740-f6d7-4902-9430-9a75d3bcd95a",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
