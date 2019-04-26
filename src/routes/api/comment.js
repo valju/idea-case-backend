@@ -12,9 +12,9 @@ comment.get('/member/:id', function (req, res) {
     knex.select().from('Comment').where('memberId', req.params.id)
       .then((data) => {
         if (data.length == 0) {
-        res.status(404).send("Invalid row number: " + req.params.id).end();
+          res.status(404).send("Invalid row number: " + req.params.id).end();
         } else {
-        res.status(200).send(data).end();
+          res.status(200).send(data).end();
         }
       })
       .catch((error) => {
@@ -35,12 +35,13 @@ comment.get('/member', function (req, res) {
 
 comment.get('/idea/:id', function (req, res) {
   if (!isNaN(req.params.id) && req.params.id) {
-    knex.select().from('Comment').where('ideaId', req.params.id)
+    knex.select('ideaId', 'memberId', 'commentTimeStamp', 'commentText', 'firstName', 'lastName')
+      .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id').where('ideaId', req.params.id)
       .then((data) => {
         if (data.length == 0) {
-        res.status(404).send("Invalid row number: " + req.params.id).end();
+          res.status(404).send("Invalid row number: " + req.params.id).end();
         } else {
-        res.status(200).send(data).end();
+          res.status(200).send(data).end();
         }
       })
       .catch((error) => {
@@ -61,22 +62,22 @@ comment.get('/idea', function (req, res) {
 
 comment.delete('/:memberId/:ideaId/:commentTimeStamp', function (req, res) {
   if (!isNaN(req.params.memberId) && !isNaN(req.params.ideaId)) {
-    knex('Comment').where( function() {
+    knex('Comment').where(function () {
       this
         .where('memberId', req.params.memberId)
         .andWhere('IdeaId', req.params.ideaId)
         .andWhere('commentTimeStamp', req.params.commentTimeStamp)
-      }).del()
-    .then((data) => {
-      if (data == 0) {
-        res.status(404).send("No matching rows found!").end();
-      } else {
-        res.status(200).send("Delete successful! Count of deleted rows: " + data).end();
-      }
-    })
-    .catch((error) => {
-      res.status(500).send("Database error: " + error.message).end();
-    });
+    }).del()
+      .then((data) => {
+        if (data == 0) {
+          res.status(404).send("No matching rows found!").end();
+        } else {
+          res.status(200).send("Delete successful! Count of deleted rows: " + data).end();
+        }
+      })
+      .catch((error) => {
+        res.status(500).send("Database error: " + error.message).end();
+      });
   } else {
     res.status(400).send("Invalid request!").end();
   }
@@ -116,12 +117,12 @@ comment.put('/', function (req, res) {
   } else if (!req.body.commentText) {
     res.status(400).send("Comment body is missing!").end();
   } else {
-    knex('Comment').where( function() {
+    knex('Comment').where(function () {
       this
         .where('memberId', req.body.memberId)
         .andWhere('ideaId', req.body.ideaId)
         .andWhere('commentTimeStamp', req.body.commentTimeStamp)
-      }).update(req.body)
+    }).update(req.body)
       .then((data) => {
         if (data == 0) {
           res.status(404).send("No matching comment was found!").end();
