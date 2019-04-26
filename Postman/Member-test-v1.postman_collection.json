@@ -1,0 +1,34 @@
+{
+	"info": {
+		"_postman_id": "f1955bea-a07e-455b-bc16-be32ba084a8e",
+		"name": "Member-test-v1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET all members OK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/member/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"member",
+						"all"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
