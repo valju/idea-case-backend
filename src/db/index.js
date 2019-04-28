@@ -1,5 +1,5 @@
-import knex from 'knex';
-import {DB_SETTINGS} from '../CONSTANTS';
+import knex from "knex";
+import { DB_SETTINGS } from "../CONSTANTS";
 
 // initiate knex with config
 export default knex({
@@ -14,6 +14,6 @@ export default knex({
   },
   pool: {
     min: DB_SETTINGS.connPoolMin,
-    max: DB_SETTINGS.connPoolMax,
+    max: DB_SETTINGS.connPoolMax
   }
 });
