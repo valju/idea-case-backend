@@ -2,15 +2,10 @@ import express from "express";
 import knex from "../../db/index";
 import { IDEA_ERROR_CODES } from "../../ERROR_CODES";
 const idea = express.Router();
+
 // GET ALL
 // http://localhost:8787/api/idea/all METHOD = GET
 idea.get("/all", function(req, res) {
-  let d = new Date();
-  let c = String(d);
-  console.log("DCXDSFWRYEUFNVMFJEUWPDMFNFHWYFOFNEBDYDF");
-  console.log(d);
-  console.log("DCXDSFWRYEUFNVMFJEUWPDMFNFHWYFOFNEBDYDF");
-
   knex
     .select()
     .from("Idea")
@@ -26,6 +21,42 @@ idea.get("/all", function(req, res) {
         .send("Database error: " + error.errno)
         .end();
     });
+});
+
+// GET ALL SORTED BY CRITERIA
+// http://localhost:8787/api/idea/all/:criteria METHOD = GET
+// Acceptable criteria: "name", "budget","peopleNeeded","creationDate","isModified"
+idea.get("/all/sort/:criteria", function(req, res) {
+  let validCriteria = [
+    "name",
+    "budget",
+    "peopleNeeded",
+    "creationDate",
+    "isModified"
+  ];
+  if (validCriteria.indexOf(req.params.criteria) === -1) {
+    res
+      .status(400)
+      .send("Invalid criteria: " + req.params.criteria)
+      .end();
+  } else {
+    knex
+      .select()
+      .from("Idea")
+      .orderBy(req.params.criteria)
+      .then(data => {
+        res
+          .status(200)
+          .send(data)
+          .end();
+      })
+      .catch(error => {
+        res
+          .status(500)
+          .send("Database error: " + error.errno)
+          .end();
+      });
+  }
 });
 //GET ONE
 //http://localhost:8787/api/idea/:id METHOD = GET
@@ -85,6 +116,7 @@ idea.get("/byCategory/:id", (req, res) => {
     });
 });
 // GET BY COMMENT STATUS
+// http://localhost:8787/api/idea/readyForComments/true  METHOD = GET
 idea.get("/readyForComments/:commentStatus", function(req, res) {
   let commentStatus = null;
   if (req.params.commentStatus == "true") {
@@ -118,6 +150,7 @@ idea.get("/readyForComments/:commentStatus", function(req, res) {
 });
 
 // GET BY LIMIT
+// http://localhost:8787/api/idea/budget/500/true  METHOD = GET
 idea.get("/budget/:limit/:over", function(req, res) {
   if (isNaN(req.params.limit)) {
     res
@@ -167,6 +200,7 @@ idea.get("/budget/:limit/:over", function(req, res) {
 });
 
 // GET BY PEOPLE NEEDED
+// http://localhost:8787/api/idea/peopleNeeded/500/true  METHOD = GET
 idea.get("/peopleNeeded/:limit/:over", function(req, res) {
   if (isNaN(req.params.limit)) {
     res
@@ -216,6 +250,7 @@ idea.get("/peopleNeeded/:limit/:over", function(req, res) {
 });
 
 //GET BY EXACT CREATION DATE
+//http://localhost:8787/api/idea/created/2019-04-02 METHOD = GET
 idea.get("/created/:createdDate", (req, res) => {
   let dateStart = new Date(req.params.createdDate);
   if (isNaN(dateStart)) {
@@ -246,6 +281,7 @@ idea.get("/created/:createdDate", (req, res) => {
 });
 
 //GET BY CREATED DATE RANGE
+//http://localhost:8787/api/idea/created/2019-04-02 METHOD = GET
 idea.get("/createdRange/:start/:end", (req, res) => {
   let dateStart = new Date(req.params.start);
   let dateEnd = new Date(req.params.end);
