@@ -115,6 +115,7 @@ idea.get("/byCategory/:id", (req, res) => {
         .end();
     });
 });
+
 // GET BY COMMENT STATUS
 // http://localhost:8787/api/idea/readyForComments/true  METHOD = GET
 idea.get("/readyForComments/:commentStatus", function(req, res) {

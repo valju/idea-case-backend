@@ -10,6 +10,676 @@
       "name": "Get All Ideas",
       "item": [
         {
+          "name": "Get All Order By Criteria",
+          "item": [
+            {
+              "name": "Get All Sorted by Name OK (A-Z) (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/all/sort/name",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "all", "sort", "name"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Sorted by Budget OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/all/sort/budget",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "all", "sort", "budget"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Sorted by peopleNeeded OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/all/sort/peopleNeeded",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "all", "sort", "peopleNeeded"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Sorted by creationDate OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/all/sort/creationDate",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "all", "sort", "creationDate"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Sorted by isModified OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/all/sort/isModified",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "all", "sort", "isModified"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get All Invalid Sort Criteria (400)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/all/sort/aaaaa",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "all", "sort", "aaaaa"]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
+          "name": "Get By Specific Criteria Condition",
+          "item": [
+            {
+              "name": "Get All By Budget OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/budget/500/false",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "budget", "500", "false"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Category Id OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "71d6aca5-b516-400c-8103-8bf06b7116ec",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/byCategory/1",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "byCategory", "1"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Category Id Invalid Id (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "b8ee426a-22dd-469f-b1b0-201ddfdd5e98",
+                    "exec": [
+                      "pm.test(\"Status code is 404\", function () {",
+                      "    pm.response.to.have.status(404);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/byCategory/100",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "byCategory", "100"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Comment Status True OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "d0c650d9-c2bc-4dc6-8d27-024980d74acb",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/readyForComments/true",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "readyForComments", "true"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Comment Status False OK (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7f7bee4d-d965-4e07-a44e-9cccb0202a9e",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/readyForComments/false",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "readyForComments", "false"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Comment Status Bad Request (400)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "7f7bee4d-d965-4e07-a44e-9cccb0202a9e",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});",
+                      "",
+                      "pm.test(\"Body is correct\", function () {",
+                      "    pm.response.to.have.body(\"Invalid request!\");",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/readyForComments/aaaaa",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "readyForComments", "aaaaa"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Created Date OK (200)",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
+                    "exec": ["pm.variables.get(\"variable_key\");"],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/created/2019-04-02",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "created", "2019-04-02"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Created Date Range OK (200)",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
+                    "exec": ["pm.variables.get(\"variable_key\");"],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/createdRange/2019-04-02/2019-04-09",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": [
+                    "api",
+                    "idea",
+                    "createdRange",
+                    "2019-04-02",
+                    "2019-04-09"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Modified Date OK (200)",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
+                    "exec": ["pm.variables.get(\"variable_key\");"],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/modified/2019-04-02",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "modified", "2019-04-02"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Modified Date Range OK (200)",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
+                    "exec": ["pm.variables.get(\"variable_key\");"],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
+                    "exec": [
+                      "pm.test(\"Status code is 200\", function () {",
+                      "    pm.response.to.have.status(200);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/modifiedRange/2019-04-02/2019-04-09",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": [
+                    "api",
+                    "idea",
+                    "modifiedRange",
+                    "2019-04-02",
+                    "2019-04-09"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Created Date Invalid Date (400)",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
+                    "exec": ["pm.variables.get(\"variable_key\");"],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/created/2019-13-32",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "created", "2019-13-32"]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "Get By Modified Date Invalid Date (400)",
+              "event": [
+                {
+                  "listen": "prerequest",
+                  "script": {
+                    "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
+                    "exec": ["pm.variables.get(\"variable_key\");"],
+                    "type": "text/javascript"
+                  }
+                },
+                {
+                  "listen": "test",
+                  "script": {
+                    "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
+                    "exec": [
+                      "pm.test(\"Status code is 400\", function () {",
+                      "    pm.response.to.have.status(400);",
+                      "});"
+                    ],
+                    "type": "text/javascript"
+                  }
+                }
+              ],
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "http://localhost:8787/api/idea/modified/2019-13-32",
+                  "protocol": "http",
+                  "host": ["localhost"],
+                  "port": "8787",
+                  "path": ["api", "idea", "modified", "2019-13-32"]
+                }
+              },
+              "response": []
+            }
+          ],
+          "_postman_isSubFolder": true
+        },
+        {
           "name": "Get All OK (200)",
           "event": [
             {
@@ -38,664 +708,6 @@
               "host": ["localhost"],
               "port": "8787",
               "path": ["api", "idea", "all", ""]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Sorted by Name OK (A-Z) (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/all/sort/name",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "all", "sort", "name"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Sorted by Budget OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/all/sort/budget",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "all", "sort", "budget"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Sorted by peopleNeeded OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/all/sort/peopleNeeded",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "all", "sort", "peopleNeeded"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Sorted by creationDate OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/all/sort/creationDate",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "all", "sort", "creationDate"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Sorted by isModified OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/all/sort/isModified",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "all", "sort", "isModified"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All Invalid Sort Criteria OK (400)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
-                "exec": [
-                  "pm.test(\"Status code is 400\", function () {",
-                  "    pm.response.to.have.status(400);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/all/sort/aaaaa",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "all", "sort", "aaaaa"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get All By Budget OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "62ea5ffe-7547-4f91-8780-f51331976be8",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/budget/500/false",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "budget", "500", "false"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Category Id OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "71d6aca5-b516-400c-8103-8bf06b7116ec",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/byCategory/1",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "byCategory", "1"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Category Id Invalid Id (404)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "b8ee426a-22dd-469f-b1b0-201ddfdd5e98",
-                "exec": [
-                  "pm.test(\"Status code is 404\", function () {",
-                  "    pm.response.to.have.status(404);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/byCategory/100",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "byCategory", "100"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Comment Status True OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "d0c650d9-c2bc-4dc6-8d27-024980d74acb",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/readyForComments/true",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "readyForComments", "true"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Comment Status False OK (200)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7f7bee4d-d965-4e07-a44e-9cccb0202a9e",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/readyForComments/false",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "readyForComments", "false"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Comment Status Bad Request (400)",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "id": "7f7bee4d-d965-4e07-a44e-9cccb0202a9e",
-                "exec": [
-                  "pm.test(\"Status code is 400\", function () {",
-                  "    pm.response.to.have.status(400);",
-                  "});",
-                  "",
-                  "pm.test(\"Body is correct\", function () {",
-                  "    pm.response.to.have.body(\"Invalid request!\");",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/readyForComments/aaaaa",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "readyForComments", "aaaaa"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Created Date OK (200)",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
-                "exec": ["pm.variables.get(\"variable_key\");"],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/created/2019-04-02",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "created", "2019-04-02"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Created Date Range OK (200)",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
-                "exec": ["pm.variables.get(\"variable_key\");"],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/createdRange/2019-04-02/2019-04-09",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": [
-                "api",
-                "idea",
-                "createdRange",
-                "2019-04-02",
-                "2019-04-09"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Modified Date OK (200)",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
-                "exec": ["pm.variables.get(\"variable_key\");"],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/modified/2019-04-02",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "modified", "2019-04-02"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Modified Date Range OK (200)",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
-                "exec": ["pm.variables.get(\"variable_key\");"],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
-                "exec": [
-                  "pm.test(\"Status code is 200\", function () {",
-                  "    pm.response.to.have.status(200);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/modifiedRange/2019-04-02/2019-04-09",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": [
-                "api",
-                "idea",
-                "modifiedRange",
-                "2019-04-02",
-                "2019-04-09"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Created Date Invalid Date (400)",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
-                "exec": ["pm.variables.get(\"variable_key\");"],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
-                "exec": [
-                  "pm.test(\"Status code is 400\", function () {",
-                  "    pm.response.to.have.status(400);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/created/2019-13-32",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "created", "2019-13-32"]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "Get By Modified Date Invalid Date (400)",
-          "event": [
-            {
-              "listen": "prerequest",
-              "script": {
-                "id": "54d50b8d-5c01-4712-ad0f-f95cbaf3d23d",
-                "exec": ["pm.variables.get(\"variable_key\");"],
-                "type": "text/javascript"
-              }
-            },
-            {
-              "listen": "test",
-              "script": {
-                "id": "905ea4b8-2e5f-4174-926c-4aa1d02a6646",
-                "exec": [
-                  "pm.test(\"Status code is 400\", function () {",
-                  "    pm.response.to.have.status(400);",
-                  "});"
-                ],
-                "type": "text/javascript"
-              }
-            }
-          ],
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": ""
-            },
-            "url": {
-              "raw": "http://localhost:8787/api/idea/modified/2019-13-32",
-              "protocol": "http",
-              "host": ["localhost"],
-              "port": "8787",
-              "path": ["api", "idea", "modified", "2019-13-32"]
             }
           },
           "response": []
