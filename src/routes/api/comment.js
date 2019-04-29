@@ -56,6 +56,32 @@ comment.get('/idea', function (req, res) {
   res.status(400).send("Invalid request!").end();
 });
 
+// GET ONE COMMENT
+// example: http://localhost:8787/api/comment/1002/101/2019-04-25+17:45:18.5202
+
+comment.get('/:ideaId/:memberId/:commentTimeStamp', function (req, res) {
+  if (!isNaN(req.params.ideaId) && !isNaN(req.params.memberId)) {
+    knex.select().from('Comment')
+      .where(function () {
+        this
+          .where('memberId', req.params.memberId)
+          .andWhere('IdeaId', req.params.ideaId)
+          .andWhere('commentTimeStamp', req.params.commentTimeStamp)
+      }).then((data) => {
+        if (data.length == 0) {
+          res.status(404).send("Invalid parameters.").end();
+        } else {
+          res.status(200).send(data).end();
+        }
+      })
+      .catch((error) => {
+        res.status(500).send("Database error: " + error.errno).end();
+      });
+  } else {
+    res.status(400).send("Invalid request!").end();
+  }
+});
+
 // DELETE ONE
 /** http://localhost:8787/api/comment/1    with method=DELETE **/
 // example: http://localhost:8787/api/comment/101/1001/2019-04-25+17:45:18.5202
