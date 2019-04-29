@@ -1,0 +1,618 @@
+{
+	"info": {
+		"_postman_id": "ef453754-9376-43d8-972e-39c0da031761",
+		"name": "Comment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get All By Idea",
+			"item": [
+				{
+					"name": "Get All By Idea OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/idea/1001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"idea",
+								"1001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All By Idea FAIL (ideaId does not exist)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/idea/99999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"idea",
+								"99999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All By Idea FAIL (ideaId is NaN)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/idea/gfh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"idea",
+								"gfh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get All By Member",
+			"item": [
+				{
+					"name": "Get All By Member OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/member/101",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"member",
+								"101"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All By Member FAIL (memberId does not exist)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/member/9999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"member",
+								"9999"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All By Member FAIL (memberId is NaN)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/member/gfh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"member",
+								"gfh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Delete One",
+			"item": [
+				{
+					"name": "Delete One OK",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/101/1001/2019-04-24+20:46:25.6406",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"101",
+								"1001",
+								"2019-04-24+20:46:25.6406"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One FAIL (comment not found)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/9999/9999/2019-04-25+17:45:18.5202",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"9999",
+								"9999",
+								"2019-04-25+17:45:18.5202"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete One FAIL (ideaId or memberId are NaN)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/uit/sdsdf/2019-04-25+17:45:18.5202",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								"uit",
+								"sdsdf",
+								"2019-04-25+17:45:18.5202"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post Comment",
+			"item": [
+				{
+					"name": "Post One OK",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1001,\r\n\t\"commentText\": \"Hello! I am a fancy new comment.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post One FAIL (ideaId missing)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\r\n\t\"commentText\": \"Hello! I am a fancy new comment.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post One FAIL (memberId missing)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\t\"ideaId\": 1001,\r\n\t\"commentText\": \"Hello! I am a fancy new comment.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post One FAIL (comment body is missing)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1001\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post One FAIL  (memberId FK violation)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 9999,\r\n\t\"ideaId\": 1001,\r\n\t\"commentText\": \"Hello! I am a fancy new comment.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post One FAIL (ideaId FK violation)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 99999,\r\n\t\"commentText\": \"Hello! I am a fancy new comment.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Put (Edit) Comment",
+			"item": [
+				{
+					"name": "Put One OK",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put One FAIL (ideaId missing)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put One FAIL (memberId missing)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put One FAIL (commend body is missing)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Put One FAIL (no comment was found)",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6407\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8787/api/comment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"comment"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
