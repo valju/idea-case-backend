@@ -9,7 +9,7 @@ const comment = express.Router();
 
 comment.get('/member/:id', function (req, res) {
   if (!isNaN(req.params.id) && req.params.id) {
-    knex.select().from('Comment').where('memberId', req.params.id)
+    knex.select().from('Comment').where('memberId', req.params.id).orderBy("commentTimestamp", "desc")
       .then((data) => {
         if (data.length == 0) {
           res.status(404).send("Invalid row number: " + req.params.id).end();
@@ -37,6 +37,7 @@ comment.get('/idea/:id', function (req, res) {
   if (!isNaN(req.params.id) && req.params.id) {
     knex.select('ideaId', 'memberId', 'commentTimeStamp', 'commentText', 'firstName', 'lastName')
       .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id').where('ideaId', req.params.id)
+      .orderBy("commentTimestamp", "desc")
       .then((data) => {
         if (data.length == 0) {
           res.status(404).send("Invalid row number: " + req.params.id).end();
@@ -59,14 +60,14 @@ comment.get('/idea', function (req, res) {
 // GET ONE COMMENT
 // example: http://localhost:8787/api/comment/1002/101/2019-04-25+17:45:18.5202
 
-comment.get('/:ideaId/:memberId/:commentTimeStamp', function (req, res) {
-  if (!isNaN(req.params.ideaId) && !isNaN(req.params.memberId)) {
+comment.get('/:ideaId/:memberId', function (req, res) {
+  if (req.params.memberId) {
     knex.select().from('Comment')
       .where(function () {
         this
           .where('memberId', req.params.memberId)
-          .andWhere('IdeaId', req.params.ideaId)
-          .andWhere('commentTimeStamp', req.params.commentTimeStamp)
+          .andWhere('ideaId', req.params.ideaId)
+          .andWhere('commentTimeStamp', req.query.commentTimeStamp)
       }).then((data) => {
         if (data.length == 0) {
           res.status(404).send("Invalid parameters.").end();
@@ -91,7 +92,7 @@ comment.delete('/:memberId/:ideaId/:commentTimeStamp', function (req, res) {
     knex('Comment').where(function () {
       this
         .where('memberId', req.params.memberId)
-        .andWhere('IdeaId', req.params.ideaId)
+        .andWhere('ideaId', req.params.ideaId)
         .andWhere('commentTimeStamp', req.params.commentTimeStamp)
     }).del()
       .then((data) => {
