@@ -29,6 +29,113 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "POST email conflict check (Error checked)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n       \n        \"firstName\": \"Test1\",\n        \"lastName\": \"Test2\",\n        \"email\": \"test0@mail.com\"\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/member/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"member",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET by id OK",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/member/101",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"member",
+						"101"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET by id NaN checked",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/member/aaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"member",
+						"aaa"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET by id not in DB test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/member/000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"member",
+						"000"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
