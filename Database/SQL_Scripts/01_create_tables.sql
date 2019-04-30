@@ -77,7 +77,7 @@ CREATE TABLE Comment (
 
 	CONSTRAINT PK_Comment PRIMARY KEY (id),
 	
-	INDEX Comment_Idea (ideaId),
+	INDEX Comment_Idea (id),
 	CONSTRAINT FK_Comment_Member
 		FOREIGN KEY (memberId) REFERENCES Member (id)
 		ON DELETE RESTRICT
