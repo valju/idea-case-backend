@@ -68,7 +68,7 @@ VALUES
   (101, 1001, '2019-04-24 20:46:25.640', 'What a great idea!'),
   (101, 1002, '2019-04-24 21:46:25.640', 'Dont think we can do this...'),
   (103, 1002, '2019-04-24 22:46:25.640', 'Why not??!'),
-  (102, 1002, '2019-04-24 23:46:25.640', 'Because it is difficult!!')
+  (102, 1002, '2019-04-24 09:46:25.640', 'Because it is difficult!!')
 ;
 
 INSERT INTO Comment

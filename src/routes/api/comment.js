@@ -33,10 +33,10 @@ comment.get('/member', function (req, res) {
 /** http://localhost:8787/api/comment/idea/1001    with method=GET **/
 // example: http://localhost:8787/api/comment/idea/1001
 
-comment.get('/idea/:id', function (req, res) {
-  if (!isNaN(req.params.id) && req.params.id) {
-    knex.select('ideaId', 'memberId', 'commentTimeStamp', 'commentText', 'firstName', 'lastName')
-      .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id').where('ideaId', req.params.id)
+comment.get('/idea/:ideaId', function (req, res) {
+  if (!isNaN(req.params.ideaId) && req.params.ideaId) {
+    knex.select('Comment.id', 'ideaId', 'memberId', 'commentTimeStamp', 'commentText', 'firstName', 'lastName')
+      .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id').where('ideaId', req.params.ideaId)
       .orderBy("commentTimestamp", "desc")
       .then((data) => {
         if (data.length == 0) {
@@ -58,16 +58,14 @@ comment.get('/idea', function (req, res) {
 });
 
 // GET ONE COMMENT
-// example: http://localhost:8787/api/comment/1002/101/2019-04-25+17:45:18.5202
+// example: http://localhost:8787/api/comment/10001
 
-comment.get('/:ideaId/:memberId', function (req, res) {
-  if (req.params.memberId) {
+comment.get('/:id', function (req, res) {
+  if (req.params.id) {
     knex.select().from('Comment')
       .where(function () {
         this
-          .where('memberId', req.params.memberId)
-          .andWhere('ideaId', req.params.ideaId)
-          .andWhere('commentTimeStamp', req.query.commentTimeStamp)
+          .where('id', req.params.id)
       }).then((data) => {
         if (data.length == 0) {
           res.status(404).send("Invalid parameters.").end();
@@ -85,15 +83,13 @@ comment.get('/:ideaId/:memberId', function (req, res) {
 
 // DELETE ONE
 /** http://localhost:8787/api/comment/1    with method=DELETE **/
-// example: http://localhost:8787/api/comment/101/1001/2019-04-25+17:45:18.5202
+// example: http://localhost:8787/api/comment/10001
 
-comment.delete('/:memberId/:ideaId/:commentTimeStamp', function (req, res) {
-  if (!isNaN(req.params.memberId) && !isNaN(req.params.ideaId)) {
+comment.delete('/:id', function (req, res) {
+  if (!isNaN(req.params.id)) {
     knex('Comment').where(function () {
       this
-        .where('memberId', req.params.memberId)
-        .andWhere('ideaId', req.params.ideaId)
-        .andWhere('commentTimeStamp', req.params.commentTimeStamp)
+        .where('id', req.params.id)
     }).del()
       .then((data) => {
         if (data == 0) {
@@ -139,16 +135,14 @@ comment.post('/', function (req, res) {
 // example: http://localhost:8787/api/comment (ideaId, memberId and commentTimeStamp in the body)
 
 comment.put('/', function (req, res) {
-  if (!req.body.memberId || !req.body.ideaId || !req.body.commentTimeStamp) {
+  if (!req.body.id && !req.body.commentText) {
     res.status(400).send("Request body incomplete!").end();
   } else if (!req.body.commentText) {
     res.status(400).send("Comment body is missing!").end();
   } else {
     knex('Comment').where(function () {
       this
-        .where('memberId', req.body.memberId)
-        .andWhere('ideaId', req.body.ideaId)
-        .andWhere('commentTimeStamp', req.body.commentTimeStamp)
+        .where('id', req.body.id)
     }).update(req.body)
       .then((data) => {
         if (data == 0) {
@@ -171,7 +165,7 @@ comment.put('/', function (req, res) {
 {
 	"memberId": 101,
 	"ideaId": 1001,
-	"commentTimeStamp": "2019-04-24 20:46:25.6406",
+	"commentTimeStamp": "2019-04-24 20:46:25.640",
 	"commentText": "What a terrible idea! *edited*"
 }
 */

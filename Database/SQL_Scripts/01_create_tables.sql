@@ -69,12 +69,13 @@ CREATE TABLE Idea_Member (
 
 /* COMMENT */
 CREATE TABLE Comment (
+	id 						INTEGER 				NOT NULL 		AUTO_INCREMENT,
 	memberId INTEGER NOT NULL,
 	ideaId INTEGER NOT NULL,
 	commentTimeStamp TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	commentText VARCHAR(20000) NOT NULL,
 
-	CONSTRAINT PK_Comment PRIMARY KEY (memberId, ideaId, commentTimeStamp),
+	CONSTRAINT PK_Comment PRIMARY KEY (id),
 	
 	INDEX Comment_Idea (ideaId),
 	CONSTRAINT FK_Comment_Member
@@ -87,5 +88,6 @@ CREATE TABLE Comment (
 		ON UPDATE RESTRICT
 
 ) ENGINE=InnoDB;
+ALTER TABLE Comment AUTO_INCREMENT=10001;
 
 /* END */
