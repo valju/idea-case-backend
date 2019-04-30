@@ -30,7 +30,6 @@ ideaMember.post("/", (req, res, next) => {
       }
     })
     .then(data => {
-      console.log({ data });
       return res.status(200).json({ success: "Idea member inserted" });
     })
     .catch(err => {
@@ -74,6 +73,7 @@ ideaMember.put("/", (req, res, next) => {
     });
 });
 
+// DELETE delete idea member
 ideaMember.delete("/:id", (req, res, next) => {
   let id = req.params.id;
   knex("Idea_member")
