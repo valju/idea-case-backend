@@ -57,16 +57,14 @@ comment.get('/idea', function (req, res) {
   res.status(400).send("Invalid request!").end();
 });
 
-// GET ONE COMMENT
+// GET ONE
 // example: http://localhost:8787/api/comment/10001
 
 comment.get('/:id', function (req, res) {
   if (req.params.id) {
     knex.select().from('Comment')
-      .where(function () {
-        this
-          .where('id', req.params.id)
-      }).then((data) => {
+      .where('id', req.params.id)
+      .then((data) => {
         if (data.length == 0) {
           res.status(404).send("Invalid parameters.").end();
         } else {
@@ -87,10 +85,9 @@ comment.get('/:id', function (req, res) {
 
 comment.delete('/:id', function (req, res) {
   if (!isNaN(req.params.id)) {
-    knex('Comment').where(function () {
-      this
-        .where('id', req.params.id)
-    }).del()
+    knex('Comment')
+      .where('id', req.params.id)
+      .del()
       .then((data) => {
         if (data == 0) {
           res.status(404).send("No matching rows found!").end();
@@ -140,10 +137,9 @@ comment.put('/', function (req, res) {
   } else if (!req.body.commentText) {
     res.status(400).send("Comment body is missing!").end();
   } else {
-    knex('Comment').where(function () {
-      this
-        .where('id', req.body.id)
-    }).update(req.body)
+    knex('Comment')
+      .where('id', req.body.id)
+      .update(req.body)
       .then((data) => {
         if (data == 0) {
           res.status(404).send("No matching comment was found!").end();
