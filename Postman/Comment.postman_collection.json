@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "ef453754-9376-43d8-972e-39c0da031761",
+		"_postman_id": "a0205e54-7b33-4ded-8703-d15e85dc9f76",
 		"name": "Comment",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -184,7 +184,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8787/api/comment/101/1001/2019-04-24+20:46:25.6406",
+							"raw": "http://localhost:8787/api/comment/10001",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -193,9 +193,7 @@
 							"path": [
 								"api",
 								"comment",
-								"101",
-								"1001",
-								"2019-04-24+20:46:25.6406"
+								"10001"
 							]
 						}
 					},
@@ -211,7 +209,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8787/api/comment/9999/9999/2019-04-25+17:45:18.5202",
+							"raw": "http://localhost:8787/api/comment/9999",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -220,36 +218,7 @@
 							"path": [
 								"api",
 								"comment",
-								"9999",
-								"9999",
-								"2019-04-25+17:45:18.5202"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Delete One FAIL (ideaId or memberId are NaN)",
-					"request": {
-						"method": "DELETE",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "http://localhost:8787/api/comment/uit/sdsdf/2019-04-25+17:45:18.5202",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8787",
-							"path": [
-								"api",
-								"comment",
-								"uit",
-								"sdsdf",
-								"2019-04-25+17:45:18.5202"
+								"9999"
 							]
 						}
 					},
@@ -471,7 +440,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+							"raw": "{\r\n\t\"id\": 10002,\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.640\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8787/api/comment",
@@ -489,7 +458,7 @@
 					"response": []
 				},
 				{
-					"name": "Put One FAIL (ideaId missing)",
+					"name": "Put One FAIL (incorrect memberId)",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -502,7 +471,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"memberId\": 101,\r\n\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+							"raw": "{\r\n\t\"id\": 10002,\r\n\t\"memberId\": 10,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.640\",\r\n\t\"commentText\": \"Hello! This is an edit too.\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8787/api/comment",
@@ -520,7 +489,7 @@
 					"response": []
 				},
 				{
-					"name": "Put One FAIL (memberId missing)",
+					"name": "Put One FAIL (incorrect ideaId)",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -533,7 +502,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+							"raw": "{\r\n\t\"id\": 10002,\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 10,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.640\",\r\n\t\"commentText\": \"Hello! This is an edit too.\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8787/api/comment",
@@ -564,7 +533,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6406\"\r\n}"
+							"raw": "{\r\n\t\"id\": 10002,\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.640\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8787/api/comment",
@@ -595,7 +564,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\t\"memberId\": 101,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.6407\",\r\n\t\"commentText\": \"Hello! This is an edit.\"\r\n}"
+							"raw": "{\r\n\t\"id\": 100,\r\n\t\"memberId\": 10,\r\n\t\"ideaId\": 1002,\r\n\t\"commentTimeStamp\": \"2019-04-24 21:46:25.640\",\r\n\t\"commentText\": \"Hello! This is an edit too.\"\r\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8787/api/comment",
