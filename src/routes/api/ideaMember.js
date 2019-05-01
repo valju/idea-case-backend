@@ -7,7 +7,7 @@ const ideaMember = express.Router();
 ideaMember.get("/all", (req, res) => {
   knex
     .select()
-    .from("Idea_member")
+    .from("Idea_Member")
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json({ error: err.message }));
 });
@@ -17,14 +17,14 @@ ideaMember.post("/", (req, res, next) => {
   let { ideaId, memberId } = req.body;
   return knex
     .select("ideaId")
-    .from("Idea_member")
+    .from("Idea_Member")
     .where({ ideaId })
     .then(ideaList => {
       if (ideaList.length === 0) {
         return knex
           .insert({ ideaId, memberId })
           .returning("*")
-          .into("Idea_member");
+          .into("Idea_Member");
       } else {
         throw new Error("The idea member is already existed");
       }
@@ -48,11 +48,11 @@ ideaMember.put("/", (req, res, next) => {
   let { ideaId, memberId } = req.body;
   return knex
     .select("ideaId")
-    .from("Idea_member")
+    .from("Idea_Member")
     .where({ ideaId })
     .then(ideaList => {
       if (ideaList.length > 0) {
-        return knex("Idea_member")
+        return knex("Idea_Member")
           .where({ ideaId })
           .update({ memberId });
       } else {
@@ -76,7 +76,7 @@ ideaMember.put("/", (req, res, next) => {
 // DELETE delete idea member
 ideaMember.delete("/:id", (req, res, next) => {
   let id = req.params.id;
-  knex("Idea_member")
+  knex("Idea_Member")
     .where("ideaId", id)
     .del()
     .then(data => res.status(200).json({ success: "Idea member deleted" }))
