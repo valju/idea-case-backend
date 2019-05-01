@@ -65,7 +65,7 @@ comment.get('/:id', function (req, res) {
     knex.select().from('Comment')
       .where('id', req.params.id)
       .then((data) => {
-        if (data.length == 0) {
+        if (data.length != 1) {
           res.status(404).send("Invalid parameters.").end();
         } else {
           const comment = data[0];
