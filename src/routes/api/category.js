@@ -145,9 +145,6 @@ category.get("/:id", function(req, res) {
 // example: http://localhost:8787/api/category/1
 
 category.delete("/:id", function(req, res) {
-  console.log(
-    "MMMMMMMMMMMMMMMMMOOOOOOOOOOOXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
-  );
   knex("Category")
     .where("id", req.params.id)
     .del()
