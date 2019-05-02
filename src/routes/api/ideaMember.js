@@ -48,21 +48,29 @@ ideaMember.post("/", (req, res, next) => {
     });
 });
 
-// PUT update member in idea-member
+// PUT update idea-member (update ideaId OR memberId)
+// PUT http://localhost:8787/api/ideaMember/
+// Example request body for updating ideaId: 
+// { "oldIdeaId": "1001", "newIdeaId": "1003", "oldMemberId": "103", "newMemberId": null }
+// Example request body for updating memberId: 
+// { "oldIdeaId": "1004", "newIdeaId": null, "oldMemberId": "102", "newMemberId": "101" }
 ideaMember.put("/", (req, res, next) => {
   let { oldIdeaId, newIdeaId, oldMemberId, newMemberId } = req.body;
 
   //*** Update only memberId OR ideaId once at a time
+  // Update memberId => newIdeaId = null
+  // Update ideaId => newMemberId = null
+
   // Update memberId condition
   const MemberId_updateCondition = (newIdeaId === null) 
                                   && (newMemberId !== null) 
-                                  && (Number(newMemberId) !== NaN) // no inputs like { "newMemberId": "abc"} 
+                                  && (!isNaN(Number(newMemberId))) // no inputs like { "newMemberId": "abc"} 
                                   && (Number(newMemberId) !== 0) // no inputs like { "newMemberId": "" }
 
   // Update ideaId condition
   const IdeaId_updateCondition = (newMemberId === null) 
                                   && (newIdeaId !== null) 
-                                  && (Number(newIdeaId) !== NaN) // no inputs like { "newIdeaId": "xyz" }
+                                  && (!isNaN(Number(newIdeaId))) // no inputs like { "newIdeaId": "xyz" }
                                   && (Number(newIdeaId) !== 0) // no inputs like { "newIdeaId": "" }
 
   // Update memberId
@@ -136,23 +144,53 @@ ideaMember.put("/", (req, res, next) => {
     const errorMessage_wrongInputs = "Inputs are not correct! "
                                     + "Inputs' length cannot be 0. "
                                     + "Inputs CANNOT be NULL (except for memberId & ideaId). "
-                                    + "ideaId and numberId CANNOT be NULL at the same time. "                    
+                                    + "ideaId and numberId CANNOT be NULL at the same time. "
+                                    + "ideaId and numberId CANNOT be updated at the same time. "
                                     + "Inputs have to contain a string of number."
     const error = new Error(errorMessage_wrongInputs)
-    res.status(422).end(error.message)
+    res.status(422).json({
+      error: error.message,
+      updateIdeaId_example: { "oldIdeaId": "1001", "newIdeaId": "1003", "oldMemberId": "103", "newMemberId": null },
+      updateMemberId_example: { "oldIdeaId": "1004", "newIdeaId": null, "oldMemberId": "102", "newMemberId": "101" }
+    })
   }
   
     
 });
 
 // DELETE delete idea member
-ideaMember.delete("/:id", (req, res, next) => {
-  let id = req.params.id;
-  knex("Idea_Member")
-    .where("ideaId", id)
+// DELETE http://localhost:8787/api/ideaMember/1001/103
+ideaMember.delete("/:ideaId/:memberId", (req, res, next) => {
+  let ideaId = req.params.ideaId;
+  let memberId = req.params.memberId;
+
+  const deleteCondition = (!isNaN(Number(ideaId)) && Number(ideaId) !== 0
+                          && !isNaN(Number(memberId)) && Number(memberId) !== 0)
+
+  console.log(Number(ideaId) !== NaN)
+  console.log(Number(ideaId) !== 0 )
+  console.log(Number(memberId) !== NaN)
+  console.log(Number(memberId) !== 0)
+
+  if (deleteCondition) {
+    knex("Idea_Member")
+    .where({ ideaId, memberId })
     .del()
-    .then(data => res.status(200).json({ success: "Idea member deleted" }))
+    .then(data => {
+      if (data > 0) {
+        res.status(200).json({ success: "Idea member deleted" })
+      } else if (data === 0) {
+        const error = new Error("Cannot find idea-member with id (" + ideaId + ", " + memberId + ") to delete!")
+        res.status(404).end(error.message)
+      }
+    }) 
     .catch(err => next(err));
+  } else {
+    const errorMessage = "Parameters must be number!"
+    const error = new Error(errorMessage)
+    res.status(422).end(error.message)
+  }
+  
 });
 
 export default ideaMember;
