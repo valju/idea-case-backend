@@ -8,4 +8,3 @@ DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Member;
 
 /* END */
-

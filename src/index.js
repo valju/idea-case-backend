@@ -19,6 +19,10 @@ const init = async () => {
     res.send("Hello from the Node&Express Backend!").end();
   });
 
+  await app.use((error, req, res, next) => {
+    return res.status(error.status || 500).json({ error: error.message });
+  });
+
   await app.listen(SERVER_SETTINGS.port);
 
   console.log(`Node server started and listens to \
