@@ -39,11 +39,7 @@ comment.get('/idea/:ideaId', function (req, res) {
       .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id').where('ideaId', req.params.ideaId)
       .orderBy("commentTimestamp", "desc")
       .then((data) => {
-        if (data.length == 0) {
-          res.status(404).send("Invalid row number: " + req.params.id).end();
-        } else {
-          res.status(200).send(data).end();
-        }
+        res.status(200).send(data).end();
       })
       .catch((error) => {
         res.status(500).send("Database error: " + error.errno).end();
