@@ -6,8 +6,10 @@ const ideaMember = express.Router();
 /* GET all idea member */
 ideaMember.get("/all", (req, res) => {
   knex
-    .select()
+    .select("ideaId", "memberId", "firstName", "lastName", "name")
     .from("Idea_Member")
+    .join("Member", "Idea_Member.memberId", '=', 'Member.id')
+    .join("Idea", "Idea_Member.ideaId", '=', 'Idea.id')
     .then(data => res.status(200).json(data))
     .catch(err => res.status(500).json({ error: err.message }));
 });
