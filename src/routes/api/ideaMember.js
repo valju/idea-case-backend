@@ -167,11 +167,6 @@ ideaMember.delete("/:ideaId/:memberId", (req, res, next) => {
   const deleteCondition = (!isNaN(Number(ideaId)) && Number(ideaId) !== 0
                           && !isNaN(Number(memberId)) && Number(memberId) !== 0)
 
-  console.log(Number(ideaId) !== NaN)
-  console.log(Number(ideaId) !== 0 )
-  console.log(Number(memberId) !== NaN)
-  console.log(Number(memberId) !== 0)
-
   if (deleteCondition) {
     knex("Idea_Member")
     .where({ ideaId, memberId })
