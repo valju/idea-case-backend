@@ -1,0 +1,527 @@
+{
+	"info": {
+		"_postman_id": "f95e39a7-3e0a-4e9b-bc53-dc59ed7b93f3",
+		"name": "IdeaMember",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8787/api/ideaMember/all",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						"all"
+					]
+				},
+				"description": "GET all idea-member successfully"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/1001/103",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/1001/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						"1001",
+						"103"
+					]
+				},
+				"description": "Get idea-member by (ideaId, memberId)"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/1001/aaa",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/1001/aaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						"1001",
+						"aaa"
+					]
+				},
+				"description": "GET idea-member by (ideaId, memberId) FAILED\nideaId/memberId must be a number"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/1001/111",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/1001/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						"1001",
+						"111"
+					]
+				},
+				"description": "GET idea-member by (ideaId, memberId)\n(ideaId, memberId) does not exist (404)"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ideaId\": \"1001\",\n\t\"memberId\": \"101\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "POST new idea-member succesfully"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ideaId\": \"1001\",\n\t\"memberId\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Add new idea-member FAILED\nidea-member already exists"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"ideaId\": \"1001\",\n\t\"memberId\": \"aaa\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Add new idea-member FAILED\nParameter is not a number"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldIdeaId\": \"1001\",\n\t\"newIdeaId\": \"1004\",\n\t\"oldMemberId\": \"101\",\n\t\"newMemberId\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Update memberId of idea-member succesfully"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldIdeaId\": \"1004\",\n\t\"newIdeaId\": null,\n\t\"oldMemberId\": \"101\",\n\t\"newMemberId\": \"103\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Update ideaId of idea-member successfully"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldIdeaId\": \"1004\",\n\t\"newIdeaId\": null,\n\t\"oldMemberId\": \"101\",\n\t\"newMemberId\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Update idea-member FAILED\nBoth ideaId & memberId are NULL"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldIdeaId\": \"1004\",\n\t\"newIdeaId\": \"\",\n\t\"oldMemberId\": \"101\",\n\t\"newMemberId\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Update idea-member FAILED\nideaId or memberID is an empty string (\"\")"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldIdeaId\": \"1004\",\n\t\"newIdeaId\": \"abc\",\n\t\"oldMemberId\": \"101\",\n\t\"newMemberId\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Update idea-member FAILED\nideaId or memberId must be a number"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldIdeaId\": \"1004\",\n\t\"newIdeaId\": \"1001\",\n\t\"oldMemberId\": \"103\",\n\t\"newMemberId\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Update idea-member FAILED\nIdea-member existed already"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"oldIdeaId\": \"1003\",\n\t\"newIdeaId\": \"1002\",\n\t\"oldMemberId\": \"103\",\n\t\"newMemberId\": null\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						""
+					]
+				},
+				"description": "Update idea-member FAILED\nCannot find idea-member to update"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/1001/103",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/1001/103",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						"1001",
+						"103"
+					]
+				},
+				"description": "Delete idea-member succesfully"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/1001/111",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/1001/111",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						"1001",
+						"111"
+					]
+				},
+				"description": "Delete FAILED\nCannot find idea-member with (ideaId, memberId) to delete"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8787/api/ideaMember/1001/aaa",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8787/api/ideaMember/1001/aaa",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8787",
+					"path": [
+						"api",
+						"ideaMember",
+						"1001",
+						"aaa"
+					]
+				},
+				"description": "Delete FAILED\nparameters must be number"
+			},
+			"response": []
+		}
+	]
+}
