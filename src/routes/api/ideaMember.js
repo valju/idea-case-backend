@@ -51,7 +51,12 @@ ideaMember.get("/:ideaId/:memberId", (req, res) => {
 // example request body { "ideaId": "1001", "memberId": "101" }
 ideaMember.post("/", (req, res, next) => {
   let { ideaId, memberId } = req.body;
-  return knex
+
+  const updateCondition = (!isNaN(Number(ideaId)) && Number(ideaId) !== 0
+                          && !isNaN(Number(memberId)) && Number(memberId) !== 0)
+
+  if (updateCondition) {
+    return knex
     .select("ideaId", "memberId")
     .from("Idea_Member")
     .where({ ideaId,  memberId })
@@ -77,6 +82,12 @@ ideaMember.post("/", (req, res, next) => {
         next(err);
       }
     });
+  } else {
+    const errorMessage = "Parameters must be number!"
+    const error = new Error(errorMessage)
+    res.status(422).end(error.message)
+  }
+  
 });
 
 // PUT update idea-member (update ideaId OR memberId)
