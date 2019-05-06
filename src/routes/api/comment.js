@@ -104,25 +104,38 @@ comment.delete('/:id', function (req, res) {
 /** http://localhost:8787/api/comment/    with method=POST **/
 
 comment.post('/', function (req, res) {
+
   if (!req.body.memberId || !req.body.ideaId) {
     res.status(400).send("Member ID or Idea ID are missing!").end();
   } else if (!req.body.commentText) {
     res.status(400).send("Comment body is missing!").end();
   } else {
-    knex.insert(req.body).into('Comment')
+    knex.select().from("Idea").where("id", req.body.ideaId)
       .then((data) => {
-        res.status(200);
-        res.send(data);
-      })
-      .catch((error) => {
-        if (error.errno == 1452) {
-          res.status(409).send("Member ID or Idea ID FK violation!").end();
+        if (data[0].readyForComments === 0) {
+          res.status(400).send("Idea not ready for comments")
+            .catch((error) => {
+              res.status(500).send("Database error: " + error.errno).end();
+            })
         } else {
-          res.status(500).send("Database error: " + error.errno).end();
+          knex.insert(req.body).into('Comment')
+            .then((data) => {
+              res.status(200);
+              res.send(data);
+            })
+            .catch((error) => {
+              if (error.errno == 1452) {
+                res.status(409).send("Member ID or Idea ID FK violation!").end();
+              } else {
+                res.status(500).send("Database error: " + error.errno).end();
+              }
+            });
         }
-      });
+      })
   }
-});
+
+}
+);
 
 // EDIT ONE
 /** http://localhost:8787/api/comment/    with method=PUT **/
