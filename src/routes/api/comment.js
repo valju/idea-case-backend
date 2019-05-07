@@ -114,9 +114,6 @@ comment.post('/', function (req, res) {
       .then((data) => {
         if (data[0].readyForComments === 0) {
           res.status(400).send("Idea not ready for comments")
-            .catch((error) => {
-              res.status(500).send("Database error: " + error.errno).end();
-            })
         } else {
           knex.insert(req.body).into('Comment')
             .then((data) => {
@@ -131,6 +128,9 @@ comment.post('/', function (req, res) {
               }
             });
         }
+      })
+      .catch((error) => {
+        res.status(500).send("Database error: " + error.errno).end();
       })
   }
 
