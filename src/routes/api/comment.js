@@ -37,7 +37,7 @@ comment.get('/idea/:ideaId', function (req, res) {
   if (!isNaN(req.params.ideaId) && req.params.ideaId) {
     knex.select('Comment.id', 'ideaId', 'memberId', 'commentTimeStamp', 'commentText', 'firstName', 'lastName')
       .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id').where('ideaId', req.params.ideaId)
-      .orderBy("commentTimestamp", "desc")
+      .orderBy("commentTimestamp", "asc")
       .then((data) => {
         res.status(200).send(data).end();
       })

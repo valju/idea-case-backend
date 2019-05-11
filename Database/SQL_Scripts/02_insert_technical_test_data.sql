@@ -31,9 +31,9 @@ INSERT INTO Member
 VALUES
   ('Sonja', 'Korhonen', 'sonja@mail.com'),
   ('Myy',   'Järvinen', 'pikku@mail.com'),
-  ('Kukka-Maaria', 'Pyykkönen', 'pekka@mail.com'),
+  ('Kukka-Maaria', 'Pyykkönen', 'kukkis@mail.com'),
   ('Matti', 'Neupane', 'matti@mail.com'),
-  ('Annie', 'Johnson-Smith', 'anna@mail.com')
+  ('Annie', 'Johnson-Smith', 'annie@mail.com')
 ;
 
 INSERT INTO Idea
@@ -68,7 +68,15 @@ VALUES
   (101, 1001, '2019-04-24 20:46:25.640', 'Do you feel lucky, punk?'),
   (101, 1002, '2019-04-24 21:46:25.640', 'No, i am your father'),
   (103, 1002, '2019-04-24 22:46:25.640', 'Where have all the flowers gone?'),
-  (102, 1002, '2019-04-24 09:46:25.640', 'Oh, say can you see, by the dawn early light?')
+  (105, 1002, '2019-04-24 09:46:25.640', 'Oh, say can you see, by the dawn early light?'),
+  (101, 1001, '2019-04-27 07:46:25.640', 'Ignorance is bliss'),
+  (102, 1002, '2019-04-21 01:13:25.640', 'This is one longer comment to see what it looks like, oh boy, it is glorious, isnt it, just absolutely fabulous!'),
+  (105, 1002, '2019-03-03 22:46:25.640', 'Another one bites the dust'),
+  (102, 1002, '2019-05-06 09:20:25.640', 'Shrek is love, Shrek is life <3'),
+  (104, 1001, '2019-02-21 10:46:25.640', 'Dearest creature in creation, study English pronunciation. I will teach you in my verse, sounds like corpse, corps, horse, and worse. I will keep you, Suzy, busy, make your head with heat grow dizzy. Tear in eye, your dress will tear. So shall I! Oh hear my prayer.'),
+  (101, 1002, '2019-02-21 21:13:25.640', 'Im starting to run out of ideas'),
+  (105, 1002, '2019-05-03 22:46:25.640', 'He is not the Messiah, he is a very naughty boy!'),
+  (102, 1002, '2019-05-03 09:20:25.640', 'Help!')
 ;
 
 INSERT INTO Comment
