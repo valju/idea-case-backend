@@ -1,5 +1,6 @@
 import express from "express";
 import knex from "../../db/index";
+import ideaMember from "./ideaMember";
 
 const member = express.Router();
 
@@ -175,6 +176,36 @@ member.put("/", function (req, res) {
       })
     );
   }
+});
+
+//GET Idea & Comments by member id
+
+member.get("/idea/comment/:id", (req, res) => {
+  let id = req.params.id;
+  knex.select('commentTimeStamp', 'commentText', 'Idea.name')
+    .from('Comment')
+    .join('Idea', function () {
+      this.on('Idea.id', '=', 'Comment.ideaId')
+    })
+    .where('Comment.memberId', id)
+    .then(data => {
+      if (data.length == 0) {
+        res
+          .status(404)
+          .send(req.params.id + " No comments")
+          .end();
+      } else {
+        res
+          .status(200)
+          .json(data)
+          .end();
+      }
+    })
+    .catch(err => res
+      .status(500)
+      .json({
+        error: err.message
+      }));
 });
 
 export default member;
