@@ -53,6 +53,27 @@ comment.get('/idea', function (req, res) {
   res.status(400).send("Invalid request!").end();
 });
 
+// GET ALL
+/** http://localhost:8787/api/comment/all    with method=GET **/
+// example: http://localhost:8787/api/comment/all
+
+comment.get('/all', function (req, res) {
+  knex.select('Comment.id', 'ideaId', 'memberId', 'commentTimeStamp', 'commentText', 'firstName', 'lastName', 'Idea.name')
+    .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id')
+    .join('Idea', 'Comment.ideaId', '=', 'Idea.id')
+    .orderBy("commentTimestamp", "asc")
+    .then((data) => {
+      res.status(200).send(data).end();
+    })
+    .catch((error) => {
+      res.status(500).send("Database error: " + error.errno).end();
+    });
+});
+
+comment.get('/idea', function (req, res) {
+  res.status(400).send("Invalid request!").end();
+});
+
 // GET ONE
 // example: http://localhost:8787/api/comment/10001
 

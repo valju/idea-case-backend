@@ -68,7 +68,7 @@
         <dia:point val="14.2052,10.6198"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="14.1552,10.5698;28.6152,15.4698"/>
+        <dia:rectangle val="14.1552,10.5698;28.6152,16.2698"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="14.2052,10.6198"/>
@@ -77,7 +77,7 @@
         <dia:real val="14.359999999999999"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
-        <dia:real val="4.8000000000000007"/>
+        <dia:real val="5.5999999999999996"/>
       </dia:attribute>
       <dia:attribute name="name">
         <dia:string>#Comment#</dia:string>
@@ -169,10 +169,33 @@
       <dia:attribute name="attributes">
         <dia:composite type="umlattribute">
           <dia:attribute name="name">
+            <dia:string>#id#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="type">
+            <dia:string>#INTEGER {pk}#</dia:string>
+          </dia:attribute>
+          <dia:attribute name="value">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="comment">
+            <dia:string>##</dia:string>
+          </dia:attribute>
+          <dia:attribute name="visibility">
+            <dia:enum val="0"/>
+          </dia:attribute>
+          <dia:attribute name="abstract">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+          <dia:attribute name="class_scope">
+            <dia:boolean val="false"/>
+          </dia:attribute>
+        </dia:composite>
+        <dia:composite type="umlattribute">
+          <dia:attribute name="name">
             <dia:string>#ideaId#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#INTEGER {PK,FK1}#</dia:string>
+            <dia:string>#INTEGER {FK1}#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -195,7 +218,7 @@
             <dia:string>#memberId#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#INTEGER {PK,FK2}#</dia:string>
+            <dia:string>#INTEGER {FK2}#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -1015,10 +1038,10 @@
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O4">
       <dia:attribute name="obj_pos">
-        <dia:point val="21.3852,13.0198"/>
+        <dia:point val="21.3852,13.4198"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="21.3852,12.3798;21.3852,13.1523"/>
+        <dia:rectangle val="21.3852,12.7798;21.3852,13.5523"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1032,7 +1055,7 @@
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="21.3852,13.0198"/>
+            <dia:point val="21.3852,13.4198"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1046,7 +1069,7 @@
         <dia:enum val="3"/>
       </dia:attribute>
       <dia:connections>
-        <dia:connection handle="0" to="O0" connection="16"/>
+        <dia:connection handle="0" to="O0" connection="18"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Class" version="0" id="O5">
@@ -1298,7 +1321,7 @@
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>#NNN#</dia:string>
+        <dia:string>#DSN#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>#0..*#</dia:string>
@@ -1498,7 +1521,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>#NNN#</dia:string>
+        <dia:string>#DCA#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>#1..*#</dia:string>
@@ -1567,7 +1590,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>#NNN#</dia:string>
+        <dia:string>#DNA#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>#0..*#</dia:string>
@@ -1638,7 +1661,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>#NNN#</dia:string>
+        <dia:string>#DCA#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>#0..*#</dia:string>
@@ -1653,15 +1676,15 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
         <dia:point val="34.1759,9.40112"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.5152,9.35112;34.7609,14.1198"/>
+        <dia:rectangle val="28.5152,9.35112;34.7609,14.9198"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="34.1759,9.40112"/>
-        <dia:point val="34.1759,13.3198"/>
-        <dia:point val="28.5652,13.3198"/>
+        <dia:point val="34.1759,14.1198"/>
+        <dia:point val="28.5652,14.1198"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -1678,7 +1701,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O1" connection="6"/>
-        <dia:connection handle="1" to="O0" connection="11"/>
+        <dia:connection handle="1" to="O0" connection="13"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Association" version="2" id="O15">
@@ -1707,7 +1730,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
         <dia:boolean val="false"/>
       </dia:attribute>
       <dia:attribute name="role_b">
-        <dia:string>#NNN#</dia:string>
+        <dia:string>#DNA#</dia:string>
       </dia:attribute>
       <dia:attribute name="multipicity_b">
         <dia:string>#0..*#</dia:string>
@@ -1722,15 +1745,15 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
         <dia:point val="7.49879,6.54595"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="7.44879,6.49595;14.2552,13.3198"/>
+        <dia:rectangle val="7.44879,6.49595;14.2552,14.1198"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
       </dia:attribute>
       <dia:attribute name="orth_points">
         <dia:point val="7.49879,6.54595"/>
-        <dia:point val="7.49879,12.5198"/>
-        <dia:point val="14.2052,12.5198"/>
+        <dia:point val="7.49879,13.3198"/>
+        <dia:point val="14.2052,13.3198"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
@@ -1747,7 +1770,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
       </dia:attribute>
       <dia:connections>
         <dia:connection handle="0" to="O2" connection="6"/>
-        <dia:connection handle="1" to="O0" connection="8"/>
+        <dia:connection handle="1" to="O0" connection="10"/>
       </dia:connections>
     </dia:object>
     <dia:object type="UML - Note" version="0" id="O16">
