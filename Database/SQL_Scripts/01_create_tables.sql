@@ -4,8 +4,8 @@
 CREATE TABLE Category (
 	id						INTEGER					NOT NULL		AUTO_INCREMENT,
 	name					VARCHAR(255)		NOT NULL 		UNIQUE,
-	description 	VARCHAR(255) 		NOT NULL,
-	budgetLimit 	DECIMAL(19,4) 	NOT NULL,
+	description 	VARCHAR(255) 		,
+	budgetLimit 	DECIMAL(19,4) 	,
 	isActive 			BOOLEAN					NOT NULL 		DEFAULT FALSE,
 
 	CONSTRAINT PK_Category PRIMARY KEY (id)
