@@ -17,13 +17,13 @@ VALUES
     'Training for new technologies',                          
     2500,     TRUE),
   ('No Budget', 'Category without a budget.', 
-    444,     TRUE),
+    NULL,     TRUE),
   ('No Description', 
     NULL, 
     100,      TRUE),
   ('Dummy', 
     NULL,                          
-    333,     FALSE)
+    NULL,     FALSE)
 ;
 
 INSERT INTO Member
