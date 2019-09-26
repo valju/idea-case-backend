@@ -11,16 +11,24 @@ category.get("/all", function(req, res) {
     .select()
     .from("Category")
     .then(data => {
-      res
-        .status(200)
+      res.status(200)
         .send(data)
         .end();
     })
     .catch(error => {
-      res
-        .status(500)
-        .send("Database error: " + error.errno)
-        .end();
+
+      if(error.errno===1146) {
+        res
+          .status(551)   
+          .send("Database table not created. DB error: " + error.errno)
+          .end();
+      } else {
+        res
+          .status(500)
+          .send("Database error: " + error.errno)
+          .end();
+      }
+
     });
 });
 
@@ -115,15 +123,27 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
 // example: http://localhost:8787/api/category/1
 
 category.get("/:id", function(req, res) {
-  knex
+
+  console.log("id: " +req.params.id);
+     
+  if( isNaN(req.params.id)) {
+    res.status(441)
+      .send("Id should be number and this is not: " + req.params.id)
+      .end();
+  } else if(req.params.id < 1) {
+    res.status(442)
+      .send("Id should be >= 1 and this is not: " + req.params.id)
+      .end();
+  } else {
+    knex
     .select()
     .from("Category")
     .where("id", req.params.id)
     .then(data => {
-      if (data.length == 0) {
+      if (data.length !== 1) {
         res
           .status(404)
-          .send("Invalid row number: " + req.params.id)
+          .send("Non-existing category id: " + req.params.id)
           .end();
       } else {
         res
@@ -138,6 +158,9 @@ category.get("/:id", function(req, res) {
         .send("Database error: " + error.errno)
         .end();
     });
+  }
+
+
 });
 
 // DELETE ONE
