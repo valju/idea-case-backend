@@ -1,0 +1,192 @@
+{
+	"info": {
+		"_postman_id": "9f7dbd25-0696-4cdf-8624-0f4aeff84b3a",
+		"name": "IdeaCaseTestRequests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Generic",
+			"item": [
+				{
+					"name": "http://localhost:8787   GET - HELLO NODE - OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787"
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8787/foobar   GET  -  404 (Non-existing URI)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CategoryMultiple",
+			"item": [
+				{
+					"name": "http://localhost:8787/api/category/all    GET - OK",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/all/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"all",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "CategorySingle",
+			"item": [
+				{
+					"name": "http://localhost:8787/api/category/1   GET  OK  - Single by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8787/api/category/1313   GET  X  - Single by non-existing id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/1313",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"1313"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8787/api/category/abc   GET  X  - Single by non-number id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/abc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"abc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8787/api/category/   GET - X - Id not given in RESTful URI (HANDLED BY EXPRESS ROUTER, not our code)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8787/api/category/-1   GET - X - Id less than allowed Category ids",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/-1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"-1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}

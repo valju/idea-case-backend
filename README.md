@@ -46,7 +46,8 @@ This version uses Express (instead of Hapi). Now ready for studying!
      or even the POST services if using PostMan
   10. now ready to setup and run Frontend project
 
-// ------ Sample /src/CONSTANTS.js file -------
+
+// ****************** Sample /src/CONSTANTS.js file ******************
 // /src/CONSTANTS.js
 
 // The only place for back-end server and database settings 
@@ -92,7 +93,10 @@ const DB_SETTINGS = {
 };
 
 export {SERVER_SETTINGS, DB_SETTINGS};
-// ------------------------------------------
+
+
+
+// ******************  END of CONSTANTS.js file   ******************
 
 ### PostMan link for the common PostMan tests:  (Not yet created)
 
