@@ -1,12 +1,3 @@
-2019-04-22 Temporary notes:
-- remove the DATABASE_SETTINGS or so file
-- add the /src/CONSTANTS.js file and CHANGE YOUR DB password there
-- run> npm install   (to get cors module installed)
-- setup the SSH tunnel
-- run> npm start              it now seems to create the database too.
-- works? If not try deleting the dist folder and run> npm run build
-- then run> npm start             again
-
 ## Idea Case 2019K Backend, Express Version
 This version uses Express (instead of Hapi). Now ready for studying!
 
@@ -38,7 +29,7 @@ This version uses Express (instead of Hapi). Now ready for studying!
   3. **> pwd** to make sure where you are!  Then **cd to repo**
   4. **> pwd** again for folder awareness! 
   5. run **> npm install** if in the repo root folder, to automatically install the dependencies from the package.json. (Somebody else has already run the npm init & needed npm install thisandthat commands earlier)
-  6. Open the editor and edit and check DB_SETTINGS.js in src/db folder. (Later all the settings will be moved just into one file in each project.) Change your:
+  6. Open the editor and add/edit and check CONSTANTS.js in src/db folder. Change your:
     **db-username**, **db-password**, and the **"database"** which actually is your schema name on the database server. Double check that the host and port are **'localhost'** and **'3308'**. (That is our end of the tunnel).
   7. **>npm run db:init** to run the db creation/reset script and get the shared test data (We should soon remove/consolidate/merge the scripts from the Database folder, as we should only have one set of drop, create and insert statements in our project)
   8. **>npm start**
