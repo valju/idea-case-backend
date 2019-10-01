@@ -5,6 +5,27 @@ import ideaMember from "./ideaMember";
 const member = express.Router();
 
 
+
+//GET all contributors
+// http://localhost:8787/api/member/all/contributors
+
+member.get("/all/contibutors", function(req, res) {
+  let subquery = knex("Idea_Member").distinct("memberId");
+  knex('Member').whereIn('id', subquery)
+    .then(data => {
+      res
+                .status(200)
+                .send(data)
+                .end();
+    })
+    .catch(error => {
+            res
+                .status(500)
+                .send("Database error: " + error.errno)
+                .end();
+        });
+});
+
 //GET all members
 // http://localhost:8787/api/member/all
 
@@ -83,7 +104,7 @@ member.get("/:id", function(req, res) {
 		.from("Member")
 		.where("id", req.params.id)
 		.then(data => {
-			if (data.length == 0) {
+			if (data.length !== 1) {
 				res
 					.status(404)
 					.send("Invalid row number: " + req.params.id)
