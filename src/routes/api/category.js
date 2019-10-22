@@ -3,6 +3,47 @@ import knex from "../../db/index";
 
 const category = express.Router();
 
+// GET ALL with specified keyword in name or description
+/** http://localhost:8787/api/category/search/fun    with method=GET **/
+
+category.get("/search/:keyword", function(req, res) {
+
+  let keyword = req.params.keyword;
+
+  if(keyword && keyword.length>0) {
+    knex
+      .select()
+      .from("Category")
+      .where('name', 'like', `%${keyword}%`)
+      .orWhere('description', 'like', `%${keyword}%`)
+      .then(data => {
+        res.status(200)
+          .send(data)
+          .end();
+      })
+      .catch(error => {
+
+        if(error.errno===1146) {
+          res
+            .status(551)
+            .send("Database table not created. DB error: " + error.errno)
+            .end();
+        } else {
+          res
+            .status(500)
+            .send("Database error: " + error.errno)
+            .end();
+        }
+
+      });
+  } else {
+    res
+          .status(400)
+          .send("Missing keyword, keyword is: " + keyword)
+          .end();
+  }
+});
+
 // GET ALL
 /** http://localhost:8787/api/category/all    with method=GET **/
 
@@ -19,7 +60,7 @@ category.get("/all", function(req, res) {
 
       if(error.errno===1146) {
         res
-          .status(551)   
+          .status(551)
           .send("Database table not created. DB error: " + error.errno)
           .end();
       } else {
@@ -125,7 +166,7 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
 category.get("/:id", function(req, res) {
 
   console.log("id: " +req.params.id);
-     
+
   if( isNaN(req.params.id)) {
     res.status(441)
       .send("Id should be number and this is not: " + req.params.id)
