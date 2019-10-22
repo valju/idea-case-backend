@@ -192,6 +192,50 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "/api/category/search/:keyword X (keyword 'training' given => intelligent ordering based on strength of the find)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/search/training",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"search",
+								"training"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/api/category/search/:keyword X (keyword 'n' given => intelligent ordering based on strength => trainings reversed)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8787/api/category/search/n",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8787",
+							"path": [
+								"api",
+								"category",
+								"search",
+								"n"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
