@@ -10,12 +10,26 @@ category.get("/search/:keyword", function(req, res) {
 
   let keyword = req.params.keyword;
 
+  /*
+    knex.select('*').from('users').whereNull('last_name')
+    .union(function() {
+        this.select('*').from('users').whereNull('first_name')
+    })
+  */
+
   if(keyword && keyword.length>0) {
     knex
-      .select()
-      .from("Category")
+      .select('*').from("Category")
       .where('name', 'like', `%${keyword}%`)
-      .orWhere('description', 'like', `%${keyword}%`)
+      .andWhere('description', 'like', `%${keyword}%`)
+      .union(function() {
+        this.select('*').from("Category")
+        .where('name', 'like', `%${keyword}%`)
+        .andWhereNot('description', 'like', `%${keyword}%`)})
+      .union(function() {
+        this.select('*').from("Category")
+        .whereNot('name', 'like', `%${keyword}%`)
+        .andWhere('description', 'like', `%${keyword}%`)})
       .then(data => {
         res.status(200)
           .send(data)

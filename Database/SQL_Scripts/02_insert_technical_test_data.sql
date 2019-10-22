@@ -4,26 +4,33 @@
 INSERT INTO Category
   (name, description, budgetLimit, isActive)
 VALUES
-  ('Outdoors', 
-    'Outdoor activities, e.g. cycling through the hills.',  
+  ('Outdoors',
+    'Outdoor activities, e.g. cycling through the hills.',
     1000,     TRUE),
-  ('Exercises', 
-    'Physical, mental and spriritual exercises carried out in groups in the open lawn.', 
+  ('Exercises',
+    'Physical, mental and spriritual exercises carried out in groups in the open lawn.',
     500,      TRUE),
-  ('Recreation', 
-    'Recreational activities like movies, swimming, touring etc.', 
+  ('Recreation',
+    'Recreational activities like movies, swimming, touring etc.',
     2000,     FALSE),
-  ('Training', 
-    'Training for new technologies',                          
-    2500,     TRUE),
-  ('No Budget', 'Category without a budget.', 
-    NULL,     TRUE),
-  ('No Description', 
-    NULL, 
+  ('Treining E',
+    'Training here',
     100,      TRUE),
-  ('Dummy', 
-    NULL,                          
+  ('Training A1',
+    'No Treining here',
+    100,      TRUE),
+  ('A2 Training',
+    'Training for new technologies',
+    2500,     TRUE),
+  ('No Budget', 'Category without a budget.',
+    NULL,     TRUE),
+  ('No Description',
+    NULL,
+    100,      TRUE),
+  ('Dummy',
+    NULL,
     NULL,     FALSE)
+
 ;
 
 INSERT INTO Member
@@ -37,18 +44,18 @@ VALUES
 ;
 
 INSERT INTO Idea
-  (name, description, budget, 
+  (name, description, budget,
    readyForComments, peopleNeeded, creationDate, isModified, categoryId)
 VALUES
-  ('Football Tourney', 'An indoor football tournament.', 150, 
+  ('Football Tourney', 'An indoor football tournament.', 150,
     TRUE,   10,   '2019-04-03', '2019-04-03 16:20:22', 1),
-  ('Lapland Extravaganza', 'Excursion to North Finland.', 500, 
+  ('Lapland Extravaganza', 'Excursion to North Finland.', 500,
     TRUE,   5,    '2019-04-03', '2019-04-03 16:20:23', 3),
-  ('Baltic Crossing', 'Beer trip to Estonia.', 250, 
+  ('Baltic Crossing', 'Beer trip to Estonia.', 250,
     TRUE,   5,    '2019-04-03', '2019-04-03 16:23:25', 3),
-  ('Pikkujoulut', 'Team building  before Christmas.', 100, 
+  ('Pikkujoulut', 'Team building  before Christmas.', 100,
     FALSE,  10,   '2019-04-03', '2019-04-03 16:24:29', 1),
-  ('Le Tour',     'Follow Tour de France caravan.', 1000, 
+  ('Le Tour',     'Follow Tour de France caravan.', 1000,
     TRUE,   3,    '2019-04-03', '2019-04-03 16:48:29', 3)
 ;
 
