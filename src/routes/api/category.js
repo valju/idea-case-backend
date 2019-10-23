@@ -8,14 +8,7 @@ const category = express.Router();
 
 category.get("/search/:keyword", function(req, res) {
 
-  let keyword = req.params.keyword;
-
-  /*
-    knex.select('*').from('users').whereNull('last_name')
-    .union(function() {
-        this.select('*').from('users').whereNull('first_name')
-    })
-  */
+  let keyword = req.params.keyword;  // just for shorter variable name later
 
   if(keyword && keyword.length>0) {
     knex
