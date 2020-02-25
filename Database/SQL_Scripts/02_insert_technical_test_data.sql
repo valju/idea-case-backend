@@ -1,5 +1,11 @@
 /* INSERT TEST DATA */
 -- ------------------------- 80-character-line marker  ------------------------
+/* TEST DATA NOT FOLLING INSTRUCTIONS COMPLETELY,
+E.G THERE was NO MEMBER WITHOUT COMMENTS _AND_
+idea_member markings !!!!!!*/
+
+/* Also more clever delete with ALTER TABLE resetting AUTOINCREMENT
+would be could idea */
 
 INSERT INTO Category
   (name, description, budgetLimit, isActive)
@@ -40,7 +46,8 @@ VALUES
   ('Myy',   'Järvinen', 'pikku@mail.com'),
   ('Kukka-Maaria', 'Pyykkönen', 'kukkis@mail.com'),
   ('Matti', 'Neupane', 'matti@mail.com'),
-  ('Annie', 'Johnson-Smith', 'annie@mail.com')
+  ('Annie', 'Johnson-Smith', 'annie@mail.com'),
+  ('Donnie', 'Schtrumph', 'mememememe@whitehut.com')
 ;
 
 INSERT INTO Idea
