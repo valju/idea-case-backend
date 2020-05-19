@@ -203,7 +203,6 @@ member.put("/", function (req, res) {
        .send({
         error: "first name and /or last name and/or email is missing."
       })
-    );
   }
 });
 
