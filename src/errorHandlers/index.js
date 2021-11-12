@@ -20,8 +20,7 @@ export const databaseErrorHandler = (res, dbError, message) => {
   }
   message += " Db error code: "+dbError.errno;
   
-  logger.error(message);
-  
+  logger.error(message);  
   res.status(500).send(DB_ERROR_MESSAGE).end();
 }
 
@@ -31,7 +30,6 @@ export const serverErrorHandler = (res, message) => {
   }
   
   logger.error(message);
-  
   res.status(500).send(SERVER_ERROR_MESSAGE).end();
 }
 
@@ -41,7 +39,6 @@ export const requestErrrorHandler = (res, message) => {
   }
   
   logger.error(message);
-  
   res.status(400).send(REQUEST_BASED_ERROR_MESSAGE).end();
 }
 
@@ -50,7 +47,6 @@ export const successHandler = (res, data, message) => {
     message = "Successful operation."
   }
   
-  logger.debug(message);
-  
+  logger.debug(message);  
   res.status(200).send(data).end();  
 }
