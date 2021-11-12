@@ -13,6 +13,12 @@ const SERVER_ERROR_MESSAGE_TO_LOG = "Server error happened.";
 const DB_ERROR_MESSAGE_TO_LOG = "Database error happened.";
 const REQUEST_BASED_ERROR_MESSAGE_TO_LOG = "Request error.";
 
+// NOTICE HOW MOST INFO GOES THROUGH THE LOGGER
+// TO FRONTEND WE ONLY RETURN EITHER 
+// - 200 OK,     or
+// - 400 "Request error"   (or similar)
+// - 500 "Server error" (Not telling the possible hacker even that was it DB server prob, or
+// backend app server prob)
 
 export const databaseErrorHandler = (res, dbError, message) => {
   if(!message) { 
