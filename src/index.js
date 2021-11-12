@@ -4,6 +4,25 @@ import cors from "cors";
 import routes from "./routes/api/index";
 import bodyParser from "body-parser";
 
+// Adding the winston logger to the project, this will not work like this though,
+// Why? We need to have just one instance of the stream to ensure the app
+// logging goes to same file and console and in the order the logging command
+// happens. Thus we would need to add winston to the Express app.
+// But here the simple winston setup code, for learning.
+const winston = require('winston');    // get the module from node modules
+const logConfiguration = {           // set up console and log file as outputs
+  'transports': [
+    new winston.transports.Console,
+    new winston.transports.File({
+      filename: './logs/winstonBackendLog.log'
+    })
+  ]
+};
+const logger = winston.createLogger(logConfiguration); // create corresponding logger object
+// https://github.com/winstonjs/winston#using-logging-levels 
+// Winston's ready-given, logging levels from most severe to just silly:
+// error, warn, info, verbose, debug, silly
+
 import { SERVER_SETTINGS } from "./CONSTANTS";
 
 const app = express();

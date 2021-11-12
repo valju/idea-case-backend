@@ -1,5 +1,13 @@
-import express from "express";
+/import express from "express";
 import knex from "../../db/index";
+// https://mariadb.com/kb/en/library/mariadb-error-codes/
+
+// importing self-made response/error handlers from /errorHandlers/index.js
+import {
+    successHandler, 
+    requestErrrorHandler,  
+    databaseErrorHandler,
+  } from "../../errorHandlers"
 
 const category = express.Router();
 
@@ -24,30 +32,17 @@ category.get("/search/:keyword", function(req, res) {
         .whereNot('name', 'like', `%${keyword}%`)
         .andWhere('description', 'like', `%${keyword}%`)})
       .then(data => {
-        res.status(200)
-          .send(data)
-          .end();
+          successHandler(res,data);
       })
       .catch(error => {
-
         if(error.errno===1146) {
-          res
-            .status(551)
-            .send("Database table not created. DB error: " + error.errno)
-            .end();
+          databaseErrorHandler(res, error, "Database table Category does not exist.");
         } else {
-          res
-            .status(500)
-            .send("Database error: " + error.errno)
-            .end();
+          databaseErrorHandler(res, error);
         }
-
       });
   } else {
-    res
-          .status(400)
-          .send("Missing keyword, keyword is: " + keyword)
-          .end();
+    requestErrrorHandler(res, "Missing keyword, keyword is: " + keyword);
   }
 });
 
@@ -59,22 +54,13 @@ category.get("/all", function(req, res) {
     .select()
     .from("Category")
     .then(data => {
-      res.status(200)
-        .send(data)
-        .end();
+      successHandler(res, data, "Category listing went ok in DB");
     })
     .catch(error => {
-
       if(error.errno===1146) {
-        res
-          .status(551)
-          .send("Database table not created. DB error: " + error.errno)
-          .end();
+        databaseErrorHandler(res, error, "Database table Category not created.");
       } else {
-        res
-          .status(500)
-          .send("Database error: " + error.errno)
-          .end();
+        databaseErrorHandler(res, error);
       }
 
     });
@@ -85,33 +71,26 @@ category.get("/all", function(req, res) {
 
 category.get("/all/isActive/:activeness", function(req, res) {
   let activeness = null;
+  
   if (req.params.activeness == "true") {
     activeness = 1;
   } else if (req.params.activeness == "false") {
     activeness = 0;
   }
+
   if (activeness !== null) {
     knex
       .select()
       .from("Category")
       .where("isActive", activeness)
       .then(data => {
-        res
-          .status(200)
-          .send(data)
-          .end();
+        successHandler(res, data);
       })
       .catch(error => {
-        res
-          .status(500)
-          .send("Database error: " + error.errno)
-          .end();
+        databaseErrorHandler(res, error);
       });
   } else {
-    res
-      .status(400)
-      .send("Invalid request!")
-      .end();
+    requestErrrorHandler(res, "Request was missing the activeness value");
   }
 });
 
@@ -120,26 +99,17 @@ category.get("/all/isActive/:activeness", function(req, res) {
 
 category.get("/all/budgetLimit/:limit/:over", function(req, res) {
   if (isNaN(req.params.limit)) {
-    res
-      .status(400)
-      .send("Invalid request!")
-      .end();
+    requestErrrorHandler(res);
   } else if (req.params.over == "true") {
     knex
       .select()
       .from("Category")
       .where("budgetLimit", ">", req.params.limit)
       .then(data => {
-        res
-          .status(200)
-          .send(data)
-          .end();
+        successHandler(res, data);
       })
       .catch(error => {
-        res
-          .status(500)
-          .send("Database error: " + error.errno)
-          .end();
+        databaseErrorHandler(res, error);
       });
   } else if (req.params.over == "false") {
     knex
@@ -147,22 +117,13 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
       .from("Category")
       .where("budgetLimit", "<=", req.params.limit)
       .then(data => {
-        res
-          .status(200)
-          .send(data)
-          .end();
+        successHandler(res, data);
       })
       .catch(error => {
-        res
-          .status(500)
-          .send("Database error: " + error.errno)
-          .end();
+        databaseErrorHandler(res, error);
       });
   } else {
-    res
-      .status(400)
-      .send("Invalid request!")
-      .end();
+    requestErrrorHandler(res);
   }
 });
 
@@ -175,37 +136,24 @@ category.get("/:id", function(req, res) {
   console.log("id: " +req.params.id);
 
   if( isNaN(req.params.id)) {
-    res.status(441)
-      .send("Id should be number and this is not: " + req.params.id)
-      .end();
+    requestErrrorHandler(res, "Id should be number and this is not: " + req.params.id);
   } else if(req.params.id < 1) {
-    res.status(442)
-      .send("Id should be >= 1 and this is not: " + req.params.id)
-      .end();
+    requestErrrorHandler(res, "Id should be >= 1 and this is not: " + req.params.id);
   } else {
     knex
     .select()
     .from("Category")
     .where("id", req.params.id)
     .then(data => {
-      if (data.length !== 1) {
-        res
-          .status(404)
-          .send("Non-existing category id: " + req.params.id)
-          .end();
+      if (data.length === 1) {
+        successHandler(res, data);
       } else {
-        res
-          .status(200)
-          .send(data)
-          .end();
+        requestErrrorHandler(res, "Non-existing category id: " + req.params.id);
       }
     })
     .catch(error => {
-      res
-        .status(500)
-        .send("Database error: " + error.errno)
-        .end();
-    });
+      databaseErrorHandler(res, error);
+  });
   }
 
 
@@ -219,24 +167,16 @@ category.delete("/:id", function(req, res) {
   knex("Category")
     .where("id", req.params.id)
     .del()
-    .then(data => {
-      if (data == 0) {
-        res
-          .status(404)
-          .send("Invalid row number: " + req.params.id)
-          .end();
+    .then(rowsAffected => {
+      if (rowsAffected === 1) {
+        successHandler(res, rowsAffected,
+           "Delete successful! Count of deleted rows: " + rowsAffected);
       } else {
-        res
-          .status(200)
-          .send("Delete successful! Count of deleted rows: " + data)
-          .end();
+        requestErrrorHandler(res, "Invalid row number: " + req.params.id);
       }
     })
     .catch(error => {
-      res
-        .status(500)
-        .send("Database error: " + error.errno)
-        .end();
+      databaseErrorHandler(res, error);
     });
 });
 
@@ -253,22 +193,16 @@ category.post("/", function(req, res) {
     knex
       .insert(req.body)
       .into("Category")
-      .then(data => {
+      .then(idArray => {
         res.status(200);
-        res.send(data);
+        res.send(idArray);     // Note, will send: [ 101 ], an array with one id
       })
       .catch(error => {
         if (error.errno == 1062) {
-          // https://mariadb.com/kb/en/library/mariadb-error-codes/
-          res
-            .status(409)
-            .send("Category with that name already exists!")
-            .end();
+          // 1062? Seek from https://mariadb.com/kb/en/library/mariadb-error-codes/
+          databaseErrorHandler(res, error, "Category with that name already exists!");
         } else {
-          res
-            .status(500)
-            .send("Database error: " + error.errno)
-            .end();
+          databaseErrorHandler(res, error);
         }
       });
   }
@@ -280,38 +214,25 @@ category.post("/", function(req, res) {
 
 category.put("/", function(req, res) {
   if (!req.body.id || !req.body.name) {
-    res
-      .status(400)
-      .send("Category id or name are missing!")
-      .end();
+    requestErrrorHandler(res, "Category id or name are missing!");
   } else {
     knex("Category")
       .where("id", req.body.id)
       .update(req.body)
-      .then(data => {
-        if (data == 0) {
-          res
-            .status(404)
-            .send("Invalid row number: " + req.body.id)
-            .end();
+      .then(rowsAffected => {
+        if (rowsAffected === 1) {
+          successHandler(res, rowsAffected, 
+            "Update successful! Count of modified rows: " + rowsAffected)
+            
         } else {
-          res
-            .status(200)
-            .send("Update successful! Count of modified rows: " + data)
-            .end();
+          requestErrrorHandler(res, "Invalid row number: " + req.body.id)
         }
       })
       .catch(error => {
         if (error.errno == 1062) {
-          res
-            .status(409)
-            .send("Category with that name already exists!")
-            .end();
+          databaseErrorHandler(res, error, "Category with that name already exists!");
         } else {
-          res
-            .status(500)
-            .send("Database error: " + error.errno)
-            .end();
+          databaseErrorHandler(res, error);
         }
       });
   }
