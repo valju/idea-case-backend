@@ -185,17 +185,16 @@ category.delete("/:id", function(req, res) {
 
 category.post("/", function(req, res) {
   if (!req.body.name) {
-    res
-      .status(400)
-      .send("Category name is missing!")
-      .end();
+    requestErrrorHandler(res, "Category name is missing!");
   } else {
     knex
       .insert(req.body)
       .into("Category")
       .then(idArray => {
-        res.status(200);
-        res.send(idArray);     // Note, will send: [ 101 ], an array with one id
+        successHandler(res, idArray, 
+          "Adding a category, or multiple categories was succesful");
+        // Note, will send: [101] or [101,102], an array with all the auto-increment
+        // ids for the newly added object(s).
       })
       .catch(error => {
         if (error.errno == 1062) {
