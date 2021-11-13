@@ -1,8 +1,13 @@
+// OUR IDEA: Not telling real probs to the frontend or other caller,
+// but actually just telling if we have a) 200 OK, 400 Request based error, 
+// 500 Server error.
+
 // winston logger (one and only one instance!) should be somehow
 // injected in the node backend. Not done yet.
-// Just replace the 
+// Just replaced the 
 // logger.error(message) or logger.debug with: console.log(message) until
 // you have the logger working
+
 
 
 const SERVER_ERROR_MESSAGE = "Server error.";
