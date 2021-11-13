@@ -63,7 +63,7 @@ export const successHandler = (res, data, message) => {
     message = "Successful operation."
   }
   
-  console.log("TEST: "+process.env.TEST);
+  // console.log("TEST: "+process.env.TEST);
 
   logger.verbose(message);
   console.log(message);  
