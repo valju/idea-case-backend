@@ -1,8 +1,8 @@
 // OBSOLETE FILE, NOT FOLLOWING CURRENT IDEAS, FORGET!!!
 
 import express from "express";
-import knex from "../../db/index";
-import { IDEA_ERROR_CODES } from "../../ERROR_CODES";
+import knex from "../../db/index.js";
+import { IDEA_ERROR_CODES } from "../../ERROR_CODES.js";
 const idea = express.Router();
 
 // GET ALL

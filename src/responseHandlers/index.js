@@ -1,3 +1,4 @@
+import {logger} from "../index.js"
 // OUR IDEA: Not telling real probs to the frontend or other caller,
 // but actually just telling if we have a) 200 OK, 400 Request based error, 
 // 500 Server error.
@@ -62,7 +63,9 @@ export const successHandler = (res, data, message) => {
     message = "Successful operation."
   }
   
-  /* logger.error(message); */
+  console.log("TEST: "+process.env.TEST);
+
+  logger.verbose(message);
   console.log(message);  
   res.status(200).send(data).end();  
 }

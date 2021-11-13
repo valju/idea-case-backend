@@ -1,7 +1,7 @@
 // OBSOLETE FILE, NOT FOLLOWING CURRENT IDEAS, FORGET!!!
 
 import express from "express";
-import knex from "../../db/index";
+import knex from "../../db/index.js";
 
 const comment = express.Router();
 

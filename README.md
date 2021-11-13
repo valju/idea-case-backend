@@ -23,15 +23,15 @@ This version uses Express (instead of Hapi). Now ready for studying!
 
 # BACKEND INSTALLATION GUIDE
 
-  # 0.  Have the [SSH Tunnel](#SSH-Tunneling-to-mariadb.haaga-helia.fi) to Maridb database defined so that finally it shows:  **L3308 localhost:3306**     
-# (That is the correct way! localhost:3306 here means how it's called inside Mariadb, our destination is the 'localhost' = Mariadb.)
+(((0.  Have the [SSH Tunnel](#SSH-Tunneling-to-mariadb.haaga-helia.fi) to Maridb database defined so that finally it shows:  **L3308 localhost:3306**     
+(That is the correct way! localhost:3306 here means how it's called inside Mariadb, our destination is the 'localhost' = Mariadb.))))
   1. Have a possible common root folder (root root folder) called "Case2019K" for both Frontend and Backend repos. Then you can open both projects to editor with one "Open folder" command 
   2. clone Backend repo from GitHub while in that common root folder
   **> git clone repolinkfromgithubcom**
   3. **> pwd** to make sure where you are!  Then **cd to repo**
   4. **> pwd** again for folder awareness! 
   5. run **> npm install** if in the repo root folder, to automatically install the dependencies from the package.json. (Somebody else has already run the npm init & needed npm install thisandthat commands earlier)
-  6. Create .env file to the src fodler. Example contents below
+  6. Create env_variables.sh file to some folder outside the project. Example contents below
     DB_DATABASE is actually your schema name on the database server. If you use mariadb.haaga-helia.fi it has the same name as username (Haaga-helia shared server thing only!). If you use your own installation of mariadb, it could be e.g. "test" Double check that the host and port are **'localhost'** and **'3308'**. (If you use the SSH tunnel).
     Well, just be aware of all the settings and what are correct in YOUR case.
   7. **>npm run db:init** to run the db creation/reset script and get the shared test data (We should soon remove/consolidate/merge the scripts from the Database folder, as we should only have one set of drop, create and insert statements in our project)
@@ -48,22 +48,22 @@ This version uses Express (instead of Hapi). Now ready for studying!
   
   And then, when all tests ok with basic version, start to add compicating things)
 
-// ****************** Sample /src/.env file ******************
-BE_API_URL_PREFIX = "/api"
-BE_SERVER_PORT = "8787"
-DB_DRIVER_MODULE = "mysql"
-DB_HOST = "mariadb.haaga-helia.fi"
-DB_PORT = "3306"
-DB_USER = "abc123"
-DB_PASSWORD = "hereSomeSecureRealPassword"
-DB_DATABASE = "abc123"
-DB_DEBUG = "true"
-DB_MULTIPLE_STATEMENTS = "true"
-DB_CONNECTION_POOL_MIN = "0"
-DB_CONNECTION_POOL_MAX = "7"
+// ******** Sample env_variables.sh file (run it in console before starting the backend) **********
+export BE_API_URL_PREFIX="/api"
+export BE_SERVER_PORT="8787"
+export DB_DRIVER_MODULE="mysql"
+export DB_HOST="localhost"
+export DB_PORT="3306"
+export DB_USER="xxxxxxxxxxxxxxxxx"
+export DB_PASSWORD="xxxxxxxxxxxxxxx"
+export DB_DATABASE="test"
+export DB_DEBUG="true"
+export DB_MULTIPLE_STATEMENTS="true"
+export DB_CONNECTION_POOL_MIN=1
+export DB_CONNECTION_POOL_MAX=7
+// ******************  END of env_variables.sh file   ******************
 
-
-// ******************  END of .env file   ******************
+> source env_variables.sh           will run the export commands. Works at least in Windows GitBash console.
 
 ### PostMan link for the common PostMan tests:  (Not yet created)
 

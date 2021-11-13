@@ -1,8 +1,8 @@
 // OBSOLETE FILE, NOT FOLLOWING CURRENT IDEAS, FORGET!!!
 
 import express from "express";
-import knex from "../../db/index";
-import ideaMember from "./ideaMember";
+import knex from "../../db/index.js";
+//import ideaMember from "./ideaMember.js";
 
 const member = express.Router();
 

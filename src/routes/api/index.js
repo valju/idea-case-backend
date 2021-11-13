@@ -1,11 +1,11 @@
 import express from "express";
 
-import reset_service from './reset_service';
-import category from './category';
-import comment from './comment';
-import idea from './idea';
-import ideaMember from './ideaMember';
-import member from './member';
+import reset_service from './reset_service.js';
+import category from './category.js';
+import comment from './comment.js';
+import idea from './idea.js';
+import ideaMember from './ideaMember.js';
+import member from './member.js';
 
 const routes = express.Router(); 
 routes.use('/reset_service', reset_service);

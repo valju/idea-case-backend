@@ -1,21 +1,23 @@
-import "core-js/stable";
-import "regenerator-runtime/runtime";
+import "core-js/stable/index.js";
+import "regenerator-runtime/runtime.js";
 import express from "express";
 import cors from "cors";
-import routes from "./routes/api/index";
+import routes from "./routes/api/index.js";
+import winston from "winston";
 
-require('dotenv').config();   
+// THESE LINES DID NOT WORK, SO LET'S SET ENV VARIABLES FROM CONSOLE, SEE README.md
+//import dotenv from 'dotenv';
+//dotenv.config({});
 // This will make the process.env.BE_SERVER_PORT etc. to be read from the .env file
 
 const app = express();
 
-/*
+
 // Adding the winston logger to the project, this will not work like this though,
 // Why? We need to have just one instance of the stream to ensure the app
 // logging goes to same file and console and in the order the logging command
 // happens. Thus we would need to add winston to the Express app.
 // But here the simple winston setup code, for learning.
-const winston = require('winston');    // get the module from node modules
 const logConfiguration = {           // set up console and log file as outputs
   'transports': [
     new winston.transports.Console,
@@ -24,13 +26,13 @@ const logConfiguration = {           // set up console and log file as outputs
     })
   ]
 };
-const logger = winston.createLogger(logConfiguration); // create corresponding logger object
-app.use(logger);
+export const logger = winston.createLogger(logConfiguration); // create corresponding logger object
+//app.use(logger);
 
 // https://github.com/winstonjs/winston#using-logging-levels 
 // Winston's ready-given, logging levels from most severe to just silly:
 // error, warn, info, verbose, debug, silly
-*/
+
 
 
 app.use(cors());  // Merely disabling the cross-origin safety mechanism! Hazardous!
@@ -38,6 +40,7 @@ app.use(cors());  // Merely disabling the cross-origin safety mechanism! Hazardo
 app.use(express.json());
 app.use(express.urlencoded());
 
+console.log(process.env.BE_API_URL_PREFIX);
 app.use(process.env.BE_API_URL_PREFIX, routes);
 
 app.get("/", function(req, res) {

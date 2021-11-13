@@ -1,8 +1,8 @@
 // OBSOLETE FILE, NOT FOLLOWING CURRENT IDEAS, FORGET!!!
 
 import express from 'express';
-//import knex from '../../db/index';
-//import {getQueryFromFile} from '../../db/db_reset';
+//import knex from '../../db/index.js';
+//import {getQueryFromFile} from '../../db/db_reset.js';
 
 const reset_service = express.Router();
 

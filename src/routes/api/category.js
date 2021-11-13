@@ -1,5 +1,5 @@
 import express from "express";
-import knex from "../../db/index";
+import knex from "../../db/index.js";
 // https://mariadb.com/kb/en/library/mariadb-error-codes/
 
 // importing self-made response/error handlers from /errorHandlers/index.js
@@ -7,7 +7,7 @@ import {
     successHandler, 
     requestErrrorHandler,  
     databaseErrorHandler,
-  } from "../../responseHandlers"
+  } from "../../responseHandlers/index.js";
 
 const category = express.Router();
 

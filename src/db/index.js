@@ -12,8 +12,8 @@ export const databaseConfigObject = {
     multipleStatements: process.env.DB_MULTIPLE_STATEMENTS || true,
   },
   pool: {
-    min: process.env.DB_CONNECTION_POOL_MIN || 1,
-    max: process.env.DB_CONNECTION_POOL_MAX || 5,
+    min: 1,
+    max: 7,
   }
 }
 
