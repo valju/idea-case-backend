@@ -7,7 +7,7 @@ import {
     successHandler, 
     requestErrrorHandler,  
     databaseErrorHandler,
-  } from "../../errorHandlers"
+  } from "../../responseHandlers"
 
 const category = express.Router();
 
