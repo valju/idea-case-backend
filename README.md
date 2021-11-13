@@ -49,7 +49,7 @@ This version uses Express (instead of Hapi). Now ready for studying!
   And then, when all tests ok with basic version, start to add compicating things)
 
 // ****************** Sample /src/.env file ******************
-BE_API_URL_PREFIX = "api"
+BE_API_URL_PREFIX = "/api"
 BE_SERVER_PORT = "8787"
 DB_DRIVER_MODULE = "mysql"
 DB_HOST = "mariadb.haaga-helia.fi"
@@ -57,10 +57,10 @@ DB_PORT = "3306"
 DB_USER = "abc123"
 DB_PASSWORD = "hereSomeSecureRealPassword"
 DB_DATABASE = "abc123"
-DB_DEBUG = "false"
+DB_DEBUG = "true"
 DB_MULTIPLE_STATEMENTS = "true"
-DB_CONNECTION_POOL_MIN = "1"
-DB_CONNECTION_POOL_MAX = "5":
+DB_CONNECTION_POOL_MIN = "0"
+DB_CONNECTION_POOL_MAX = "7"
 
 
 // ******************  END of .env file   ******************
