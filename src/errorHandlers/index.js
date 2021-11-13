@@ -6,7 +6,8 @@
 
 
 const SERVER_ERROR_MESSAGE = "Server error.";
-const DB_ERROR_MESSAGE = SERVER_ERROR_MESSAGE;
+// Atm. just telling caller wether request or server error. Thus no database prob revealed:
+const DB_ERROR_MESSAGE = SERVER_ERROR_MESSAGE; 
 const REQUEST_BASED_ERROR_MESSAGE = "Request error.";
 
 const SERVER_ERROR_MESSAGE_TO_LOG = "Server error happened.";
