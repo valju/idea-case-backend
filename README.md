@@ -18,6 +18,8 @@ This version uses Express (instead of Hapi). Now ready for studying!
  - Postman v6.7.1
  - MariaDB 5.5.46 (But newer versions should work fine too)
  - MySQL Workbench 8.0.12 CE = Community edition   (Not 100% necessary, only if want GUI SQL editor)
+ - ssh, for creating the SSH tunnel, but first do without the tunnel, as it adds another
+ thing to debug/fix
 
 # BACKEND INSTALLATION GUIDE
 
@@ -38,6 +40,13 @@ This version uses Express (instead of Hapi). Now ready for studying!
      or even the POST services if using PostMan
   10. now ready to setup and run Frontend project
 
+  (You can of course also first run without env variables, use hard-coded values,
+  though do not then accidentally enter the values in git.
+
+  And also with local MariaDB installation, localhost, port 3306, without
+  the SSH tunnel
+  
+  And then, when all tests ok with basic version, start to add compicating things)
 
 // ****************** Sample /src/.env file ******************
 BE_API_URL_PREFIX = "api"
