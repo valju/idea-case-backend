@@ -3,9 +3,12 @@
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
 # package-lock.json 
+# if commented out, then package-lock.json DOES go to git repository. Read next lines.
+
 # conflicting knowledge about it ignored or not 2018-11-12 
 # https://github.com/npm/npm/issues/20603    (ignore)
 # https://github.com/npm/npm/blob/v5.0.0/doc/files/package-lock.json.md  (Don't ignore)
+# npm install command also says, do not ignore package-lock.json
 
 # yarn.lock
 # This should not be gitignored!!!
@@ -15,13 +18,6 @@
 # 1.   add that file to gitignore:         src/SomeFile.js
 # 2.   run this on terminal:               git rm --cached src/SomeFile.js
 # 3.   remove it also from remote repo.    e.g. manually at Github.com repo and commit there
-
-# Each developer's database settings: NOT tracked
-# And these files are actually also now 2019-04-22 obsolete...
-src/db/DB_SETTINGS.js   
-src/db/db_settings.js
-# Use this instead
-src/CONSTANTS.js
 
 # Babel Build directory
 dist
