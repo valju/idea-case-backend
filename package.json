@@ -7,13 +7,14 @@
   "scripts": {
     "build": "babel src -d dist",
     "db:init": "babel src -d dist && node ./dist/db/db_reset.js",
-    "start": "nodemon --exec babel-node src/index.js"
+    "start": "source ./src/dev.env && nodemon --exec babel-node src/index.js"
   },
-  "author": "Katja, Khem, Tudor",
+  "author": "Old version: e.g. Katja, Khem, Tudor, New version: teacher",
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.8.7",
     "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "knex": "^0.95.14",
     "mysql": "^2.18.1",

@@ -1,4 +1,4 @@
-/import express from "express";
+import express from "express";
 import knex from "../../db/index";
 // https://mariadb.com/kb/en/library/mariadb-error-codes/
 

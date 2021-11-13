@@ -2,7 +2,9 @@ import "@babel/polyfill";
 import express from "express";
 import cors from "cors";
 import routes from "./routes/api/index";
-import bodyParser from "body-parser";
+
+require('dotenv').config();   
+// This will make the process.env.BE_SERVER_PORT etc. to be read from the .env file
 
 // Adding the winston logger to the project, this will not work like this though,
 // Why? We need to have just one instance of the stream to ensure the app
@@ -23,29 +25,25 @@ const logger = winston.createLogger(logConfiguration); // create corresponding l
 // Winston's ready-given, logging levels from most severe to just silly:
 // error, warn, info, verbose, debug, silly
 
-import { SERVER_SETTINGS } from "./CONSTANTS";
-
 const app = express();
 
-app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());  // Merely disabling the cross-origin safety mechanism! Hazardous!
 
-const init = async () => {
-  await app.use(SERVER_SETTINGS.api_url_prefix, routes);
+app.use(express.json());
+app.use(express.urlencoded());
 
-  await app.get("/", function(req, res) {
-    res.send("Hello from the Node&Express Backend!").end();
-  });
+app.use(process.env.BE_API_URL_PREFIX, routes);
 
-  await app.use((error, req, res, next) => {
+app.get("/", function(req, res) {
+  res.send("Hello from the Node&Express Backend!").end();
+});
+
+/*
+app.use((error, req, res, next) => {
     return res.status(error.status || 500).json({ error: error.message });
-  });
+});
+*/
 
-  await app.listen(SERVER_SETTINGS.port);
-
-  console.log(`Node server started and listens to \
-              port ${SERVER_SETTINGS.port}.`);
-};
-
-init();
+app.listen(process.env.BE_SERVER_PORT);
+console.log(`Node server started and listens to \
+              port ${process.env.BE_SERVER_PORT}.`);

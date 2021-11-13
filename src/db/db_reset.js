@@ -1,7 +1,7 @@
 import '@babel/polyfill';
 import mysql from 'mysql';
 import * as fs from 'fs';
-import {DB_SETTINGS} from '../CONSTANTS';
+import { databaseConfigObject } from '.';
 
 // define the SQL scripts location and file names
 const scriptFolder = './Database/SQL_Scripts/';
@@ -25,15 +25,7 @@ export function getQueryFromFile() {
 
 // create mysql connection
 async function getConnection() {
-  return mysql.createConnection({
-    host: DB_SETTINGS.host,
-    port: DB_SETTINGS.port,
-    user: DB_SETTINGS.user,
-    password: DB_SETTINGS.password,
-    database: DB_SETTINGS.database,
-    multipleStatements: DB_SETTINGS.multipleStatements,
-    debug: DB_SETTINGS.debug,
-  })
+  return mysql.createConnection(databaseConfigObject)
 };
 
 // wait for connection promise to complete

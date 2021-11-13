@@ -1,19 +1,21 @@
 import knex from 'knex';
-import {DB_SETTINGS} from '../CONSTANTS';
 
-// initiate knex with config
-export default knex({
-  client: DB_SETTINGS.driverModule,
+export const databaseConfigObject = {
+  client: process.env.DB_DRIVER_MODULE || 'mysql',
   connection: {
-    host: DB_SETTINGS.host,
-    port: DB_SETTINGS.port,
-    user: DB_SETTINGS.user,
-    password: DB_SETTINGS.password,
-    database: DB_SETTINGS.database,
-    debug: DB_SETTINGS.debug
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT || 3306,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_DATABASE, 
+    debug: process.env.DB_DEBUG || false,
+    multipleStatements: process.env.DB_MULTIPLE_STATEMENTS || true,
   },
   pool: {
-    min: DB_SETTINGS.connPoolMin,
-    max: DB_SETTINGS.connPoolMax,
+    min: process.env.DB_CONNECTION_POOL_MIN || 1,
+    max: process.env.DB_CONNECTION_POOL_MAX || 5,
   }
-});
+}
+
+// initiate knex with config
+export default knex(databaseConfigObject);
