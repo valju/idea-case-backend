@@ -2,11 +2,11 @@
 -- ------------------------- 80-character-line marker  ------------------------
 
 CREATE TABLE Category (
-	id						INTEGER					NOT NULL		AUTO_INCREMENT,
-	name					VARCHAR(255)		NOT NULL 		UNIQUE,
-	description 	VARCHAR(255) 		,
+	id				INTEGER			NOT NULL		AUTO_INCREMENT,
+	name			VARCHAR(255)	NOT NULL 		UNIQUE,
+	description 	VARCHAR(255) 	,
 	budgetLimit 	DECIMAL(19,4) 	,
-	isActive 			BOOLEAN					NOT NULL 		DEFAULT FALSE,
+	isActive 		BOOLEAN			NOT NULL 		DEFAULT FALSE,
 
 	CONSTRAINT PK_Category PRIMARY KEY (id)
 
@@ -15,10 +15,10 @@ ALTER TABLE Category AUTO_INCREMENT=1;
 
 /* MEMBER */
 CREATE TABLE Member (
-	id 						INTEGER 				NOT NULL 		AUTO_INCREMENT,
-	firstName 		VARCHAR(50) 		NOT NULL,
-	lastName 			VARCHAR(50) 		NOT NULL,
-	email 				VARCHAR(255) 		NOT NULL 		UNIQUE,
+	id 				INTEGER 		NOT NULL 		AUTO_INCREMENT,
+	firstName 		VARCHAR(50) 	NOT NULL,
+	lastName 		VARCHAR(50) 	NOT NULL,
+	email 			VARCHAR(255) 	NOT NULL 		UNIQUE,
 	
 	CONSTRAINT PK_Member PRIMARY KEY (id)
 
@@ -27,14 +27,14 @@ ALTER TABLE Member AUTO_INCREMENT=101;
 
 /* IDEA */
 CREATE TABLE Idea (
-	id 						INTEGER 				NOT NULL 		AUTO_INCREMENT,
-	name 					VARCHAR(255) 		NOT NULL,
+	id 				INTEGER 		NOT NULL 		AUTO_INCREMENT,
+	name 			VARCHAR(255) 	NOT NULL,
 	description 	VARCHAR(20000) 	NOT NULL,
-	budget 				DECIMAL(19,4),
-	readyForComments BOOLEAN 			NOT NULL 		DEFAULT FALSE,
+	budget 			DECIMAL(19,4),
+	readyForComments BOOLEAN 		NOT NULL 		DEFAULT FALSE,
 	peopleNeeded 	INTEGER,
-	creationDate 	DATE 						NOT NULL,
-	isModified 		DATETIME 				NOT NULL,
+	creationDate 	DATE 			NOT NULL,
+	isModified 		DATETIME 		NOT NULL,
 	categoryId 		INTEGER,
 
 	CONSTRAINT PK_Idea PRIMARY KEY (id),
@@ -69,11 +69,11 @@ CREATE TABLE Idea_Member (
 
 /* COMMENT */
 CREATE TABLE Comment (
-	id 						INTEGER 				NOT NULL 		AUTO_INCREMENT,
-	memberId INTEGER NOT NULL,
-	ideaId INTEGER NOT NULL,
-	commentTimeStamp TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
-	commentText VARCHAR(20000) NOT NULL,
+	id 					INTEGER 		NOT NULL 		AUTO_INCREMENT,
+	memberId 			INTEGER 		NOT NULL,
+	ideaId 				INTEGER 		NOT NULL,
+	commentTimeStamp 	TIMESTAMP(3) 	NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
+	commentText 		VARCHAR(20000) 	NOT NULL,
 
 	CONSTRAINT PK_Comment PRIMARY KEY (id),
 	
