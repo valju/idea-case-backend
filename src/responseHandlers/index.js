@@ -33,7 +33,7 @@ export const databaseErrorHandler = (res, dbError, message) => {
   }
   message += " Db error code: "+dbError.errno;
   
-  /* logger.error(message); */
+  logger.error(message);
   console.log(message);  
   res.status(500).send(DB_ERROR_MESSAGE).end();
 }
@@ -43,7 +43,7 @@ export const serverErrorHandler = (res, message) => {
     message = SERVER_ERROR_MESSAGE_TO_LOG;
   }
   
-  /* logger.error(message); */
+  logger.error(message);
   console.log(message);
   res.status(500).send(SERVER_ERROR_MESSAGE).end();
 }
@@ -53,7 +53,7 @@ export const requestErrrorHandler = (res, message) => {
     message = REQUEST_BASED_ERROR_MESSAGE_TO_LOG;
   }
   
-  /* logger.error(message); */
+  logger.error(message);
   console.log(message);
   res.status(400).send(REQUEST_BASED_ERROR_MESSAGE).end();
 }

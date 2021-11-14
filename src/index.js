@@ -17,10 +17,13 @@ const app = express();
 // at our own disposal, even if it's not handling e.g. logging for Express
 const logConfiguration = {           // set up console and log file as outputs
   'transports': [
-    new winston.transports.Console,
+    new winston.transports.Console({
+      level: "debug"
+    }),
     new winston.transports.File({
-      filename: './logs/winstonBackendLog.log'
-    })
+      filename: './logs/winstonBackendLog.log',
+      level: "debug"
+    }),
   ]
 };
 // create one corresponding logger object, and export it to other modules
@@ -32,7 +35,7 @@ export const logger = winston.createLogger(logConfiguration);
 app.use(cors());  // Merely disabling the cross-origin safety mechanism! Hazardous!
 
 app.use(express.json());
-app.use(express.urlencoded());
+//app.use(express.urlencoded());
 
 console.log(process.env.BE_API_URL_PREFIX);
 app.use(process.env.BE_API_URL_PREFIX, routes);
