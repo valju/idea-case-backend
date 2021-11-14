@@ -8,9 +8,9 @@
   "scripts": {
     "build": "babel src -d dist",
     "db:init": "babel src -d dist && node ./dist/db/db_reset.js",
-    "start": "source ./src/dev.env && nodemon --exec babel-node src/index.js"
+    "start": "echo 'remember to run the env_variables.sh' && nodemon --exec babel-node src/index.js"
   },
-  "author": "Old version: e.g. Katja, Khem, Tudor, New version: teacher",
+  "author": "Old version: e.g. Katja, Khem, Tudor, New version, category/logging/envvars: teacher",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

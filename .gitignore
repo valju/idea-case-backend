@@ -84,6 +84,12 @@ typings/
 # dotenv environment variables file
 .env
 
+# own replacement, script that exports the env settings before npm start run
+# could not make e.g. "source ./env_variables && nodemon .... " work
+# source works in git bash, but not from package.json scripts, (Prob only in Windows of course).
+# could not locate the source command folder in Windows either.
+env_variables.sh
+
 # next.js build output
 .next
 

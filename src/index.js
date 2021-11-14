@@ -6,18 +6,15 @@ import routes from "./routes/api/index.js";
 import winston from "winston";
 
 // THESE LINES DID NOT WORK, SO LET'S SET ENV VARIABLES FROM CONSOLE, SEE README.md
-//import dotenv from 'dotenv';
-//dotenv.config({});
+// import dotenv from 'dotenv';
+// dotenv.config({});
 // This will make the process.env.BE_SERVER_PORT etc. to be read from the .env file
+// REPLACED this by running the > source env_variables.sh     before npm start 
 
 const app = express();
 
-
-// Adding the winston logger to the project, this will not work like this though,
-// Why? We need to have just one instance of the stream to ensure the app
-// logging goes to same file and console and in the order the logging command
-// happens. Thus we would need to add winston to the Express app.
-// But here the simple winston setup code, for learning.
+// Adding the winston logger to the project, simple way. Now winston is 
+// at our own disposal, even if it's not handling e.g. logging for Express
 const logConfiguration = {           // set up console and log file as outputs
   'transports': [
     new winston.transports.Console,
@@ -26,14 +23,11 @@ const logConfiguration = {           // set up console and log file as outputs
     })
   ]
 };
-export const logger = winston.createLogger(logConfiguration); // create corresponding logger object
-//app.use(logger);
-
+// create one corresponding logger object, and export it to other modules
+export const logger = winston.createLogger(logConfiguration); 
 // https://github.com/winstonjs/winston#using-logging-levels 
 // Winston's ready-given, logging levels from most severe to just silly:
 // error, warn, info, verbose, debug, silly
-
-
 
 app.use(cors());  // Merely disabling the cross-origin safety mechanism! Hazardous!
 
