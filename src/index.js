@@ -18,7 +18,7 @@ const app = express();
 const logConfiguration = {           // set up console and log file as outputs
   'transports': [
     new winston.transports.Console({
-      level: "debug"
+      level: "silly"
     }),
     new winston.transports.File({
       filename: './logs/winstonBackendLog.log',

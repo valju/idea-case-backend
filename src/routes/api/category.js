@@ -3,9 +3,8 @@ import knex from "../../db/index.js";
 // https://mariadb.com/kb/en/library/mariadb-error-codes/
 
 // importing self-made response/error handlers from /errorHandlers/index.js
-import {
-    successHandler, 
-    requestErrrorHandler,  
+import {successHandler,
+    requestErrorHandler,  
     databaseErrorHandler,
   } from "../../responseHandlers/index.js";
 
@@ -42,7 +41,7 @@ category.get("/search/:keyword", function(req, res) {
         }
       });
   } else {
-    requestErrrorHandler(res, "Missing keyword, keyword is: " + keyword);
+    requestErrorHandler(res, "Missing keyword, keyword is: " + keyword);
   }
 });
 
@@ -90,7 +89,7 @@ category.get("/all/isActive/:activeness", function(req, res) {
         databaseErrorHandler(res, error);
       });
   } else {
-    requestErrrorHandler(res, "Request was missing the activeness value");
+    requestErrorHandler(res, "Request was missing the activeness value");
   }
 });
 
@@ -99,7 +98,7 @@ category.get("/all/isActive/:activeness", function(req, res) {
 
 category.get("/all/budgetLimit/:limit/:over", function(req, res) {
   if (isNaN(req.params.limit)) {
-    requestErrrorHandler(res);
+    requestErrorHandler(res);
   } else if (req.params.over == "true") {
     knex
       .select()
@@ -123,7 +122,7 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
         databaseErrorHandler(res, error);
       });
   } else {
-    requestErrrorHandler(res);
+    requestErrorHandler(res);
   }
 });
 
@@ -136,9 +135,9 @@ category.get("/:id", function(req, res) {
   console.log("id: " +req.params.id);
 
   if( isNaN(req.params.id)) {
-    requestErrrorHandler(res, "Id should be number and this is not: " + req.params.id);
+    requestErrorHandler(res, "Id should be number and this is not: " + req.params.id);
   } else if(req.params.id < 1) {
-    requestErrrorHandler(res, "Id should be >= 1 and this is not: " + req.params.id);
+    requestErrorHandler(res, "Id should be >= 1 and this is not: " + req.params.id);
   } else {
     knex
     .select()
@@ -148,7 +147,7 @@ category.get("/:id", function(req, res) {
       if (data.length === 1) {
         successHandler(res, data);
       } else {
-        requestErrrorHandler(res, "Non-existing category id: " + req.params.id);
+        requestErrorHandler(res, "Non-existing category id: " + req.params.id);
       }
     })
     .catch(error => {
@@ -172,7 +171,7 @@ category.delete("/:id", function(req, res) {
         successHandler(res, rowsAffected,
            "Delete successful! Count of deleted rows: " + rowsAffected);
       } else {
-        requestErrrorHandler(res, "Invalid row number: " + req.params.id);
+        requestErrorHandler(res, "Invalid category id: " + req.params.id);
       }
     })
     .catch(error => {
@@ -185,12 +184,12 @@ category.delete("/:id", function(req, res) {
 
 category.post("/", function(req, res) {
   if (!req.body.name) {
-    requestErrrorHandler(res, "Category name is missing!");
+    requestErrorHandler(res, "Category name is missing!");
   } else {
     knex
       .insert(req.body)
       .into("Category")
-      .then(idArray => {
+      .then((idArray) => {
         successHandler(res, idArray, 
           "Adding a category, or multiple categories was succesful");
         // Note, will send: [101] or [101,102], an array with all the auto-increment
@@ -213,7 +212,7 @@ category.post("/", function(req, res) {
 
 category.put("/", function(req, res) {
   if (!req.body.id || !req.body.name) {
-    requestErrrorHandler(res, "Category id or name are missing!");
+    requestErrorHandler(res, "Category id or name are missing!");
   } else {
     knex("Category")
       .where("id", req.body.id)
@@ -224,7 +223,7 @@ category.put("/", function(req, res) {
             "Update successful! Count of modified rows: " + rowsAffected)
             
         } else {
-          requestErrrorHandler(res, "Invalid row number: " + req.body.id)
+          requestErrorHandler(res, "Invalid category for update, id: " + req.body.id)
         }
       })
       .catch(error => {
