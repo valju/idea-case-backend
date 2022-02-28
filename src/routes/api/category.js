@@ -131,31 +131,27 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
 // example: http://localhost:8787/api/category/1
 
 category.get("/:id", function(req, res) {
-
-  console.log("id: " +req.params.id);
-
+  // console.log("id: " +req.params.id);
   if( isNaN(req.params.id)) {
-    requestErrorHandler(res, "Id should be number and this is not: " + req.params.id);
+    requestErrorHandler(res, "Category id should be number and this is not: " + req.params.id);
   } else if(req.params.id < 1) {
-    requestErrorHandler(res, "Id should be >= 1 and this is not: " + req.params.id);
+    requestErrorHandler(res, "Category id should be >= 1 and this is not: " + req.params.id);
   } else {
     knex
     .select()
     .from("Category")
     .where("id", req.params.id)
-    .then(data => {
+    .then((data) => {
       if (data.length === 1) {
         successHandler(res, data);
       } else {
         requestErrorHandler(res, "Non-existing category id: " + req.params.id);
       }
     })
-    .catch(error => {
+    .catch((error) => {
       databaseErrorHandler(res, error);
   });
   }
-
-
 });
 
 // DELETE ONE

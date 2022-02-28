@@ -20,6 +20,8 @@ const SERVER_ERROR_MESSAGE_TO_LOG = "Server error happened.";
 const DB_ERROR_MESSAGE_TO_LOG = "Database error happened.";
 const REQUEST_BASED_ERROR_MESSAGE_TO_LOG = "Request error.";
 
+const SUCCESS_MESSAGE_TO_LOG = "Successful operation.";
+
 // NOTICE HOW MOST INFO GOES THROUGH THE LOGGER
 // TO FRONTEND WE ONLY RETURN EITHER 
 // - 200 OK,     or
@@ -32,9 +34,10 @@ export const databaseErrorHandler = (res, dbError, message) => {
     message = DB_ERROR_MESSAGE_TO_LOG;
   }
   message += " Db error code: "+dbError.errno;
-  
+  message += " Db error message: "+dbError.message;
   logger.error(message);
-  //console.log(message);  
+  //console.log(message);
+    
   res.status(500).send(DB_ERROR_MESSAGE).end();
 }
 
@@ -60,12 +63,12 @@ export const requestErrorHandler = (res, message) => {
 
 export const successHandler = (res, data, message) => {
   if(!message) { 
-    message = "Successful operation."
+    message = SUCCESS_MESSAGE_TO_LOG; 
   }
   
   // console.log("TEST: "+process.env.TEST);
 
-  logger.silly(message);
+  logger.verbose(message);
   //console.log(message);  
   res.status(200).send(data).end();  
 }
