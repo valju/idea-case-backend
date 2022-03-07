@@ -49,6 +49,7 @@ This version uses Express (instead of Hapi). Now ready for studying!
   And then, when all tests ok with basic version, start to add compicating things)
 
 // ******** Sample env_variables.sh file (run it in console before starting the backend) **********
+`
 export BE_API_URL_PREFIX="//api"
 export BE_SERVER_PORT="8787"
 export DB_DRIVER_MODULE="mysql"
@@ -61,6 +62,8 @@ export DB_DEBUG="true"
 export DB_MULTIPLE_STATEMENTS="true"
 export DB_CONNECTION_POOL_MIN="1"
 export DB_CONNECTION_POOL_MAX="7"
+`
+
 // ******************  END of env_variables.sh file   ******************
 
 > source env_variables.sh           will run the export commands. Works at least in Windows GitBash console.
