@@ -46,22 +46,21 @@ category.get("/search/:keyword", function(req, res) {
 });
 
 // GET ALL
-/** http://localhost:8787/api/category/all    with method=GET **/
+/** http://172.32.234.23:8777/api/category/all    with method=GET **/
 
 category.get("/all", function(req, res) {
   knex
     .select()
     .from("Category")
     .then(data => {
-      successHandler(res, data, "Category listing went ok in DB");
+      successHandler(res, data, "category.get/all: Categories listed ok from DB");
     })
-    .catch(error => {
+    .catch((error) => {
       if(error.errno===1146) {
-        databaseErrorHandler(res, error, "Database table Category not created.");
+        databaseErrorHandler(res, error, "category.get/all: Database table Category not created. ");
       } else {
-        databaseErrorHandler(res, error);
+        databaseErrorHandler(res, error, "category.get/all: ");
       }
-
     });
 });
 

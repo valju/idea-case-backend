@@ -65,10 +65,10 @@ export const successHandler = (res, data, message) => {
   if(!message) { 
     message = SUCCESS_MESSAGE_TO_LOG; 
   }
-  
+  logger.verbose(message);
+
+  // This was 
   // console.log("TEST: "+process.env.TEST);
 
-  logger.verbose(message);
-  //console.log(message);  
   res.status(200).send(data).end();  
 }
