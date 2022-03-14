@@ -1,5 +1,6 @@
 import "core-js/stable/index.js";
 import "regenerator-runtime/runtime.js";
+import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import routes from "./routes/api/index.js";
@@ -7,7 +8,7 @@ import winston from "winston";
 
 // THESE LINES DID NOT WORK, SO LET'S SET ENV VARIABLES FROM CONSOLE, SEE README.md
 // import dotenv from 'dotenv';
-// dotenv.config({});
+dotenv.config({});
 // This will make the process.env.BE_SERVER_PORT etc. to be read from the .env file
 // REPLACED this by running the > source env_variables.sh     before npm start 
 

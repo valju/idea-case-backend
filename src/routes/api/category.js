@@ -45,7 +45,7 @@ category.get("/search/:keyword", function(req, res) {
   }
 });
 
-// GET ALL
+// GET ALL      >>> for EXAM
 /** http://172.32.234.23:8777/api/category/all    with method=GET **/
 
 category.get("/all", function(req, res) {
@@ -93,12 +93,12 @@ category.get("/all/isActive/:activeness", function(req, res) {
 });
 
 // GET ALL with budget limit
-/** http://localhost:8787/api/category/all/isActive/false or true    with method=GET **/
+/** http://localhost:8787/api/category/all/budgetLimit/999/true    with method=GET **/
 
 category.get("/all/budgetLimit/:limit/:over", function(req, res) {
   if (isNaN(req.params.limit)) {
     requestErrorHandler(res);
-  } else if (req.params.over == "true") {
+  } else if (req.params.over === "true") {
     knex
       .select()
       .from("Category")
@@ -109,7 +109,7 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
       .catch(error => {
         databaseErrorHandler(res, error);
       });
-  } else if (req.params.over == "false") {
+  } else if (req.params.over === "false") {
     knex
       .select()
       .from("Category")
@@ -121,11 +121,11 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
         databaseErrorHandler(res, error);
       });
   } else {
-    requestErrorHandler(res);
+    requestErrorHandler(res, "the parameter 'over' must be either true or false");
   }
 });
 
-// GET ONE
+// GET ONE      >>> for EXAM
 /** http://localhost:8787/api/category/    with method=GET **/
 // example: http://localhost:8787/api/category/1
 
@@ -153,7 +153,7 @@ category.get("/:id", function(req, res) {
   }
 });
 
-// DELETE ONE
+// DELETE ONE      >>> for EXAM
 /** http://localhost:8787/api/category/1    with method=DELETE **/
 // example: http://localhost:8787/api/category/1
 
@@ -174,7 +174,7 @@ category.delete("/:id", function(req, res) {
     });
 });
 
-// CREATE ONE
+// CREATE ONE OR MORE      >>> for EXAM
 /** http://localhost:8787/api/category/    with method=POST **/
 
 category.post("/", function(req, res) {
@@ -201,7 +201,7 @@ category.post("/", function(req, res) {
   }
 });
 
-// EDIT ONE
+// UPDATE ONE      >>> for EXAM
 /** http://localhost:8787/api/category/    with method=PUT **/
 // example: http://localhost:8787/api/category (id in the body)
 

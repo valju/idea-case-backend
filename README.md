@@ -1,5 +1,29 @@
-## Idea Case 2019K Backend, Express Version
+## Idea Case "model project" for backend (exam etc.) learning, Express Version
 This version uses Express (instead of Hapi). Now ready for studying!
+
+### Files to look at 
+from the model project idea-case-backend (most of the other files are either extra, obsolete or written some other way, do NOT look at them.)
+
+- package.json
+- src/index.js
+- src/.env
+- src/routes/api/index.js
+- src/routes/api/category.js
+  - get one by id : returns the object as JSON
+  - get all : returns the result set, that is an array of categories as JSON
+  - delete one by id : returns how many rows were affected = deleted
+  - update one by the updated object including the id   (PUT) : returns number of rows affected = updated
+  - post : returns the id:s of the created objects in an array, like [101,102] 
+- src/db/index.js
+- src/responseHandlers/index.js
+- logs/winstonBackendLog.log
+
+(Any current implementation related file missing?)
+
+### Plus the Database design and creation, and Postman tests
+
+There are of course then still some more files, like Database design and creation (SQL) docs in Database folder, and Postman test examples in the Postman folder.
+
 
 ## Table of Contents
 
@@ -14,7 +38,7 @@ This version uses Express (instead of Hapi). Now ready for studying!
  - VS Code 1.29.1
  - Node v8.11.4
  - npm 5.6.0  
- - (many node packages installed based on package.json, See below)
+ - (many node packages installed based on package.json, *look at it* and *See below for npm install*)
  - Postman v6.7.1
  - MariaDB 5.5.46 (But newer versions should work fine too)
  - MySQL Workbench 8.0.12 CE = Community edition   (Not 100% necessary, only if want GUI SQL editor)
