@@ -174,7 +174,7 @@ category.delete("/:id", function(req, res) {
     });
 });
 
-// CREATE ONE OR MORE      >>> for EXAM
+// CREATE ONE      >>> for EXAM
 /** http://localhost:8787/api/category/    with method=POST **/
 
 category.post("/", function(req, res) {
@@ -193,7 +193,7 @@ category.post("/", function(req, res) {
       .catch(error => {
         if (error.errno == 1062) {
           // 1062? Seek from https://mariadb.com/kb/en/library/mariadb-error-codes/
-          databaseErrorHandler(res, error, "Category with that name already exists!");
+          requestErrorHandler(res, "Category with that name already exists!");
         } else {
           databaseErrorHandler(res, error);
         }
@@ -223,7 +223,7 @@ category.put("/", function(req, res) {
       })
       .catch(error => {
         if (error.errno == 1062) {
-          databaseErrorHandler(res, error, "Category with that name already exists!");
+          requestErrorHandler(res, "DB 1062: Category with that name already exists!");
         } else {
           databaseErrorHandler(res, error);
         }

@@ -29,7 +29,7 @@ ALTER TABLE Member AUTO_INCREMENT=101;
 CREATE TABLE Idea (
 	id 				INTEGER 		NOT NULL 		AUTO_INCREMENT,
 	name 			VARCHAR(255) 	NOT NULL,
-	description 	VARCHAR(20000) 	NOT NULL,
+	description 	VARCHAR(16000) 	NOT NULL,
 	budget 			DECIMAL(19,4),
 	readyForComments BOOLEAN 		NOT NULL 		DEFAULT FALSE,
 	peopleNeeded 	INTEGER,
@@ -73,7 +73,7 @@ CREATE TABLE Comment (
 	memberId 			INTEGER 		NOT NULL,
 	ideaId 				INTEGER 		NOT NULL,
 	commentTimeStamp 	TIMESTAMP(3) 	NOT NULL 		DEFAULT CURRENT_TIMESTAMP,
-	commentText 		VARCHAR(20000) 	NOT NULL,
+	commentText 		VARCHAR(16000) 	NOT NULL,
 
 	CONSTRAINT PK_Comment PRIMARY KEY (id),
 	
