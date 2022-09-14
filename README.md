@@ -7,6 +7,7 @@ from the model project idea-case-backend (most of the other files are either ext
 - package.json
 - src/index.js
 - src/.env
+- .gitignore
 - src/routes/api/index.js
 - src/routes/api/category.js
   - get one by id : returns the object as JSON
@@ -16,6 +17,7 @@ from the model project idea-case-backend (most of the other files are either ext
   - post : returns the id:s of the created objects in an array, like [101,102] 
 - src/db/index.js
 - src/responseHandlers/index.js
+- utils/logger
 - logs/winstonBackendLog.log
 
 (Any current implementation related file missing?)
