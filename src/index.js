@@ -19,7 +19,7 @@ app.use(express.json());
 export const our_logger = logger;  
 
 console.log(process.env.BE_API_URL_PREFIX);
-app.use(process.env.BE_API_URL_PREFIX, routes);
+app.use(process.env.BE_API_URL_PREFIX, routes);  // ***!!!***
 
 app.get("/", function(req, res) {
   res.send("Hello from the Node&Express Backend!").end();
