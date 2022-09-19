@@ -1,4 +1,7 @@
 import knex from 'knex';
+import dotenv from 'dotenv';
+
+dotenv.config({});
 
 export const databaseConfigObject = {
   client: process.env.DB_DRIVER_MODULE || 'mysql',
@@ -16,6 +19,8 @@ export const databaseConfigObject = {
     max: Number(process.env.DB_CONNECTION_POOL_MAX) || 7,
   }
 }
+
+console.log("DB user: " +databaseConfigObject.connection.user);
 
 // initiate knex with config
 export default knex(databaseConfigObject);

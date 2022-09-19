@@ -46,9 +46,9 @@ category.get("/search/:keyword", function(req, res) {
 });
 
 // GET ALL      >>> for EXAM
-/** http://172.32.234.23:8777/api/category/all    with method=GET **/
+/** http://172.32.234.23:8777/api/category/    with method=GET **/
 
-category.get("/all", function(req, res) {
+category.get("/", function(req, res) {
   knex
     .select()
     .from("Category")

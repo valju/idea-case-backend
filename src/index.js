@@ -1,10 +1,10 @@
-import "core-js/stable/index.js";                  // needed or extra?
-import "regenerator-runtime/runtime.js";           // needed or extra?
+//import "core-js/stable/index.js";                  // needed or extra?
+//import "regenerator-runtime/runtime.js";           // needed or extra?
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import routes from "./routes/api/index.js";
-import logger from "./utils/logger.js";
+import {logger} from "./utils/logger.js";
 
 // Finally just spelling mistake in the .env file sent me around in wild
 // goose hunt. I got more and more away from correct solution :) Now fixed.
@@ -18,9 +18,10 @@ app.use(express.json());
 
 export const our_logger = logger;  
 
-console.log(process.env.BE_API_URL_PREFIX);
+//console.log(process.env.BE_API_URL_PREFIX);
 app.use(process.env.BE_API_URL_PREFIX, routes);  // ***!!!***
 
+// Just for easy testing - Is backend alive. No DB needed.
 app.get("/", function(req, res) {
   res.send("Hello from the Node&Express Backend!").end();
 });

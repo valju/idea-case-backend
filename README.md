@@ -114,6 +114,13 @@ https://www.getpostman.com/collections/not_yet_there
 #### Unix system: (Or e.g. in the Git Bash console on Windows, though might need to omit -f in Windows sometimes?)<br>
 	> ssh -f valju@mariadb.haaga-helia.fi -L 3308:localhost:3306 -N
 
+  OR e.g.
+
+  > ssh -f linux_user_here@ip_address_of_remote_comp_here -L 3306:localhost:3306 -N
+
+  // Here the first 3306 means local pc, second means remote computer
+
+
 The executed ssh command sets up an ssh tunnel through the cli. After execution allow the fingerprint exchange with "yes" and type in your student accounts password.<br>
 NOTE: DO NOT CLOSE THE TERMINAL. Closing the terminal will close the tunnel.
 NOTE 2: If you are use an older version than windows 10 please use putty or another ssh client to create the same tunnel.
