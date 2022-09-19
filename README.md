@@ -77,17 +77,17 @@ There are of course then still some more files, like Database design and creatio
 // ******** Sample .env file (dotenv library will use it) **********
 `
 BE_API_URL_PREFIX="//api"
-BE_SERVER_PORT="8787"
+BE_SERVER_PORT="8777"
 DB_DRIVER_MODULE="mysql"
 DB_HOST="localhost"
 DB_PORT="3306"
 DB_USER="XXXXXXXXXXXXXXXXXXXXX"
 DB_PASSWORD="XXXXXXXXXXXXXXXXXXXXXXXX"
-export DB_DATABASE="test"
-export DB_DEBUG="true"
-export DB_MULTIPLE_STATEMENTS="true"
-export DB_CONNECTION_POOL_MIN="1"
-export DB_CONNECTION_POOL_MAX="7"
+DB_DATABASE="test"
+DB_DEBUG="true"
+DB_MULTIPLE_STATEMENTS="true"
+DB_CONNECTION_POOL_MIN="1"
+DB_CONNECTION_POOL_MAX="7"
 `
 
 // ******************  END of env_variables.sh file   ******************
