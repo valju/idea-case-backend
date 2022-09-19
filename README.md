@@ -74,15 +74,15 @@ There are of course then still some more files, like Database design and creatio
   
   And then, when all tests ok with basic version, start to add compicating things)
 
-// ******** Sample env_variables.sh file (run it in console before starting the backend) **********
+// ******** Sample .env file (dotenv library will use it) **********
 `
-export BE_API_URL_PREFIX="//api"
-export BE_SERVER_PORT="8787"
-export DB_DRIVER_MODULE="mysql"
-export DB_HOST="localhost"
-export DB_PORT="3306"
-export DB_USER="XXXXXXXXXXXXXXXXXXXXX"
-export DB_PASSWORD="XXXXXXXXXXXXXXXXXXXXXXXX"
+BE_API_URL_PREFIX="//api"
+BE_SERVER_PORT="8787"
+DB_DRIVER_MODULE="mysql"
+DB_HOST="localhost"
+DB_PORT="3306"
+DB_USER="XXXXXXXXXXXXXXXXXXXXX"
+DB_PASSWORD="XXXXXXXXXXXXXXXXXXXXXXXX"
 export DB_DATABASE="test"
 export DB_DEBUG="true"
 export DB_MULTIPLE_STATEMENTS="true"
