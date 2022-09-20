@@ -71,5 +71,9 @@ export const successHandler = (res, data, message) => {
   // This was 
   // console.log("TEST: "+process.env.TEST);
 
+  if(!isNaN(data)) {
+    data = {returnValue:data};
+  }
+
   res.status(200).send(data).end();  
 }
