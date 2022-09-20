@@ -1,4 +1,4 @@
-// OBSOLETE FILE, NOT FOLLOWING CURRENT IDEAS, FORGET!!!
+// OBSOLETE FILE, NOT FOLLOWING CURRENT IDEAS, Change the endpoints to new model !
 
 import express from "express";
 import knex from "../../db/index.js";
@@ -6,13 +6,6 @@ import knex from "../../db/index.js";
 
 const member = express.Router();
 
-/*
-console.log("******");
-console.dir(data);
-console.log("******");
-console.log(data);
-console.log("******");
-*/
 
 
 //GET all contributors
