@@ -68,7 +68,7 @@ export const successHandler = (res, data, message) => {
   }
   logger.verbose(message);
 
-  // This was 
+  // This was just used in testing.
   // console.log("TEST: "+process.env.TEST);
 
   if(!isNaN(data)) {
