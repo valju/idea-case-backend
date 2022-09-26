@@ -377,6 +377,7 @@ idea.get("/modifiedRange/:start/:end", (req, res) => {
 // http://localhost:8787/api/idea METHOD = POST
 // Bare minimum fields: name, description,readyForComments(boolean)
 
+/*
 function checkIdea(idea) {
   let resultCode = IDEA_ERROR_CODES.OK;
   if (!idea.name) {
@@ -528,6 +529,8 @@ idea.put("/", (req, res) => {
       .end();
   }
 });
+*/
+
 
 //DELETE ONE
 // http://localhost:8787/api/idea/:id  METHOD = DELETE
@@ -575,4 +578,3 @@ export default idea;
 //     .send("not OK")
 //     .end();
 // }
-
