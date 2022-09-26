@@ -2,7 +2,7 @@
 
 import express from "express";
 import knex from "../../db/index.js";
-import { IDEA_ERROR_CODES } from "../../ERROR_CODES.js";
+//import { IDEA_ERROR_CODES } from "../../ERROR_CODES.js";
 const idea = express.Router();
 
 // GET ALL
