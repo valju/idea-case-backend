@@ -2,7 +2,7 @@
 # adding some comments.
 # See https://help.github.com/ignore-files/ for more about ignoring files.
 
-# package-lock.json 
+package-lock.json 
 # if commented out, then package-lock.json DOES go to git repository. Read next lines.
 
 # conflicting knowledge about it ignored or not 2018-11-12 
