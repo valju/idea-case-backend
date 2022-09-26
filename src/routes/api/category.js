@@ -17,7 +17,7 @@ category.get("/search/:keyword", function(req, res) {
 
   let keyword = req.params.keyword;  // just for shorter variable name later
 
-  if(keyword && keyword.length>0) {
+  if(keyword && keyword.length>1) {
     knex
       .select('*').from("Category")
       .where('name', 'like', `%${keyword}%`)
@@ -215,15 +215,14 @@ category.put("/", function(req, res) {
       .then(rowsAffected => {
         if (rowsAffected === 1) {
           successHandler(res, rowsAffected, 
-            "Update successful! Count of modified rows: " + rowsAffected)
-            
+            "Update successful! Count of modified rows: " + rowsAffected)            
         } else {
           requestErrorHandler(res, "Invalid category for update, id: " + req.body.id)
         }
       })
       .catch(error => {
         if (error.errno == 1062) {
-          requestErrorHandler(res, "DB 1062: Category with that name already exists!");
+          requestErrorHandler(res, `DB 1062: Category with the name ${req.body.name} already exists!`);
         } else {
           databaseErrorHandler(res, error);
         }

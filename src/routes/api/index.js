@@ -1,6 +1,5 @@
 import express from "express";
 
-import reset_service from './reset_service.js';
 import category from './category.js';
 import comment from './comment.js';
 import idea from './idea.js';
@@ -13,6 +12,5 @@ routes.use('/comment', comment);
 routes.use('/idea', idea);
 routes.use('/ideaMember', ideaMember);
 routes.use('/member', member);
-routes.use('/reset_service', reset_service);
 
 export default routes;
