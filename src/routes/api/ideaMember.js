@@ -19,7 +19,7 @@ ideaMember.get("/all", (req, res) => {
 
 // GET idea member by (ideaId, memberId)
 // GET http://localhost:8787/api/ideaMember/ideaId/memberId
-ideaMember.get("/:ideaId/:memberId", (req, res) => {
+ideaMember.get("/old/:ideaId/:memberId", (req, res) => {
   let { ideaId, memberId } = req.params
 
   const getCondition = (!isNaN(Number(ideaId)) && Number(ideaId) !== 0
@@ -47,6 +47,39 @@ ideaMember.get("/:ideaId/:memberId", (req, res) => {
   }
   
 });
+
+ideaMember.get("/:ideaId/:memberId", (req, res) => {
+  let { ideaId, memberId } = req.params
+
+  const getCondition = (!isNaN(Number(ideaId)) && Number(ideaId) !== 0
+                        && !isNaN(Number(memberId)) && Number(memberId) !== 0)
+
+  if (getCondition) {
+    return knex
+    .select("ideaId", "memberId", "firstName", "lastName", "name")
+    .from("Idea_Member")
+    .join("Member", "Idea_Member.memberId", '=', 'Member.id')
+    .join("Idea", "Idea_Member.ideaId", '=', 'Idea.id')
+    .where({ ideaId,  memberId })
+    .then(data => {
+      if (data.length > 0) {
+        res.status(200).json(data[0])
+      } else if (data.length === 0) {
+        res.status(404).json({error: `Cannot find idea-member with id ( ${ideaId} , ${memberId})`})
+      }}
+    )
+    .catch(err => res.status(500).json({ error: err.message }));
+  } else {
+    const errorMessage = "Parameters must be number!"
+    const error = new Error(errorMessage)
+    res.status(422).end(error.message)
+  }
+  
+});
+
+
+
+
 
 // POST idea member
 // POST http://localhost:8787/api/ideaMember/
@@ -91,6 +124,10 @@ ideaMember.post("/", (req, res, next) => {
   }
   
 });
+
+
+
+
 
 // PUT update idea-member (update ideaId OR memberId)
 // PUT http://localhost:8787/api/ideaMember/
