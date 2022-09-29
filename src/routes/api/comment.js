@@ -125,13 +125,52 @@ comment.delete('/:id', function (req, res) {
 // CREATE ONE
 /** http://localhost:8787/api/comment/    with method=POST **/
 
-comment.post('/', function (req, res) {
+comment.post('/old/', function (req, res) {
 
   if (!req.body.memberId || !req.body.ideaId) {
     res.status(400).send("Member ID or Idea ID are missing!").end();
   } else if (!req.body.commentText) {
     res.status(400).send("Comment body is missing!").end();
   } else {
+    knex.select().from("Idea").where("id", req.body.ideaId)
+      .then((data) => {
+        if (data[0].readyForComments === 0) {
+          res.status(400).send("Idea not ready for comments")
+        } else {
+          knex.insert(req.body).into('Comment')
+            .then((data) => {
+              res.status(200);
+              res.send(data);
+            })
+            .catch((error) => {
+              if (error.errno == 1452) {
+                res.status(409).send("Member ID or Idea ID FK violation!").end();
+              } else {
+                res.status(500).send("Database error: " + error.errno).end();
+              }
+            });
+        }
+      })
+      .catch((error) => {
+        res.status(500).send("Database error: " + error.errno).end();
+      })
+  }
+
+}
+);
+
+//LOCAL BRRANCH MANU
+
+comment.post('/', function (req, res) {
+
+  if (!req.body.memberId || !req.body.ideaId) {
+    res.status(400).send("Member ID or Idea ID are missing!").end();
+  } else if (!req.body.commentText) {
+    res.status(400).send("Comment body is missing!").end();
+  } else if (req.body.commentText.match('shit')) {
+    res.status(400).send("No rude words allowed").end()
+  }
+  else {
     knex.select().from("Idea").where("id", req.body.ideaId)
       .then((data) => {
         if (data[0].readyForComments === 0) {
@@ -191,16 +230,16 @@ comment.put('/', function (req, res) {
 
 /* Post e.g. the JSON from below in the PUT body
 {
-	"memberId": 101,
-	"ideaId": 1001,
-	"commentTimeStamp": "2019-04-24 20:46:25.640",
-	"commentText": "What a terrible idea! *edited*"
+  "memberId": 101,
+  "ideaId": 1001,
+  "commentTimeStamp": "2019-04-24 20:46:25.640",
+  "commentText": "What a terrible idea! *edited*"
 }
 */
 
 /* Post e.g. the JSON from below in the POST body
 {
-	"memberId": 101,
+  "memberId": 101,
   "ideaId": 1001,
   "commentText": "Hello! I am a fancy new comment."
 }
