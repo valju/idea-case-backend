@@ -11,7 +11,7 @@ const member = express.Router();
 //GET all contributors
 // http://localhost:8787/api/member/all/contributors
 
-member.get("/all/contributors", function (req, res) {
+member.get("/old/all/contributors", function (req, res) {
   let subquery = knex("Idea_Member").distinct("memberId");
   knex('Member').whereIn('id', subquery)
     .then(data => {
@@ -23,6 +23,22 @@ member.get("/all/contributors", function (req, res) {
       res
         .status(500)
         .end();
+    });
+});
+
+member.get("/all/contributors", function (req, res) {
+  knex
+    .select()
+    .from("Member")
+    .then(data => {
+      successHandler(res, data, "member.get/all: Contributors listed ok from DB");
+    })
+    .catch((error) => {
+      if(error.errno===1146) {
+        databaseErrorHandler(res, error, "member.get/all: Database table Member not created. ");
+      } else {
+        databaseErrorHandler(res, error, "member.get/all: ");
+      }
     });
 });
 
