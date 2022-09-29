@@ -7,7 +7,7 @@ const idea = express.Router();
 
 // GET ALL
 // http://localhost:8787/api/idea/all METHOD = GET
-idea.get("/all", function(req, res) {
+idea.get("/all", function (req, res) {
   knex
     .select()
     .from("Idea")
@@ -28,7 +28,7 @@ idea.get("/all", function(req, res) {
 // GET ALL SORTED BY CRITERIA
 // http://localhost:8787/api/idea/all/:criteria METHOD = GET
 // Acceptable criteria: "name", "budget","peopleNeeded","creationDate","isModified"
-idea.get("/all/sort/:criteria", function(req, res) {
+idea.get("/all/sort/:criteria", function (req, res) {
   let validCriteria = [
     "name",
     "budget",
@@ -119,7 +119,7 @@ idea.get("/byCategory/:id", (req, res) => {
 });
 // GET BY COMMENT STATUS
 // http://localhost:8787/api/idea/readyForComments/true  METHOD = GET
-idea.get("/readyForComments/:commentStatus", function(req, res) {
+idea.get("/readyForComments/:commentStatus", function (req, res) {
   let commentStatus = null;
   if (req.params.commentStatus == "true") {
     commentStatus = 1;
@@ -153,7 +153,7 @@ idea.get("/readyForComments/:commentStatus", function(req, res) {
 
 // GET BY LIMIT
 // http://localhost:8787/api/idea/budget/500/true  METHOD = GET
-idea.get("/budget/:limit/:over", function(req, res) {
+idea.get("/budget/:limit/:over", function (req, res) {
   if (isNaN(req.params.limit)) {
     res
       .status(400)
@@ -203,7 +203,7 @@ idea.get("/budget/:limit/:over", function(req, res) {
 
 // GET BY PEOPLE NEEDED
 // http://localhost:8787/api/idea/peopleNeeded/500/true  METHOD = GET
-idea.get("/peopleNeeded/:limit/:over", function(req, res) {
+idea.get("/peopleNeeded/:limit/:over", function (req, res) {
   if (isNaN(req.params.limit)) {
     res
       .status(400)
@@ -536,7 +536,7 @@ idea.put("/", (req, res) => {
 // http://localhost:8787/api/idea/:id  METHOD = DELETE
 // example: http://localhost:8787/api/idea/1007
 
-idea.delete("/:id", function(req, res) {
+idea.delete("/:id", function (req, res) {
   knex("Idea")
     .where("id", req.params.id)
     .del()
