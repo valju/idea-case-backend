@@ -3,31 +3,69 @@
 import express from "express";
 import knex from "../../db/index.js";
 
+import {
+  successHandler,
+  requestErrorHandler,
+  databaseErrorHandler,
+} from "../../responseHandlers/index.js";
+
 const comment = express.Router();
 
 // GET ALL BY MEMBERID
 /** http://localhost:8787/api/comment/member/101    with method=GET **/
 // example: http://localhost:8787/api/comment/member/101
 
-comment.get('/member/:id', function (req, res) {
+comment.get("/oldMember/:id", function (req, res) {
   if (!isNaN(req.params.id) && req.params.id) {
-    knex.select().from('Comment').where('memberId', req.params.id).orderBy("commentTimestamp", "desc")
+    knex
+      .select()
+      .from("Comment")
+      .where("memberId", req.params.id)
+      .orderBy("commentTimestamp", "desc")
       .then((data) => {
         if (data.length == 0) {
-          res.status(404).send("Invalid row number: " + req.params.id).end();
+          res
+            .status(404)
+            .send("Invalid row number: " + req.params.id)
+            .end();
         } else {
           res.status(200).send(data).end();
         }
       })
       .catch((error) => {
-        res.status(500).send("Database error: " + error.errno).end();
+        res
+          .status(500)
+          .send("Database error: " + error.errno)
+          .end();
       });
   } else {
     res.status(400).send("Invalid request!").end();
   }
 });
 
-comment.get('/member', function (req, res) {
+comment.get("/member/:id", function (req, res) {
+  if (!isNaN(req.params.id) && req.params.id) {
+    knex
+      .select()
+      .from("Comment")
+      .where("memberId", req.params.id)
+      .orderBy("commentTimestamp", "desc")
+      .then((data) => {
+        if (data.length == 0) {
+          requestErrorHandler(res, "Id not found " + req.params.id);
+        } else {
+          successHandler(res, data, "Get one member wuth id ${id}");
+        }
+      })
+      .catch((error) => {
+        databaseErrorHandler(res, error);
+      });
+  } else {
+    requestErrorHandler("Id " + req.params.id + " not valid");
+  }
+});
+
+comment.get("/member", function (req, res) {
   res.status(400).send("Invalid request!").end();
 });
 
@@ -35,23 +73,37 @@ comment.get('/member', function (req, res) {
 /** http://localhost:8787/api/comment/idea/1001    with method=GET **/
 // example: http://localhost:8787/api/comment/idea/1001
 
-comment.get('/idea/:ideaId', function (req, res) {
+comment.get("/idea/:ideaId", function (req, res) {
   if (!isNaN(req.params.ideaId) && req.params.ideaId) {
-    knex.select('Comment.id', 'ideaId', 'memberId', 'commentTimeStamp', 'commentText', 'firstName', 'lastName')
-      .from('Comment').join('Member', 'Comment.memberId', '=', 'Member.id').where('ideaId', req.params.ideaId)
+    knex
+      .select(
+        "Comment.id",
+        "ideaId",
+        "memberId",
+        "commentTimeStamp",
+        "commentText",
+        "firstName",
+        "lastName"
+      )
+      .from("Comment")
+      .join("Member", "Comment.memberId", "=", "Member.id")
+      .where("ideaId", req.params.ideaId)
       .orderBy("commentTimestamp", "asc")
       .then((data) => {
         res.status(200).send(data).end();
       })
       .catch((error) => {
-        res.status(500).send("Database error: " + error.errno).end();
+        res
+          .status(500)
+          .send("Database error: " + error.errno)
+          .end();
       });
   } else {
     res.status(400).send("Invalid request!").end();
   }
 });
 
-comment.get('/idea', function (req, res) {
+comment.get("/idea", function (req, res) {
   res.status(400).send("Invalid request!").end();
 });
 
@@ -59,29 +111,37 @@ comment.get('/idea', function (req, res) {
 /** http://localhost:8787/api/comment/all    with method=GET **/
 // example: http://localhost:8787/api/comment/all
 
-comment.get('/all', function (req, res) {
-  knex.raw('select Comment.id, ideaId, memberId, commentTimeStamp, commentText, firstName, lastName, Idea.name ' +
-    'from Comment join Member on (Comment.memberId = Member.id) join Idea on (Comment.ideaId = Idea.id )' +
-    'where date(commentTimeStamp) = curdate() order by commentTimeStamp asc')
+comment.get("/all", function (req, res) {
+  knex
+    .raw(
+      "select Comment.id, ideaId, memberId, commentTimeStamp, commentText, firstName, lastName, Idea.name " +
+        "from Comment join Member on (Comment.memberId = Member.id) join Idea on (Comment.ideaId = Idea.id )" +
+        "where date(commentTimeStamp) = curdate() order by commentTimeStamp asc"
+    )
     .then((data) => {
       res.status(200).send(data[0]).end();
     })
     .catch((error) => {
-      res.status(500).send("Database error: " + error.errno).end();
+      res
+        .status(500)
+        .send("Database error: " + error.errno)
+        .end();
     });
 });
 
-comment.get('/idea', function (req, res) {
+comment.get("/idea", function (req, res) {
   res.status(400).send("Invalid request!").end();
 });
 
 // GET ONE
 // example: http://localhost:8787/api/comment/10001
 
-comment.get('/:id', function (req, res) {
+comment.get("/:id", function (req, res) {
   if (req.params.id) {
-    knex.select().from('Comment')
-      .where('id', req.params.id)
+    knex
+      .select()
+      .from("Comment")
+      .where("id", req.params.id)
       .then((data) => {
         if (data.length != 1) {
           res.status(404).send("Invalid parameters.").end();
@@ -91,7 +151,10 @@ comment.get('/:id', function (req, res) {
         }
       })
       .catch((error) => {
-        res.status(500).send("Database error: " + error.errno).end();
+        res
+          .status(500)
+          .send("Database error: " + error.errno)
+          .end();
       });
   } else {
     res.status(400).send("Invalid request!").end();
@@ -102,20 +165,26 @@ comment.get('/:id', function (req, res) {
 /** http://localhost:8787/api/comment/1    with method=DELETE **/
 // example: http://localhost:8787/api/comment/10001
 
-comment.delete('/:id', function (req, res) {
+comment.delete("/:id", function (req, res) {
   if (!isNaN(req.params.id)) {
-    knex('Comment')
-      .where('id', req.params.id)
+    knex("Comment")
+      .where("id", req.params.id)
       .del()
       .then((data) => {
         if (data == 0) {
           res.status(404).send("No matching rows found!").end();
         } else {
-          res.status(200).send("Delete successful! Count of deleted rows: " + data).end();
+          res
+            .status(200)
+            .send("Delete successful! Count of deleted rows: " + data)
+            .end();
         }
       })
       .catch((error) => {
-        res.status(500).send("Database error: " + error.message).end();
+        res
+          .status(500)
+          .send("Database error: " + error.message)
+          .end();
       });
   } else {
     res.status(400).send("Invalid request!").end();
@@ -125,65 +194,82 @@ comment.delete('/:id', function (req, res) {
 // CREATE ONE
 /** http://localhost:8787/api/comment/    with method=POST **/
 
-comment.post('/', function (req, res) {
-
+comment.post("/", function (req, res) {
   if (!req.body.memberId || !req.body.ideaId) {
     res.status(400).send("Member ID or Idea ID are missing!").end();
   } else if (!req.body.commentText) {
     res.status(400).send("Comment body is missing!").end();
   } else {
-    knex.select().from("Idea").where("id", req.body.ideaId)
+    knex
+      .select()
+      .from("Idea")
+      .where("id", req.body.ideaId)
       .then((data) => {
         if (data[0].readyForComments === 0) {
-          res.status(400).send("Idea not ready for comments")
+          res.status(400).send("Idea not ready for comments");
         } else {
-          knex.insert(req.body).into('Comment')
+          knex
+            .insert(req.body)
+            .into("Comment")
             .then((data) => {
               res.status(200);
               res.send(data);
             })
             .catch((error) => {
               if (error.errno == 1452) {
-                res.status(409).send("Member ID or Idea ID FK violation!").end();
+                res
+                  .status(409)
+                  .send("Member ID or Idea ID FK violation!")
+                  .end();
               } else {
-                res.status(500).send("Database error: " + error.errno).end();
+                res
+                  .status(500)
+                  .send("Database error: " + error.errno)
+                  .end();
               }
             });
         }
       })
       .catch((error) => {
-        res.status(500).send("Database error: " + error.errno).end();
-      })
+        res
+          .status(500)
+          .send("Database error: " + error.errno)
+          .end();
+      });
   }
-
-}
-);
+});
 
 // EDIT ONE
 /** http://localhost:8787/api/comment/    with method=PUT **/
 // example: http://localhost:8787/api/comment (ideaId, memberId and commentTimeStamp in the body)
 
-comment.put('/', function (req, res) {
+comment.put("/", function (req, res) {
   if (!req.body.id && !req.body.commentText) {
     res.status(400).send("Request body incomplete!").end();
   } else if (!req.body.commentText) {
     res.status(400).send("Comment body is missing!").end();
   } else {
-    knex('Comment')
-      .where('id', req.body.id)
+    knex("Comment")
+      .where("id", req.body.id)
       .update(req.body)
       .then((data) => {
         if (data == 0) {
           res.status(404).send("No matching comment was found!").end();
         } else {
-          res.status(200).send("Update successful! Count of modified rows: " + data).end();
+          res
+            .status(200)
+            .send("Update successful! Count of modified rows: " + data)
+            .end();
         }
       })
       .catch((error) => {
         if (error.errno == 1452) {
           res.status(409).send("Member ID or Idea ID FK violation!").end();
         } else {
-          res.status(500).send("Database error: " + error.errno).end();
+          res
+            .status(500)
+            .send("Database error: " + error.errno)
+            .end();
         }
       });
   }
