@@ -3,6 +3,11 @@
 import express from "express";
 import knex from "../../db/index.js";
 
+import {successHandler,
+  requestErrorHandler,  
+  databaseErrorHandler,
+} from "../../responseHandlers/index.js";
+
 const comment = express.Router();
 
 // GET ALL BY MEMBERID
