@@ -87,7 +87,7 @@ DB_CONNECTION_POOL_MIN=1
 DB_CONNECTION_POOL_MAX=7
 ```
 
-*****  END of ,env file   *****
+*****  END of .env file   *****
 
 ### PostMan link for the common PostMan tests:  (Not yet created, but just example how could share them as links!)
 
