@@ -72,20 +72,20 @@ Look at them when you get to that level.
   And then, when all tests ok with basic version, start to add compicating things)
 
 // ******** Sample .env file (dotenv library will use it) **********
-`
-BE_API_URL_PREFIX="//api"
-BE_SERVER_PORT="8777"
-DB_DRIVER_MODULE="mysql"
-DB_HOST="localhost"
-DB_PORT="3307"
-DB_USER="XXXXXXXXXXXXXXXXXXXXX"
-DB_PASSWORD="XXXXXXXXXXXXXXXXXXXXXXXX"
-DB_DATABASE="test"
-DB_DEBUG="true"
-DB_MULTIPLE_STATEMENTS="true"
-DB_CONNECTION_POOL_MIN="1"
-DB_CONNECTION_POOL_MAX="7"
-`
+```
+BE_API_URL_PREFIX=/api
+BE_SERVER_PORT=8777
+DB_DRIVER_MODULE=mysql
+DB_HOST=localhost
+DB_PORT=3307
+DB_USER=XXXXXXXXXXXXXXXXXXXXX
+DB_PASSWORD=XXXXXXXXXXXXXXXXXXXXXXXX
+DB_DATABASE=casedb
+DB_DEBUG=true
+DB_MULTIPLE_STATEMENTS=true
+DB_CONNECTION_POOL_MIN=1
+DB_CONNECTION_POOL_MAX=7
+```
 
 // ******************  END of ,env file   ******************
 

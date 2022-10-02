@@ -1,0 +1,177 @@
+{
+	"info": {
+		"_postman_id": "f478f894-0de1-422f-99ec-a116ea2a0070",
+		"name": "idea-case-collection22S",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8942792"
+	},
+	"item": [
+		{
+			"name": "category_single",
+			"item": [
+				{
+					"name": "http://localhost:8777/api/category/1 (OK)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8777/api/category/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8777",
+							"path": [
+								"api",
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8777/api/category/111 (FAIL, 404)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8777/api/category/111",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8777",
+							"path": [
+								"api",
+								"category",
+								"111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8777/api/category/ (OK)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Historic tours\",\r\n    \"description\": \"Going to museum but also real evet places\",\r\n    \"budgetLimit\": 50,\r\n    \"isActive\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8777/api/category/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8777",
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8777/api/category/1X (OK)",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8777/api/category/13",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8777",
+							"path": [
+								"api",
+								"category",
+								"13"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8777/api/category/ (OK)",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 3,\r\n        \"name\": \"Recreationally\",\r\n        \"description\": \"Recreationallly activities like movies, swimmingly, touringly etc\",\r\n        \"budgetLimit\": 2222,\r\n        \"isActive\": 1\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8777/api/category/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8777",
+							"path": [
+								"api",
+								"category",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "category_multiple",
+			"item": [
+				{
+					"name": "http://localhost:8777/api/category (OK)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8777/api/category",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8777",
+							"path": [
+								"api",
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HelloworldTestForBackend",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "backend_for_ideacase",
+			"value": "localhost"
+		}
+	]
+}
