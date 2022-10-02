@@ -11,7 +11,7 @@ import {successHandler,
 const category = express.Router();
 
 // GET ALL with specified keyword in name or description
-/** http://localhost:8787/api/category/search/fun    with method=GET **/
+/** http://localhost:8777/api/category/search/fun    with method=GET **/
 
 category.get("/search/:keyword", function(req, res) {
 
@@ -48,7 +48,7 @@ category.get("/search/:keyword", function(req, res) {
 // GET ALL      >>> for EXAM
 /** http://172.32.234.23:8777/api/category/    with method=GET **/
 
-category.get("/", function(req, res) {
+category.get("/all", function(req, res) {
   knex
     .select()
     .from("Category")
@@ -65,7 +65,7 @@ category.get("/", function(req, res) {
 });
 
 // GET ALL ACTIVE / NOT ACTIVE
-/** http://localhost:8787/api/category/all/isActive/false or true    with method=GET **/
+/** http://localhost:8777/api/category/all/isActive/false or true    with method=GET **/
 
 category.get("/all/isActive/:activeness", function(req, res) {
   let activeness = null;
@@ -93,7 +93,7 @@ category.get("/all/isActive/:activeness", function(req, res) {
 });
 
 // GET ALL with budget limit
-/** http://localhost:8787/api/category/all/budgetLimit/999/true    with method=GET **/
+/** http://localhost:8777/api/category/all/budgetLimit/999/true    with method=GET **/
 
 category.get("/all/budgetLimit/:limit/:over", function(req, res) {
   if (isNaN(req.params.limit)) {
@@ -126,8 +126,8 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
 });
 
 // GET ONE      >>> for EXAM
-/** http://localhost:8787/api/category/    with method=GET **/
-// example: http://localhost:8787/api/category/1
+/** http://localhost:8777/api/category/    with method=GET **/
+// example: http://localhost:8777/api/category/1
 
 category.get("/:id", function(req, res) {
   // console.log("id: " +req.params.id);
@@ -154,8 +154,8 @@ category.get("/:id", function(req, res) {
 });
 
 // DELETE ONE      >>> for EXAM
-/** http://localhost:8787/api/category/1    with method=DELETE **/
-// example: http://localhost:8787/api/category/1
+/** http://localhost:8777/api/category/1    with method=DELETE **/
+// example: http://localhost:8777/api/category/1
 
 category.delete("/:id", function(req, res) {
   knex("Category")
@@ -175,9 +175,9 @@ category.delete("/:id", function(req, res) {
 });
 
 // CREATE ONE      >>> for EXAM
-/** http://localhost:8787/api/category/    with method=POST **/
+/** http://localhost:8777/api/category/create   with method=POST **/
 
-category.post("/", function(req, res) {
+category.post("/create", function(req, res) {
   if (!req.body.name) {
     requestErrorHandler(res, "Category name is missing!");
   } else {
@@ -202,10 +202,10 @@ category.post("/", function(req, res) {
 });
 
 // UPDATE ONE      >>> for EXAM
-/** http://localhost:8787/api/category/    with method=PUT **/
-// example: http://localhost:8787/api/category (id in the body)
+/** http://localhost:8777/api/category/update    with method=PUT **/
+// example: http://localhost:8777/api/category/update (id in the body)
 
-category.put("/", function(req, res) {
+category.put("/update", function(req, res) {
   if (!req.body.id || !req.body.name) {
     requestErrorHandler(res, "Category id or name are missing!");
   } else {
