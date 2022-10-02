@@ -3,27 +3,35 @@
 import express from "express";
 import knex from "../../db/index.js";
 //import { IDEA_ERROR_CODES } from "../../ERROR_CODES.js";
+
+import {successHandler,
+  requestErrorHandler,  
+  databaseErrorHandler,
+} from "../../responseHandlers/index.js";
+
 const idea = express.Router();
 
 // GET ALL
+
+// UPDATED OK
+
 // http://localhost:8787/api/idea/all METHOD = GET
 idea.get("/all", function (req, res) {
   knex
     .select()
     .from("Idea")
     .then(data => {
-      res
-        .status(200)
-        .send(data)
-        .end();
+      successHandler(res, data, "idea.get/all: Idea listed ok from DB");
     })
-    .catch(error => {
-      res
-        .status(500)
-        .send("Database error: " + error.errno)
-        .end();
+    .catch((error) => {
+      if(error.errno===1146) {
+        databaseErrorHandler(res, error, "category.get/all: Database table Idea not created. ");
+      } else {
+        databaseErrorHandler(res, error, "idea.get/all: ");
+      }
     });
 });
+
 
 // GET ALL SORTED BY CRITERIA
 // http://localhost:8787/api/idea/all/:criteria METHOD = GET
@@ -533,6 +541,7 @@ idea.put("/", (req, res) => {
 
 
 //DELETE ONE
+//HANDLER UPDATED
 // http://localhost:8787/api/idea/:id  METHOD = DELETE
 // example: http://localhost:8787/api/idea/1007
 
@@ -540,26 +549,19 @@ idea.delete("/:id", function (req, res) {
   knex("Idea")
     .where("id", req.params.id)
     .del()
-    .then(data => {
-      if (data == 0) {
-        res
-          .status(404)
-          .send("Invalid row number: " + req.params.id)
-          .end();
+    .then(rowsAffected => {
+      if (rowsAffected === 1) {
+        successHandler(res, rowsAffected,
+           "Delete successful! Count of deleted rows: " + rowsAffected);
       } else {
-        res
-          .status(200)
-          .send("Delete successful! Count of deleted rows: " + data)
-          .end();
+        requestErrorHandler(res, "Invalid idea id: " + req.params.id);
       }
     })
     .catch(error => {
-      res
-        .status(500)
-        .send("Database error: " + error.errno)
-        .end();
+      databaseErrorHandler(res, error);
     });
 });
+
 export default idea;
 
 // let foo = req.params.createdDate;
