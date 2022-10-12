@@ -1,5 +1,6 @@
 /* CREATE TABLES */
 -- ------------------------- 80-character-line marker  ------------------------
+USE casedb;
 
 CREATE TABLE Category (
 	id				INTEGER			NOT NULL		AUTO_INCREMENT,

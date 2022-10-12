@@ -1,6 +1,8 @@
 /* DROP TABLES */
 -- ------------------------- 80-character-line marker  ------------------------
 
+USE casedb;
+
 DROP TABLE IF EXISTS Idea_Member;
 DROP TABLE IF EXISTS Comment;
 DROP TABLE IF EXISTS Idea;
