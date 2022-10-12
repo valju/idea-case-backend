@@ -175,9 +175,9 @@ category.delete("/:id", function(req, res) {
 });
 
 // CREATE ONE      >>> for EXAM
-/** http://localhost:8777/api/category/create   with method=POST **/
+/** http://localhost:8777/api/category/   with method=POST **/
 
-category.post("/create", function(req, res) {
+category.post("/", function(req, res) {
   if (!req.body.name) {
     requestErrorHandler(res, "Category name is missing!");
   } else {
@@ -203,9 +203,9 @@ category.post("/create", function(req, res) {
 
 // UPDATE ONE      >>> for EXAM
 /** http://localhost:8777/api/category/update    with method=PUT **/
-// example: http://localhost:8777/api/category/update (id in the body)
+// example: http://localhost:8777/api/category/ (id in the body)
 
-category.put("/update", function(req, res) {
+category.put("/", function(req, res) {
   if (!req.body.id || !req.body.name) {
     requestErrorHandler(res, "Category id or name are missing!");
   } else {
