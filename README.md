@@ -127,5 +127,7 @@ The executed ssh command sets up an ssh tunnel through the cli. After execution 
 * Express.js docs in case its needed [express.js](https://expressjs.com/)
 * All knex.js commands [knex.js](https://knexjs.org/) NOTE: ctrl+f is your friend
 * Winston logger - [Winston at npmjs](https://www.npmjs.com/package//winston)
+* Express-validator, middleware [express-validator](https://express-validator.github.io/docs) 
+  * brings [validator](https://www.npmjs.com/package/validator) to Express app
 * All ES6 features can be found on this cheatsheet [ES6](https://gist.github.com/vasco3/22b09ef0ca5e0f8c5996)
 * Git cheatsheet [git](https://www.git-tower.com/blog/git-cheat-sheet)

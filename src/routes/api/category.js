@@ -1,12 +1,13 @@
 import express from "express";
 import knex from "../../db/index.js"; // https://mariadb.com/kb/en/library/mariadb-error-codes/
-
+import { validationResult } from "express-validator";
 // importing self-made response/error handlers from /errorHandlers/index.js
 import {successHandler,
     requestErrorHandler,  
     databaseErrorHandler,
     validationErrorHandler,
   } from "../../responseHandlers/index.js";
+import {validateAddCategory} from '../../validationHandler/index.js'
 
 const category = express.Router();
 
@@ -62,28 +63,31 @@ category.delete("/:id", function(req, res) {
 // CREATE ONE      >>> for EXAMPLE
 /** http://localhost:8777/api/category/   with method=POST **/
 
-category.post("/", function(req, res) {
-  if (!req.body.name) {
-    requestErrorHandler(res, "Category name is missing!");
-  } else {
-    knex
-      .insert(req.body)
-      .into("Category")
-      .then((idArray) => {
-        successHandler(res, idArray, 
-          "Adding a category, or multiple categories was succesful");
-        // Note, will send: [101] or [101,102], an array with all the auto-increment
-        // ids for the newly added object(s).
-      })
-      .catch(error => {
-        if (error.errno == 1062) {
-          // 1062? Seek from https://mariadb.com/kb/en/library/mariadb-error-codes/
-          requestErrorHandler(res, "Category with that name already exists!");
-        } else {
-          databaseErrorHandler(res, error);
-        }
-      });
+category.post("/", validateAddCategory, function(req, res) {
+
+  // NOTE! Working incoming request data validation HERE!!!
+  const valResult = validationResult(req);
+  if (!valResult.isEmpty()) {
+    return validationErrorHandler(res, valResult, "validateAddCategory error");
   }
+  // Validation code ends. See the "return" => would stop handling of this request!
+
+  knex.insert(req.body)
+    .into("Category")
+    .then((idArray) => {
+      successHandler(res, idArray, 
+        "Adding a category, or multiple categories was succesful");
+      // Note, will send: [101] or [101,102], an array with all the auto-increment
+      // ids for the newly added object(s).
+    })
+    .catch(error => {
+      if (error.errno == 1062) {
+        // 1062? Seek from https://mariadb.com/kb/en/library/mariadb-error-codes/
+        requestErrorHandler(res, `Category with the name ${req.body.name} already exists!`);
+      } else {
+        databaseErrorHandler(res, error);
+      }
+    });
 });
 
 // UPDATE ONE      >>> for EXAMPLE

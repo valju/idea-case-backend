@@ -5,6 +5,7 @@ import logger from "../utils/logger.js";
 // - 400 "Request error"   (or similar)
 // - 500 "Server error" (Not telling the possible hacker even whether it was DB or
 // backend app server prob. Not telling table names or missing columns or such!)
+import { errorFormatter } from "../validationHandler/index.js";
 
 const SERVER_ERROR_MESSAGE = "Server error.";
 const DB_ERROR_MESSAGE = SERVER_ERROR_MESSAGE; 
@@ -47,10 +48,15 @@ export const requestErrorHandler = (res, message) => {
   res.status(400).send(REQUEST_BASED_ERROR_MESSAGE).end();
 }
 
-export const validationErrorHandler = (res, message) => {
+
+export const validationErrorHandler = (res, valResult, message) => {
   if (!message) {
     message = VALIDATION_ERROR_MESSAGE_TO_LOG;
   }
+  valResult.formatWith(errorFormatter).array().forEach(error => {
+    message += "* " +error;
+  });
+  
   logger.error(message);
   
   res.status(400).send(VALIDATION_BASED_ERROR_MESSAGE);
