@@ -1,4 +1,4 @@
-import { our_logger as logger } from "../index.js";
+import logger from "../utils/logger.js";
 // NOTICE HOW MOST INFO GOES THROUGH THE LOGGER
 // TO FRONTEND WE ONLY RETURN EITHER 
 // - 200 OK,     or

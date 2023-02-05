@@ -7,6 +7,7 @@ import ideaMember from './ideaMember.js';
 import member from './member.js';
 
 const routes = express.Router(); 
+
 routes.use('/category', category);
 routes.use('/comment', comment);
 routes.use('/idea', idea);

@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
 import routes from "./routes/api/index.js";
-import {logger} from "./utils/logger.js";
+import logger from "./utils/logger.js";
 
 // Finally just spelling mistake in the .env file sent me around in wild
 // goose hunt. I got more and more away from correct solution :) Now fixed.

@@ -10,7 +10,7 @@
     "db:init": "babel src -d dist && node ./dist/db/db_reset.js",
     "start": "nodemon --exec babel-node src/index.js"
   },
-  "author": "Old version: e.g. Katja, Khem, Tudor, New version, category/logging/envvars: teacher",
+  "author": "teacher and various students",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

@@ -1,6 +1,5 @@
 import express from "express";
-import knex from "../../db/index.js";
-// https://mariadb.com/kb/en/library/mariadb-error-codes/
+import knex from "../../db/index.js"; // https://mariadb.com/kb/en/library/mariadb-error-codes/
 
 // importing self-made response/error handlers from /errorHandlers/index.js
 import {successHandler,
