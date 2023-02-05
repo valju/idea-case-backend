@@ -2,14 +2,11 @@
 
 import express from "express";
 import knex from "../../db/index.js";
-//import ideaMember from "./ideaMember.js";
 
 const member = express.Router();
 
-
-
 //GET all contributors
-// http://localhost:8787/api/member/all/contributors
+// http://localhost:PORT/api/member/all/contributors
 
 member.get("/old/all/contributors", function (req, res) {
   let subquery = knex("Idea_Member").distinct("memberId");
@@ -43,7 +40,7 @@ member.get("/all/contributors", function (req, res) {
 });
 
 //GET all members
-// http://localhost:8787/api/member/all
+// http://localhost:PORT/api/member/all
 
 member.get("/all", function (req, res) {
   knex
@@ -62,7 +59,7 @@ member.get("/all", function (req, res) {
 });
 
 // ADD NEW MEMBER
-/** http://localhost:8787/api/member/    with method=POST **/
+/** http://localhost:PORT/api/member/    with method=POST **/
 
 member.post("/", function (req, res) {
   // Just a start of err handling for model for you
@@ -106,8 +103,8 @@ member.post("/", function (req, res) {
 });
 
 // members by id --
-/** http://localhost:8787/api/member/    with method=GET **/
-// example: http://localhost:8787/api/member/1
+/** http://localhost:PORT/api/member/    with method=GET **/
+// example: http://localhost:PORT/api/member/1
 // This was somehow checked/fixed 2020-02-25
 member.get("/:id", function (req, res) {
   let id = Number(req.params.id);
@@ -142,7 +139,7 @@ member.get("/:id", function (req, res) {
 
 });
 
-/** http://localhost:8787/api/member/:id    with method=DELETE **/
+/** http://localhost:PORT/api/member/:id    with method=DELETE **/
 member.delete("/:id", function (req, res) {
   let id = Number(req.params.id);
   if (id && !isNaN(id) && id > 0) {
@@ -174,7 +171,7 @@ member.delete("/:id", function (req, res) {
 });
 
 //UPDATE member
-/** http://localhost:8787/api/member/    with method=PUT **/
+/** http://localhost:PORT/api/member/    with method=PUT **/
 
 member.put("/", function (req, res) {
   // Just a start of err handling for model for you

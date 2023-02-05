@@ -6,7 +6,7 @@ import knex from "../../db/index.js";
 const ideaMember = express.Router();
 
 // GET all idea member 
-// GET http://localhost:8787/api/ideaMember/all
+// GET http://localhost:PORT/api/ideaMember/all
 ideaMember.get("/all", (req, res) => {
   knex
     .select("ideaId", "memberId", "firstName", "lastName", "name")
@@ -18,7 +18,7 @@ ideaMember.get("/all", (req, res) => {
 });
 
 // GET idea member by (ideaId, memberId)
-// GET http://localhost:8787/api/ideaMember/ideaId/memberId
+// GET http://localhost:PORT/api/ideaMember/ideaId/memberId
 ideaMember.get("/old/:ideaId/:memberId", (req, res) => {
   let { ideaId, memberId } = req.params
 
@@ -82,7 +82,7 @@ ideaMember.get("/:ideaId/:memberId", (req, res) => {
 
 
 // POST idea member
-// POST http://localhost:8787/api/ideaMember/
+// POST http://localhost:PORT/api/ideaMember/
 // example request body { "ideaId": "1001", "memberId": "101" }
 ideaMember.post("/", (req, res, next) => {
   let { ideaId, memberId } = req.body;
@@ -130,7 +130,7 @@ ideaMember.post("/", (req, res, next) => {
 
 
 // PUT update idea-member (update ideaId OR memberId)
-// PUT http://localhost:8787/api/ideaMember/
+// PUT http://localhost:PORT/api/ideaMember/
 // Example request body for updating ideaId: 
 // { "oldIdeaId": "1001", "newIdeaId": "1003", "oldMemberId": "103", "newMemberId": null }
 // Example request body for updating memberId: 
@@ -240,7 +240,7 @@ ideaMember.put("/", (req, res, next) => {
 });
 
 // DELETE delete idea member
-// DELETE http://localhost:8787/api/ideaMember/1001/103
+// DELETE http://localhost:PORT/api/ideaMember/1001/103
 ideaMember.delete("/:ideaId/:memberId", (req, res, next) => {
   let ideaId = req.params.ideaId;
   let memberId = req.params.memberId;
