@@ -1,23 +1,39 @@
 import winston from "winston";
+
 // Adding the winston logger simple way. Now winston is 
-// at our own disposal from wherever you import the logger
-// (We did not get 100% proof this is IO-concurrency safe, but works at 
-// least with our slow backend use. It might be that the createLogger
-// works internally so that it guarantees 'singleton', but we should
-// study more.)
+// at our own disposal from wherever you import the 'logger'
+// NPM: https://www.npmjs.com/package//winston
+
+// Modifying the log for easier reading
+const customFormat = format.combine(
+  format.timestamp({ format: "YYYYMMDD HH:mm:ss" }),
+  // format.splat(),   // It would be possible to log also error _objects_
+  format.printf((info) => {
+    return `${info.timestamp}-${info.level.toLocaleUpperCase()}-${info.message}`;
+  }),
+);
+
 const logConfiguration = {           // set up console and log file as outputs
-    'transports': [
+  format: customFormat,
+  transports: [
       new winston.transports.Console({
         level: "silly"
       }),
       new winston.transports.File({
-        filename: './logs/winstonBackendLog.log',
+        filename: './logs/backendLog.log',
         level: "debug"
       }),
+      new winston.transports.File({
+        filename: './logs/errorLog.log',
+        level: "error"
+      }),
     ]
-  };
-  // create one corresponding logger object, and export it to other modules
-  export const logger = winston.createLogger(logConfiguration); 
-  // https://github.com/winstonjs/winston#using-logging-levels 
-  // Winston's ready-given, logging levels from most severe to just silly:
-  // error, warn, info, verbose, debug, silly
+};
+
+// create one corresponding logger object, and export it for other modules
+export const logger = winston.createLogger(logConfiguration); 
+
+// https://github.com/winstonjs/winston#using-logging-levels 
+// Winston's ready-configured, logging levels were just fine.
+// From most severe to just silly:
+// 0 error, 1 warn, 2 info, 3 verbose, 4 debug, 5 silly

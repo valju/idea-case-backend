@@ -1,5 +1,3 @@
-//import "core-js/stable/index.js";                  // needed or extra?
-//import "regenerator-runtime/runtime.js";           // needed or extra?
 import dotenv from "dotenv";
 import express from "express";
 import cors from "cors";
@@ -14,9 +12,6 @@ dotenv.config({});
 const app = express();
 app.use(cors());  // Merely disabling the cross-origin safety mechanism! Hazardous!
 app.use(express.json());
-//app.use(express.urlencoded());
-
-export const our_logger = logger;  
 
 //console.log(process.env.BE_API_URL_PREFIX);
 app.use(process.env.BE_API_URL_PREFIX, routes);  // ***!!!***
@@ -27,5 +22,5 @@ app.get("/", function(req, res) {
 });
 
 app.listen(process.env.BE_SERVER_PORT);
-console.log(`Node server started and listens to port ${process.env.BE_SERVER_PORT}.`);
+// console.log(`Node server started and listens to port ${process.env.BE_SERVER_PORT}.`);
 logger.verbose(`Server started, port: ${process.env.BE_SERVER_PORT}.`);

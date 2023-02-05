@@ -6,9 +6,138 @@ import knex from "../../db/index.js";
 import {successHandler,
     requestErrorHandler,  
     databaseErrorHandler,
+    validationErrorHandler,
   } from "../../responseHandlers/index.js";
 
 const category = express.Router();
+
+// GET ONE      >>> for EXAMPLE
+/** http://localhost:8777/api/category/    with method=GET **/
+// example: http://localhost:8777/api/category/1
+
+category.get("/:id", function(req, res) {
+  // console.log("id: " +req.params.id);
+  if( isNaN(req.params.id)) {
+    requestErrorHandler(res, "Category id should be number and this is not: " + req.params.id);
+  } else if(req.params.id < 1) {
+    requestErrorHandler(res, "Category id should be >= 1 and this is not: " + req.params.id);
+  } else {
+    knex
+    .select()
+    .from("Category")
+    .where("id", req.params.id)
+    .then((data) => {
+      if (data.length === 1) {
+        successHandler(res, data);
+      } else {
+        requestErrorHandler(res, "Non-existing category id: " + req.params.id);
+      }
+    })
+    .catch((error) => {
+      databaseErrorHandler(res, error);
+  });
+  }
+});
+
+// DELETE ONE      >>> for EXAMPLE
+/** http://localhost:8777/api/category/1    with method=DELETE **/
+// example: http://localhost:8777/api/category/1
+
+category.delete("/:id", function(req, res) {
+  knex("Category")
+    .where("id", req.params.id)
+    .del()
+    .then(rowsAffected => {
+      if (rowsAffected === 1) {
+        successHandler(res, rowsAffected,
+           "Delete successful! Count of deleted rows: " + rowsAffected);
+      } else {
+        requestErrorHandler(res, "Invalid category id: " + req.params.id);
+      }
+    })
+    .catch(error => {
+      databaseErrorHandler(res, error);
+    });
+});
+
+// CREATE ONE      >>> for EXAMPLE
+/** http://localhost:8777/api/category/   with method=POST **/
+
+category.post("/", function(req, res) {
+  if (!req.body.name) {
+    requestErrorHandler(res, "Category name is missing!");
+  } else {
+    knex
+      .insert(req.body)
+      .into("Category")
+      .then((idArray) => {
+        successHandler(res, idArray, 
+          "Adding a category, or multiple categories was succesful");
+        // Note, will send: [101] or [101,102], an array with all the auto-increment
+        // ids for the newly added object(s).
+      })
+      .catch(error => {
+        if (error.errno == 1062) {
+          // 1062? Seek from https://mariadb.com/kb/en/library/mariadb-error-codes/
+          requestErrorHandler(res, "Category with that name already exists!");
+        } else {
+          databaseErrorHandler(res, error);
+        }
+      });
+  }
+});
+
+// UPDATE ONE      >>> for EXAMPLE
+/** http://localhost:8777/api/category/update    with method=PUT **/
+// example: http://localhost:8777/api/category/ (id in the body)
+
+category.put("/", function(req, res) {
+  if (!req.body.id || !req.body.name) {
+    requestErrorHandler(res, "Category id or name are missing!");
+  } else {
+    knex("Category")
+      .where("id", req.body.id)
+      .update(req.body)
+      .then(rowsAffected => {
+        if (rowsAffected === 1) {
+          successHandler(res, rowsAffected, 
+            "Update successful! Count of modified rows: " + rowsAffected)            
+        } else {
+          requestErrorHandler(res, "Invalid category for update, id: " + req.body.id)
+        }
+      })
+      .catch(error => {
+        if (error.errno == 1062) {
+          requestErrorHandler(res, `DB 1062: Category with the name ${req.body.name} already exists!`);
+        } else {
+          databaseErrorHandler(res, error);
+        }
+      });
+  }
+});
+
+// GET ALL      >>> for EXAMPLE
+/** http://172.32.234.23:8777/api/category/    with method=GET **/
+
+category.get("/", function(req, res) {
+  knex
+    .select()
+    .from("Category")
+    .then(data => {
+      successHandler(res, data, "category.get/all: Categories listed ok from DB");
+    })
+    .catch((error) => {
+      if(error.errno===1146) {
+        databaseErrorHandler(res, error, "category.get/all: Database table Category not created. ");
+      } else {
+        databaseErrorHandler(res, error, "category.get/all: ");
+      }
+    });
+});
+
+// **********************************************************************
+// ******************** Other examples **********************************
+// **********************************************************************
 
 // GET ALL with specified keyword in name or description
 /** http://localhost:8777/api/category/search/fun    with method=GET **/
@@ -43,25 +172,6 @@ category.get("/search/:keyword", function(req, res) {
   } else {
     requestErrorHandler(res, "Missing keyword, keyword is: " + keyword);
   }
-});
-
-// GET ALL      >>> for EXAM
-/** http://172.32.234.23:8777/api/category/    with method=GET **/
-
-category.get("/", function(req, res) {
-  knex
-    .select()
-    .from("Category")
-    .then(data => {
-      successHandler(res, data, "category.get/all: Categories listed ok from DB");
-    })
-    .catch((error) => {
-      if(error.errno===1146) {
-        databaseErrorHandler(res, error, "category.get/all: Database table Category not created. ");
-      } else {
-        databaseErrorHandler(res, error, "category.get/all: ");
-      }
-    });
 });
 
 // GET ALL ACTIVE / NOT ACTIVE
@@ -125,123 +235,22 @@ category.get("/all/budgetLimit/:limit/:over", function(req, res) {
   }
 });
 
-// GET ONE      >>> for EXAM
-/** http://localhost:8777/api/category/    with method=GET **/
-// example: http://localhost:8777/api/category/1
-
-category.get("/:id", function(req, res) {
-  // console.log("id: " +req.params.id);
-  if( isNaN(req.params.id)) {
-    requestErrorHandler(res, "Category id should be number and this is not: " + req.params.id);
-  } else if(req.params.id < 1) {
-    requestErrorHandler(res, "Category id should be >= 1 and this is not: " + req.params.id);
-  } else {
-    knex
-    .select()
-    .from("Category")
-    .where("id", req.params.id)
-    .then((data) => {
-      if (data.length === 1) {
-        successHandler(res, data);
-      } else {
-        requestErrorHandler(res, "Non-existing category id: " + req.params.id);
-      }
-    })
-    .catch((error) => {
-      databaseErrorHandler(res, error);
-  });
-  }
-});
-
-// DELETE ONE      >>> for EXAM
-/** http://localhost:8777/api/category/1    with method=DELETE **/
-// example: http://localhost:8777/api/category/1
-
-category.delete("/:id", function(req, res) {
-  knex("Category")
-    .where("id", req.params.id)
-    .del()
-    .then(rowsAffected => {
-      if (rowsAffected === 1) {
-        successHandler(res, rowsAffected,
-           "Delete successful! Count of deleted rows: " + rowsAffected);
-      } else {
-        requestErrorHandler(res, "Invalid category id: " + req.params.id);
-      }
-    })
-    .catch(error => {
-      databaseErrorHandler(res, error);
-    });
-});
-
-// CREATE ONE      >>> for EXAM
-/** http://localhost:8777/api/category/   with method=POST **/
-
-category.post("/", function(req, res) {
-  if (!req.body.name) {
-    requestErrorHandler(res, "Category name is missing!");
-  } else {
-    knex
-      .insert(req.body)
-      .into("Category")
-      .then((idArray) => {
-        successHandler(res, idArray, 
-          "Adding a category, or multiple categories was succesful");
-        // Note, will send: [101] or [101,102], an array with all the auto-increment
-        // ids for the newly added object(s).
-      })
-      .catch(error => {
-        if (error.errno == 1062) {
-          // 1062? Seek from https://mariadb.com/kb/en/library/mariadb-error-codes/
-          requestErrorHandler(res, "Category with that name already exists!");
-        } else {
-          databaseErrorHandler(res, error);
-        }
-      });
-  }
-});
-
-// UPDATE ONE      >>> for EXAM
-/** http://localhost:8777/api/category/update    with method=PUT **/
-// example: http://localhost:8777/api/category/ (id in the body)
-
-category.put("/", function(req, res) {
-  if (!req.body.id || !req.body.name) {
-    requestErrorHandler(res, "Category id or name are missing!");
-  } else {
-    knex("Category")
-      .where("id", req.body.id)
-      .update(req.body)
-      .then(rowsAffected => {
-        if (rowsAffected === 1) {
-          successHandler(res, rowsAffected, 
-            "Update successful! Count of modified rows: " + rowsAffected)            
-        } else {
-          requestErrorHandler(res, "Invalid category for update, id: " + req.body.id)
-        }
-      })
-      .catch(error => {
-        if (error.errno == 1062) {
-          requestErrorHandler(res, `DB 1062: Category with the name ${req.body.name} already exists!`);
-        } else {
-          databaseErrorHandler(res, error);
-        }
-      });
-  }
-});
-
 export default category;
 
-/* Post e.g. the JSON from below in the POST body
+/* 
+// What is a multi-post? First the single post
+// Post e.g. the JSON from below in the POST body
 {
 	"name": "Jamborees",
-    "description": "Jumbo Jambo Jembo",
-    "budgetLimit": 1111,
-    "isActive": "false"
+  "description": "Jumbo Jambo Jembo",
+  "budgetLimit": 1111,
+  "isActive": "false"
 }
 */
 
-/* Or this JSON array
+/* 
+// Then multi-poist with a JSON array 
+// (Would work with Knex insert req.body, if input checks allow)
 [{
 	"name": "Jamborees2",
     "description": "Jumbo Jambo Jembo",
