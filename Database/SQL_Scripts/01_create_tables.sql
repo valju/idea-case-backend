@@ -1,6 +1,5 @@
-/* CREATE TABLES */
 -- ------------------------- 80-character-line marker  ------------------------
-USE casedb;
+USE casedb;   -- Note! Is this same as your schema name? Change if not!
 
 CREATE TABLE Category (
 	id				INTEGER			NOT NULL		AUTO_INCREMENT,
@@ -14,7 +13,6 @@ CREATE TABLE Category (
 ) ENGINE=InnoDB;
 ALTER TABLE Category AUTO_INCREMENT=1;
 
-/* MEMBER */
 CREATE TABLE Member (
 	id 				INTEGER 		NOT NULL 		AUTO_INCREMENT,
 	firstName 		VARCHAR(50) 	NOT NULL,
@@ -26,7 +24,6 @@ CREATE TABLE Member (
 ) ENGINE=InnoDB;
 ALTER TABLE Member AUTO_INCREMENT=101;
 
-/* IDEA */
 CREATE TABLE Idea (
 	id 				INTEGER 		NOT NULL 		AUTO_INCREMENT,
 	name 			VARCHAR(255) 	NOT NULL,
@@ -49,7 +46,6 @@ CREATE TABLE Idea (
 ) ENGINE=InnoDB;
 ALTER TABLE Idea AUTO_INCREMENT=1001;
 
-/* IDEA_MEMBER */
 CREATE TABLE Idea_Member (
 	ideaId INTEGER NOT NULL,
 	memberId INTEGER NOT NULL,
@@ -68,7 +64,6 @@ CREATE TABLE Idea_Member (
 
 ) ENGINE=InnoDB;
 
-/* COMMENT */
 CREATE TABLE Comment (
 	id 					INTEGER 		NOT NULL 		AUTO_INCREMENT,
 	memberId 			INTEGER 		NOT NULL,
@@ -90,5 +85,3 @@ CREATE TABLE Comment (
 
 ) ENGINE=InnoDB;
 ALTER TABLE Comment AUTO_INCREMENT=10001;
-
-/* END */

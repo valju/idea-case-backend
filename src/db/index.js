@@ -1,6 +1,8 @@
 import knex from 'knex';
 import dotenv from 'dotenv';
 
+import logger from '../utils/logger.js';
+
 dotenv.config({});
 
 export const databaseConfigObject = {
@@ -20,7 +22,7 @@ export const databaseConfigObject = {
   }
 }
 
-console.log("DB user: " +databaseConfigObject.connection.user);
+logger.debug("DB user: " +databaseConfigObject.connection.user);
 
-// initiate knex with config
+// initiate knex with config, and export it for other modules
 export default knex(databaseConfigObject);

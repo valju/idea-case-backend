@@ -66,10 +66,10 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8777/api/category/",
+							"raw": "http://{{backend_for_ideacase}}:8777/api/category/",
 							"protocol": "http",
 							"host": [
-								"localhost"
+								"{{backend_for_ideacase}}"
 							],
 							"port": "8777",
 							"path": [

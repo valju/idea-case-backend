@@ -1,7 +1,6 @@
-/* DROP TABLES */
 -- ------------------------- 80-character-line marker  ------------------------
 
-USE casedb;
+USE casedb;   -- Note! Is this same as your schema name? Change if not!
 
 DROP TABLE IF EXISTS Idea_Member;
 DROP TABLE IF EXISTS Comment;
@@ -9,11 +8,7 @@ DROP TABLE IF EXISTS Idea;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Member;
 
-/* END */
-
-/* CREATE TABLES */
 -- ------------------------- 80-character-line marker  ------------------------
-USE casedb;
 
 CREATE TABLE Category (
 	id				INTEGER			NOT NULL		AUTO_INCREMENT,
@@ -27,7 +22,6 @@ CREATE TABLE Category (
 ) ENGINE=InnoDB;
 ALTER TABLE Category AUTO_INCREMENT=1;
 
-/* MEMBER */
 CREATE TABLE Member (
 	id 				INTEGER 		NOT NULL 		AUTO_INCREMENT,
 	firstName 		VARCHAR(50) 	NOT NULL,
@@ -39,7 +33,6 @@ CREATE TABLE Member (
 ) ENGINE=InnoDB;
 ALTER TABLE Member AUTO_INCREMENT=101;
 
-/* IDEA */
 CREATE TABLE Idea (
 	id 				INTEGER 		NOT NULL 		AUTO_INCREMENT,
 	name 			VARCHAR(255) 	NOT NULL,
@@ -62,7 +55,6 @@ CREATE TABLE Idea (
 ) ENGINE=InnoDB;
 ALTER TABLE Idea AUTO_INCREMENT=1001;
 
-/* IDEA_MEMBER */
 CREATE TABLE Idea_Member (
 	ideaId INTEGER NOT NULL,
 	memberId INTEGER NOT NULL,
@@ -81,7 +73,6 @@ CREATE TABLE Idea_Member (
 
 ) ENGINE=InnoDB;
 
-/* COMMENT */
 CREATE TABLE Comment (
 	id 					INTEGER 		NOT NULL 		AUTO_INCREMENT,
 	memberId 			INTEGER 		NOT NULL,
@@ -104,18 +95,27 @@ CREATE TABLE Comment (
 ) ENGINE=InnoDB;
 ALTER TABLE Comment AUTO_INCREMENT=10001;
 
-/* END */
-
-/* INSERT TEST DATA */
+-- INSERT TEST DATA 
 -- ------------------------- 80-character-line marker  ------------------------
-/* TEST DATA NOT FOLLING INSTRUCTIONS COMPLETELY,
-E.G THERE was NO MEMBER WITHOUT COMMENTS _AND_
-idea_member markings !!!!!!*/
 
-/* Also more clever delete with ALTER TABLE resetting AUTOINCREMENT
-would be could idea */
+-- Delete would not reset the AUTOINCREMENT counters. This helps:
+DELETE FROM Comment;
+ALTER TABLE Comment AUTO_INCREMENT=10001;
 
-USE casedb;
+DELETE FROM Idea_Member;
+-- This is a pure join table, joinin Member to Idea member has worked towards,
+-- with composite PK formed from two FKs. Thus no auto-increment.
+
+DELETE FROM Idea;
+ALTER TABLE Idea AUTO_INCREMENT=1001;
+
+DELETE FROM Member;
+ALTER TABLE Member AUTO_INCREMENT=101;
+
+DELETE FROM Category;
+ALTER TABLE Category AUTO_INCREMENT=1;
+
+-- -------------------------------------------------
 
 INSERT INTO Category
   (name, description, budgetLimit, isActive)
@@ -160,7 +160,8 @@ VALUES
   ('Kukka-Maaria', 'Pyykkönen', 'kukkis@mail.com'),
   ('Matti', 'Neupane', 'matti@mail.com'),
   ('Annie', 'Johnson-Smith', 'annie@mail.com'),
-  ('Donnie', 'Schtrumph', 'mememememe@whitehut.com')
+  ('Donnie', 'Schtrumph', 'mememememe@whitehut.com'),
+  ('Jaska', 'Jokinen', 'jokisenjaska@hotmail.com')
 ;
 
 INSERT INTO Idea
@@ -174,9 +175,11 @@ VALUES
   ('Baltic Crossing', 'Beer trip to Estonia.', 250,
     TRUE,   5,    '2019-04-03', '2019-04-03 16:23:25', 3),
   ('Pikkujoulut', 'Team building  before Christmas.', 100,
-    FALSE,  10,   '2019-04-03', '2019-04-03 16:24:29', 1),
+    FALSE,  10,   '2020-03-24', '2020-03-24 16:24:29', 1),
   ('Le Tour',     'Follow Tour de France caravan.', 1000,
-    TRUE,   3,    '2019-04-03', '2019-04-03 16:48:29', 3)
+    TRUE,   3,    '2021-10-11', '2021-10-11 16:48:29', 3),
+  ('Going to forest',     'Orienteering or hiking.', 15,
+    TRUE,   1,    '2022-05-13', '2022-05-13 16:48:29', 3)
 ;
 
 INSERT INTO Idea_Member
@@ -206,5 +209,9 @@ VALUES
   (102, 1002, '2019-05-03 09:20:25.640', 'Help!')
 ;
 
-/* END */
+-- --------------------------------------------------------
 
+SHOW SCHEMAS;
+SHOW TABLES;
+DESCRIBE Category;
+SELECT * FROM Category;
