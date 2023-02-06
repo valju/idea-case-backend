@@ -10,9 +10,10 @@ dotenv.config({});
 // This will make the process.env.BE_SERVER_PORT etc. to be read from the .env file
 
 const app = express();
-app.use(cors()); // Merely disabling the cross-origin safety mechanism! Hazardous!
+app.use(cors()); // Merely disabling the cross-origin resource sharing safety mechanism! Hazardous!
 app.use(express.json());  
 // Middleware for parsing request body JSON => JS object for our use
+
 
 app.use(process.env.BE_API_URL_PREFIX, routes);  // ***!!!***
 

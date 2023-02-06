@@ -1,5 +1,5 @@
 import { format, transports, createLogger } from 'winston';
-// Winston logger - https://www.npmjs.com/package//winston
+// Winston logger - https://www.npmjs.com/package/winston
 
 // Modifying the log line format for easier reading
 const customFormat = format.combine(

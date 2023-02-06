@@ -28,9 +28,6 @@ export const validateAddCategory = [
     .isLength({ min: 0, max: 255 })
     .withMessage("Must be between 0-255 characters long")
     .bail()
-    .matches(/^[A-Za-zäöåÄÖÅ0-9\s-]*$/)
-    .withMessage("Must contain only letters or numbers")
-    .bail()
     .optional()
     .bail(),
   check("budgetLimit")
