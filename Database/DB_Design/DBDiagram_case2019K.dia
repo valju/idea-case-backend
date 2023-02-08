@@ -68,13 +68,13 @@
         <dia:point val="14.2052,10.6198"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="14.1552,10.5698;28.6152,16.2698"/>
+        <dia:rectangle val="14.1552,10.5698;26.6902,16.2698"/>
       </dia:attribute>
       <dia:attribute name="elem_corner">
         <dia:point val="14.2052,10.6198"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="14.359999999999999"/>
+        <dia:real val="12.434999999999999"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="5.5999999999999996"/>
@@ -172,7 +172,7 @@
             <dia:string>#id#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#INTEGER {pk}#</dia:string>
+            <dia:string>#INTEGER {PK}#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -181,7 +181,7 @@
             <dia:string>##</dia:string>
           </dia:attribute>
           <dia:attribute name="visibility">
-            <dia:enum val="0"/>
+            <dia:enum val="1"/>
           </dia:attribute>
           <dia:attribute name="abstract">
             <dia:boolean val="false"/>
@@ -241,7 +241,7 @@
             <dia:string>#commentTimestamp#</dia:string>
           </dia:attribute>
           <dia:attribute name="type">
-            <dia:string>#TIMESTAMP(4) {PK}#</dia:string>
+            <dia:string>#TIMESTAMP(4)#</dia:string>
           </dia:attribute>
           <dia:attribute name="value">
             <dia:string>##</dia:string>
@@ -1038,10 +1038,10 @@
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O4">
       <dia:attribute name="obj_pos">
-        <dia:point val="21.3852,13.4198"/>
+        <dia:point val="20.4227,13.4198"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="21.3852,12.7798;21.3852,13.5523"/>
+        <dia:rectangle val="20.4227,12.7798;20.4227,13.5523"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1055,7 +1055,7 @@
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="21.3852,13.4198"/>
+            <dia:point val="20.4227,13.4198"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1369,7 +1369,7 @@
         <dia:point val="2.58956,-14.6804"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="2.53956,-14.7304;31.6446,-6.5304"/>
+        <dia:rectangle val="2.53956,-14.7304;24.3296,-6.5304"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -1378,7 +1378,7 @@
         <dia:point val="2.58956,-14.6804"/>
       </dia:attribute>
       <dia:attribute name="elem_width">
-        <dia:real val="29.005000000000003"/>
+        <dia:real val="21.690000000000001"/>
       </dia:attribute>
       <dia:attribute name="elem_height">
         <dia:real val="8.0999999999999996"/>
@@ -1397,13 +1397,13 @@
           <dia:attribute name="string">
             <dia:string>#Database Diagram - Idea case
 
-created 2019-04-08 KP, modified 2019-04-09, 2019-04-16 JV
+modified 2023-02-08 JV
 
 AK = UNIQUE NOT NULL
 * = column that might contain NULL in final version
 
-Foreign key policies (DNA,DCA,DSN,DSD,UNA,UCA) will be written instead of
-NNN in the diagram. E.g. DCA UNA#</dia:string>
+Foreign key policies (DNA,DCA,DSN,DSD,UNA,UCA) 
+E.g. DCA (ON DELETE CASCADE) UNA (ON UPDATE NO ACTION)#</dia:string>
           </dia:attribute>
           <dia:attribute name="font">
             <dia:font family="monospace" style="0" name="Courier"/>
@@ -1425,10 +1425,10 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O10">
       <dia:attribute name="obj_pos">
-        <dia:point val="17.0921,-10.6304"/>
+        <dia:point val="13.4346,-10.6304"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="17.0921,-11.2704;17.0921,-10.4979"/>
+        <dia:rectangle val="13.4346,-11.2704;13.4346,-10.4979"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1442,7 +1442,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="17.0921,-10.6304"/>
+            <dia:point val="13.4346,-10.6304"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1461,10 +1461,10 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
     </dia:object>
     <dia:object type="Standard - Text" version="1" id="O11">
       <dia:attribute name="obj_pos">
-        <dia:point val="17.0921,-10.6304"/>
+        <dia:point val="13.4346,-10.6304"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="17.0921,-11.2704;17.0921,-10.4979"/>
+        <dia:rectangle val="13.4346,-11.2704;13.4346,-10.4979"/>
       </dia:attribute>
       <dia:attribute name="text">
         <dia:composite type="text">
@@ -1478,7 +1478,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
             <dia:real val="0.80000000000000004"/>
           </dia:attribute>
           <dia:attribute name="pos">
-            <dia:point val="17.0921,-10.6304"/>
+            <dia:point val="13.4346,-10.6304"/>
           </dia:attribute>
           <dia:attribute name="color">
             <dia:color val="#000000"/>
@@ -1676,7 +1676,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
         <dia:point val="34.1759,9.40112"/>
       </dia:attribute>
       <dia:attribute name="obj_bb">
-        <dia:rectangle val="28.5152,9.35112;34.7609,14.9198"/>
+        <dia:rectangle val="26.5902,9.35112;34.7609,14.9198"/>
       </dia:attribute>
       <dia:attribute name="meta">
         <dia:composite type="dict"/>
@@ -1684,7 +1684,7 @@ NNN in the diagram. E.g. DCA UNA#</dia:string>
       <dia:attribute name="orth_points">
         <dia:point val="34.1759,9.40112"/>
         <dia:point val="34.1759,14.1198"/>
-        <dia:point val="28.5652,14.1198"/>
+        <dia:point val="26.6402,14.1198"/>
       </dia:attribute>
       <dia:attribute name="orth_orient">
         <dia:enum val="1"/>
