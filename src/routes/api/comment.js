@@ -6,8 +6,8 @@ import knex from "../../db/index.js";
 const comment = express.Router();
 
 // GET ALL BY MEMBERID
-/** http://localhost:PORT/api/comment/member/101    with method=GET **/
-// example: http://localhost:PORT/api/comment/member/101
+/** http://SERVER_ADDRESS:PORT/api/comment/member/101    with method=GET **/
+// example: http://SERVER_ADDRESS:PORT/api/comment/member/101
 
 comment.get('/member/:id', function (req, res) {
   if (!isNaN(req.params.id) && req.params.id) {
@@ -32,8 +32,8 @@ comment.get('/member', function (req, res) {
 });
 
 // GET ALL BY IDEAID
-/** http://localhost:PORT/api/comment/idea/1001    with method=GET **/
-// example: http://localhost:PORT/api/comment/idea/1001
+/** http://SERVER_ADDRESS:PORT/api/comment/idea/1001    with method=GET **/
+// example: http://SERVER_ADDRESS:PORT/api/comment/idea/1001
 
 comment.get('/idea/:ideaId', function (req, res) {
   if (!isNaN(req.params.ideaId) && req.params.ideaId) {
@@ -56,8 +56,8 @@ comment.get('/idea', function (req, res) {
 });
 
 // GET ALL COMMENTS FROM TODAY
-/** http://localhost:PORT/api/comment/all    with method=GET **/
-// example: http://localhost:PORT/api/comment/all
+/** http://SERVER_ADDRESS:PORT/api/comment/all    with method=GET **/
+// example: http://SERVER_ADDRESS:PORT/api/comment/all
 
 comment.get('/all', function (req, res) {
   knex.raw('select Comment.id, ideaId, memberId, commentTimeStamp, commentText, firstName, lastName, Idea.name ' +
@@ -76,7 +76,7 @@ comment.get('/idea', function (req, res) {
 });
 
 // GET ONE
-// example: http://localhost:PORT/api/comment/10001
+// example: http://SERVER_ADDRESS:PORT/api/comment/10001
 
 comment.get('/:id', function (req, res) {
   if (req.params.id) {
@@ -99,8 +99,8 @@ comment.get('/:id', function (req, res) {
 });
 
 // DELETE ONE
-/** http://localhost:PORT/api/comment/1    with method=DELETE **/
-// example: http://localhost:PORT/api/comment/10001
+/** http://SERVER_ADDRESS:PORT/api/comment/1    with method=DELETE **/
+// example: http://SERVER_ADDRESS:PORT/api/comment/10001
 
 comment.delete('/:id', function (req, res) {
   if (!isNaN(req.params.id)) {
@@ -123,7 +123,7 @@ comment.delete('/:id', function (req, res) {
 });
 
 // CREATE ONE
-/** http://localhost:PORT/api/comment/    with method=POST **/
+/** http://SERVER_ADDRESS:PORT/api/comment/    with method=POST **/
 
 comment.post('/old/', function (req, res) {
 
@@ -199,8 +199,8 @@ comment.post('/', function (req, res) {
 );
 
 // EDIT ONE
-/** http://localhost:PORT/api/comment/    with method=PUT **/
-// example: http://localhost:PORT/api/comment (ideaId, memberId and commentTimeStamp in the body)
+/** http://SERVER_ADDRESS:PORT/api/comment/    with method=PUT **/
+// example: http://SERVER_ADDRESS:PORT/api/comment (ideaId, memberId and commentTimeStamp in the body)
 
 comment.put('/', function (req, res) {
   if (!req.body.id && !req.body.commentText) {

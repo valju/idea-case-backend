@@ -18,7 +18,7 @@ app.use(express.json());
 app.use(process.env.BE_API_URL_PREFIX, routes);  // ***!!!***
 
 // Just for easy testing - Is backend alive? No DB needed.
-app.get("/", function(req, res) {
+app.get("/", (req, res) => {
   res.send("Hello from the Node & Express Backend!").end();
 });
 

@@ -6,7 +6,7 @@ import knex from "../../db/index.js";
 const member = express.Router();
 
 //GET all contributors
-// http://localhost:PORT/api/member/all/contributors
+// http://SERVER_ADDRESS:PORT/api/member/all/contributors
 
 member.get("/old/all/contributors", function (req, res) {
   let subquery = knex("Idea_Member").distinct("memberId");
@@ -40,7 +40,26 @@ member.get("/all/contributors", function (req, res) {
 });
 
 //GET all members
-// http://localhost:PORT/api/member/all
+http://SERVER_ADDRESS:PORT/api/member
+member.get("/", function (req, res) {
+  knex
+    .select()
+    .from("Member")
+    .then(data => {
+      res
+        .status(200)
+        .send(data);
+    })
+    .catch(error => {
+      res
+        .status(500)
+        .send("Database error: " + error.errno);
+    });
+});
+
+
+
+// http://SERVER_ADDRESS:PORT/api/member/all
 
 member.get("/all", function (req, res) {
   knex
@@ -59,7 +78,7 @@ member.get("/all", function (req, res) {
 });
 
 // ADD NEW MEMBER
-/** http://localhost:PORT/api/member/    with method=POST **/
+/** http://SERVER_ADDRESS:PORT/api/member/    with method=POST **/
 
 member.post("/", function (req, res) {
   // Just a start of err handling for model for you
@@ -103,8 +122,8 @@ member.post("/", function (req, res) {
 });
 
 // members by id --
-/** http://localhost:PORT/api/member/    with method=GET **/
-// example: http://localhost:PORT/api/member/1
+/** http://SERVER_ADDRESS:PORT/api/member/    with method=GET **/
+// example: http://SERVER_ADDRESS:PORT/api/member/1
 // This was somehow checked/fixed 2020-02-25
 member.get("/:id", function (req, res) {
   let id = Number(req.params.id);
@@ -139,7 +158,7 @@ member.get("/:id", function (req, res) {
 
 });
 
-/** http://localhost:PORT/api/member/:id    with method=DELETE **/
+/** http://SERVER_ADDRESS:PORT/api/member/:id    with method=DELETE **/
 member.delete("/:id", function (req, res) {
   let id = Number(req.params.id);
   if (id && !isNaN(id) && id > 0) {
@@ -171,7 +190,7 @@ member.delete("/:id", function (req, res) {
 });
 
 //UPDATE member
-/** http://localhost:PORT/api/member/    with method=PUT **/
+/** http://SERVER_ADDRESS:PORT/api/member/    with method=PUT **/
 
 member.put("/", function (req, res) {
   // Just a start of err handling for model for you

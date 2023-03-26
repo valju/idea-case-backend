@@ -6,7 +6,7 @@ import knex from "../../db/index.js";
 const idea = express.Router();
 
 // GET ALL
-// http://localhost:PORT/api/idea/all METHOD = GET
+// http://SERVER_ADDRESS:PORT/api/idea/all METHOD = GET
 idea.get("/all", function (req, res) {
   knex
     .select()
@@ -26,7 +26,7 @@ idea.get("/all", function (req, res) {
 });
 
 // GET ALL SORTED BY CRITERIA
-// http://localhost:PORT/api/idea/all/:criteria METHOD = GET
+// http://SERVER_ADDRESS:PORT/api/idea/all/:criteria METHOD = GET
 // Acceptable criteria: "name", "budget","peopleNeeded","creationDate","isModified"
 idea.get("/all/sort/:criteria", function (req, res) {
   let validCriteria = [
@@ -61,8 +61,8 @@ idea.get("/all/sort/:criteria", function (req, res) {
   }
 });
 //GET ONE
-//http://localhost:PORT/api/idea/:id METHOD = GET
-//Example: http://localhost:PORT/api/idea/1004
+//http://SERVER_ADDRESS:PORT/api/idea/:id METHOD = GET
+//Example: http://SERVER_ADDRESS:PORT/api/idea/1004
 idea.get("/:id", (req, res) => {
   knex
     .select()
@@ -90,8 +90,8 @@ idea.get("/:id", (req, res) => {
 });
 
 //GET BY CATEGORY
-// http://localhost:PORT/api/idea/byCategory/:id  METHOD = GET
-// Example: http://localhost:PORT/api/idea/byCategory/1
+// http://SERVER_ADDRESS:PORT/api/idea/byCategory/:id  METHOD = GET
+// Example: http://SERVER_ADDRESS:PORT/api/idea/byCategory/1
 idea.get("/byCategory/:id", (req, res) => {
   knex
     .select()
@@ -118,7 +118,7 @@ idea.get("/byCategory/:id", (req, res) => {
     });
 });
 // GET BY COMMENT STATUS
-// http://localhost:PORT/api/idea/readyForComments/true  METHOD = GET
+// http://SERVER_ADDRESS:PORT/api/idea/readyForComments/true  METHOD = GET
 idea.get("/readyForComments/:commentStatus", function (req, res) {
   let commentStatus = null;
   if (req.params.commentStatus == "true") {
@@ -152,7 +152,7 @@ idea.get("/readyForComments/:commentStatus", function (req, res) {
 });
 
 // GET BY LIMIT
-// http://localhost:PORT/api/idea/budget/500/true  METHOD = GET
+// http://SERVER_ADDRESS:PORT/api/idea/budget/500/true  METHOD = GET
 idea.get("/budget/:limit/:over", function (req, res) {
   if (isNaN(req.params.limit)) {
     res
@@ -202,7 +202,7 @@ idea.get("/budget/:limit/:over", function (req, res) {
 });
 
 // GET BY PEOPLE NEEDED
-// http://localhost:PORT/api/idea/peopleNeeded/500/true  METHOD = GET
+// http://SERVER_ADDRESS:PORT/api/idea/peopleNeeded/500/true  METHOD = GET
 idea.get("/peopleNeeded/:limit/:over", function (req, res) {
   if (isNaN(req.params.limit)) {
     res
@@ -252,7 +252,7 @@ idea.get("/peopleNeeded/:limit/:over", function (req, res) {
 });
 
 //GET BY EXACT CREATION DATE
-//http://localhost:PORT/api/idea/created/2019-04-02 METHOD = GET
+//http://SERVER_ADDRESS:PORT/api/idea/created/2019-04-02 METHOD = GET
 idea.get("/created/:createdDate", (req, res) => {
   let dateStart = new Date(req.params.createdDate);
   if (isNaN(dateStart)) {
@@ -283,7 +283,7 @@ idea.get("/created/:createdDate", (req, res) => {
 });
 
 //GET BY CREATED DATE RANGE
-//http://localhost:PORT/api/idea/created/2019-04-02 METHOD = GET
+//http://SERVER_ADDRESS:PORT/api/idea/created/2019-04-02 METHOD = GET
 idea.get("/createdRange/:start/:end", (req, res) => {
   let dateStart = new Date(req.params.start);
   let dateEnd = new Date(req.params.end);
@@ -374,7 +374,7 @@ idea.get("/modifiedRange/:start/:end", (req, res) => {
 });
 
 // ADD ONE
-// http://localhost:PORT/api/idea METHOD = POST
+// http://SERVER_ADDRESS:PORT/api/idea METHOD = POST
 // Bare minimum fields: name, description,readyForComments(boolean)
 
 /*
@@ -457,7 +457,7 @@ idea.post("/", (req, res) => {
 });
 
 //EDIT ONE
-// http://localhost:PORT/api/idea METHOD = PUT
+// http://SERVER_ADDRESS:PORT/api/idea METHOD = PUT
 // Bare minimum fields: name, description,readyForComments
 
 idea.put("/", (req, res) => {
@@ -533,8 +533,8 @@ idea.put("/", (req, res) => {
 
 
 //DELETE ONE
-// http://localhost:PORT/api/idea/:id  METHOD = DELETE
-// example: http://localhost:PORT/api/idea/1007
+// http://SERVER_ADDRESS:PORT/api/idea/:id  METHOD = DELETE
+// example: http://SERVER_ADDRESS:PORT/api/idea/1007
 
 idea.delete("/:id", function (req, res) {
   knex("Idea")

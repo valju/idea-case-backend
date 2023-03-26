@@ -13,8 +13,8 @@ import {validateAddCategory} from '../../validationHandler/index.js'
 const category = express.Router();
 
 // GET ONE      >>> for EXAMPLE
-/** http://localhost:8777/api/category/    with method=GET **/
-// example: http://localhost:8777/api/category/1
+/** http://SERVER_ADDRESS:PORT/api/category/    with method=GET **/
+// example: http://SERVER_ADDRESS:PORT/api/category/1
 
 category.get("/:id", function(req, res) {
   // console.log("id: " +req.params.id);
@@ -41,8 +41,8 @@ category.get("/:id", function(req, res) {
 });
 
 // DELETE ONE      >>> for EXAMPLE
-/** http://localhost:8777/api/category/1    with method=DELETE **/
-// example: http://localhost:8777/api/category/1
+/** http://SERVER_ADDRESS:PORT/api/category/1    with method=DELETE **/
+// example: http://SERVER_ADDRESS:PORT/api/category/1
 
 category.delete("/:id", function(req, res) {
   knex("Category")
@@ -62,7 +62,7 @@ category.delete("/:id", function(req, res) {
 });
 
 // CREATE ONE      >>> for EXAMPLE
-/** http://localhost:8777/api/category/   with method=POST **/
+/** http://SERVER_ADDRESS:PORT/api/category/   with method=POST **/
 
 category.post("/", validateAddCategory, function(req, res) {
 
@@ -92,8 +92,8 @@ category.post("/", validateAddCategory, function(req, res) {
 });
 
 // UPDATE ONE      >>> for EXAMPLE
-/** http://localhost:8777/api/category/update    with method=PUT **/
-// example: http://localhost:8777/api/category/ (id in the body)
+/** http://SERVER_ADDRESS:PORT/api/category/update    with method=PUT **/
+// example: http://SERVER_ADDRESS:PORT/api/category/ (id in the body)
 
 category.put("/", function(req, res) {
   if (!req.body.id || !req.body.name) {
@@ -121,20 +121,18 @@ category.put("/", function(req, res) {
 });
 
 // GET ALL      >>> for EXAMPLE
-/** http://172.32.234.23:8777/api/category/    with method=GET **/
+/** http://SERVER_ADDRESS:PORT/api/category/    with method=GET **/
 
-category.get("/", function(req, res) {
-  knex
-    .select()
-    .from("Category")
+category.get("/", (req, res) => {
+  knex.select().from("Category")
     .then(data => {
-      successHandler(res, data, "category.get/all: Categories listed ok from DB");
+      successHandler(res, data, "category.get all: Categories listed ok from DB");
     })
     .catch((error) => {
       if(error.errno===1146) {
         databaseErrorHandler(res, error, "category.get/all: Database table Category not created. ");
       } else {
-        databaseErrorHandler(res, error, "category.get/all: ");
+        databaseErrorHandler(res, error, "category.get all ");
       }
     });
 });
@@ -144,7 +142,7 @@ category.get("/", function(req, res) {
 // **********************************************************************
 
 // GET ALL with specified keyword in name or description
-/** http://localhost:8777/api/category/search/fun    with method=GET **/
+/** http://SERVER_ADDRESS:PORT/api/category/search/fun    with method=GET **/
 
 category.get("/search/:keyword", function(req, res) {
 
@@ -179,7 +177,7 @@ category.get("/search/:keyword", function(req, res) {
 });
 
 // GET ALL ACTIVE / NOT ACTIVE
-/** http://localhost:8777/api/category/all/isActive/false or true    with method=GET **/
+/** http://SERVER_ADDRESS:PORT/api/category/all/isActive/false or true    with method=GET **/
 
 category.get("/all/isActive/:activeness", function(req, res) {
   let activeness = null;
@@ -207,7 +205,7 @@ category.get("/all/isActive/:activeness", function(req, res) {
 });
 
 // GET ALL with budget limit
-/** http://localhost:8777/api/category/all/budgetLimit/999/true    with method=GET **/
+/** http://SERVER_ADDRESS:PORT/api/category/all/budgetLimit/999/true    with method=GET **/
 
 category.get("/all/budgetLimit/:limit/:over", function(req, res) {
   if (isNaN(req.params.limit)) {
